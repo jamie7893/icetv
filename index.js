@@ -12,6 +12,7 @@ const
   Sequelize = require('sequelize'),
   bcrypt = require('bcrypt-nodejs'),
   crypto = require('crypto'),
+  cookieParser = require('cookie-parser'),
   session = require('express-session');
 
 
@@ -31,6 +32,7 @@ app
   .use(morgan('dev')) // logs request to the console
   .use(express.static(path.join(__dirname, 'public')))
   .use(session(sess))
+  .use(cookieParser())
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({
     extended: true
@@ -52,7 +54,7 @@ module.exports.close = function() {
 };
 
 // sequelize initialization //
-const sequelize = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
+const sequelize = new Sequelize('thesis', 'root', 'admin', {
   host: 'localhost',
   dialect: 'mysql',
   pool: {

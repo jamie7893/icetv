@@ -31,6 +31,10 @@
         controller: 'CheckinController',
         templateUrl: 'templates/checkin.html'
       })
+      .when('/logout', {
+        controller: 'CheckinController',
+        templateUrl: 'templates/checkin.html'
+      })
       .otherwise({
         redirectTo: '/'
       });

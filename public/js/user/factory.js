@@ -15,28 +15,21 @@
       logOut: function() {
         return $http.get('/logout');
       },
-      signUp: function(email, password, nameFirst, nameLast) {
+      signUp: function(email, password, nameFirst, nameLast, username) {
         return $http.post('/signup', {
           email: email,
           password: password,
           nameFirst: nameFirst,
-          nameLast: nameLast
+          nameLast: nameLast,
+          username: username
         });
       },
-      edit: function(desc, title, nameFirst, nameLast, skill, img) {
+      edit: function(desc, nameFirst, nameLast, email) {
         return $http.put('/updateprofile', {
           desc: desc,
-          title: title,
           nameFirst: nameFirst,
           nameLast: nameLast,
-          skill: skill,
-          img: img
-        });
-      },
-      twitter: function(twitter, id) {
-        return $http.post('user/' + id + '/twitter', {
-          idUser: id,
-          screenName: twitter
+          email: email
         });
       },
       grav: function(email) {

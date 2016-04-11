@@ -1,6 +1,7 @@
 'use strict';
 var bcrypt = require('bcrypt-nodejs');
 var _ = require('lodash');
+var crypto = require('crypto');
 module.exports = function(sequelize) {
   var User = sequelize.import("../model/user");
   var Chat = sequelize.import("../model/chatroom");
@@ -28,6 +29,7 @@ module.exports = function(sequelize) {
   });
   return {
     create: function(req, res, callback) {
+      console.log(req.body);
       var sess = req.session;
       User.findOne({
         where: {
@@ -41,18 +43,20 @@ module.exports = function(sequelize) {
         var newUser = {
           email: req.body.email,
           nameLast: req.body.nameLast,
-          nameFirst: req.body.nameFirst
+          nameFirst: req.body.nameFirst,
+          username: req.body.username
 
         };
         var aSalt = bcrypt.genSaltSync(10);
 
         var aHash = bcrypt.hashSync(req.body.password, aSalt);
 
-        var newPass = {
-          hash: aHash
-        };
-        Creds.create(newPass).then(function() {
-          User.create(newUser).then(function(aNewUser) {
+        User.create(newUser).then(function(aNewUser) {
+          var newPass = {
+            idUser: aNewUser.id,
+            hash: aHash
+          };
+          Creds.create(newPass).then(function() {
 
             var date = new Date();
             var minutes = 30;
@@ -63,12 +67,13 @@ module.exports = function(sequelize) {
             res.cookie("id", aNewUser.id, {
               expires: date
             });
-            res.redirect('/profile');
+            res.redirect('/#/profile');
           });
         });
       });
     },
     updateprofile: function(req, res, callback) {
+      console.log(req.body);
       var sess = req.session;
       User.findOne({
         where: {
@@ -79,19 +84,22 @@ module.exports = function(sequelize) {
           var err = 'Your not logged in!';
           callback(err);
         }
+        var email = req.body.email;
+        var hash = crypto.createHash('md5').update(email).digest('hex');
         var userProfile = {
           nameLast: req.body.nameLast,
           nameFirst: req.body.nameFirst,
           desc: req.body.desc,
-          img: req.body.img
+          img: "https://s.gravatar.com/avatar/" + hash + "?s=200"
 
         };
-        // console.log(userProfile);
+        console.log(userProfile);
         User.update(userProfile, {
           where: {
             id: user.id
           }
         });
+        res.redirect('/#/foursqure');
       });
 
     },
@@ -108,12 +116,12 @@ module.exports = function(sequelize) {
           },
           include: [{
             model: Creds,
+            attributes: ['hash']
           }],
           attributes: []
 
         }).then(function(password) {
-          console.log(password);
-          if (bcrypt.compareSync(req.body.password, password[0].userpassword.hash)) {
+          if (bcrypt.compareSync(req.body.password, password[0].credential.dataValues.hash)) {
             sess.email = req.body.email;
             User.findOne({
               where: {
@@ -123,21 +131,22 @@ module.exports = function(sequelize) {
               var date = new Date();
               var minutes = 30;
               date.setTime(date.getTime() + (minutes * 60 * 1000));
-              res.cookie("name", user.nameFirst, {
+              res.cookie("name", user.dataValues.nameFirst, {
                 expires: date
               });
-              res.cookie("id", user.id, {
+              res.cookie("id", user.dataValues.id, {
                 expires: date
               });
+              res.redirect('/#/profile');
             });
           }
         });
-
       });
     },
     logout: function(req, res) {
-        req.session.destroy();
-        res.clearCookie();
-      }
+      req.session.destroy();
+      res.clearCookie();
+      res.send(200);
+    }
   };
 };

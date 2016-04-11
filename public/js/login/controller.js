@@ -2,7 +2,7 @@
 
 angular.module('thesis.login', ['ngRoute'])
 
-  .controller('LoginController', ['$scope', '$location', '$window', '$cookies', '$rootScope',
+  .controller('LoginController', ['$scope', '$location', '$window', 'UserService', '$cookies', '$rootScope',
     function AdminUserCtrl($scope, $location, $window, UserService, $cookies, $rootScope ) {
       //Admin User Controller (login, logout)
       $scope.login = function login() {
@@ -12,9 +12,10 @@ angular.module('thesis.login', ['ngRoute'])
 
           UserService.logIn(email, password).success(function(data) {
             $rootScope.$broadcast('userLoggedIn');
-            $location.path("/");
+            $location.path("/profile");
 
-          }).error(function(status, data) {});
+          }).error(function(status, data) {
+          });
         }
 
       };

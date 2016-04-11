@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-inverse" role="navigation">
+<nav class="navbar navbar-default navbar-inverse" role="navigation" ng-controller="LoginController">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -21,7 +21,7 @@
           <a href="#/profile">Profile</a>
         </li>
         <li>
-          <a href="#/logout">Logout</a>
+          <a  href="#/" ng-click="logout()">Logout</a>
         </li>
       </ul>
     </div>
