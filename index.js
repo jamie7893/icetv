@@ -11,6 +11,7 @@ const
   multer = require('multer'),
   Sequelize = require('sequelize'),
   bcrypt = require('bcrypt-nodejs'),
+  crypto = require('crypto'),
   session = require('express-session');
 
 
@@ -68,15 +69,38 @@ const sequelize = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
 // require userService files
 // example
 // const colorsService = require("./service/colors")(sequelize);
+const userService = require("./service/user")(sequelize);
 
-
+var
+  Chat = sequelize.import('./model/chatroom.js'),
+  User = sequelize.import('./model/user.js'),
+  UserChat = sequelize.import('./model/userchatroomjct.js'),
+  Creds = sequelize.import('./model/credentials.js');
 
 
 
 // import every model
 
 sequelize.sync().then(function(res) {
+    Chat.sync();
+    User.sync();
+    UserChat.sync();
+    Creds.sync();
 
+    app.post('/gravatar', function(req, res) {
+      var email = req.body.email;
+      var hash = crypto.createHash('md5').update(email).digest('hex');
+      res.send(hash);
+
+    });
+    app.route('/logout')
+      .get(userService.logout);
+    app.route('/updateprofile')
+      .put(userService.updateprofile);
+    app.route('/signup')
+      .post(userService.create);
+    app.route('/login')
+      .post(userService.login);
 
 
 
