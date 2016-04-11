@@ -1,0 +1,33 @@
+<ng-include src="'/templates/navbar.html'"></ng-include>
+<div class="foursq">
+<h2>Search:</h2>
+<input ng-model="search"class="theInput" ng-keyup="checkin()"></input>
+
+<h2>Near:</h2>
+<input ng-model="currentLocation" class="theInput" ng-keyup="checkin()"></input>
+<br />
+<br />
+
+
+
+<div class="foursqure">
+
+  <div class="venueBox">
+    <ul>
+      <li class="venue" ng-repeat="venue in venue">
+        <p class="theVenue">
+          <br />
+          {{venue.name}}
+          <br /> {{venue.location.address}}
+          <br /> {{venue.location.city}}, {{venue.location.state}} {{venue.location.postalCode}}
+          <br />{{venue.contact.formattedPhone}}
+
+          <button ng-click="joinChat(venue.id)" class="default-btn" style="float: right; margin-right: 15px;">Join Chat</button>
+          <br />  <br />
+      </p>
+      </li>
+    </ul>
+  </div>
+</div>
+
+</div>
