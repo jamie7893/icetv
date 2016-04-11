@@ -1,0 +1,25 @@
+<ng-include src="'/templates/navbar.html'"></ng-include>
+
+<div class="form-profile" ng-controller="EditProfileController">
+  <h2 align="center">Edit Profile</h2>
+  <form class="form-signin" name="regForm">
+    <label>Gravatar Email: (optional)</label>
+    <br />
+    <br />
+    <label>Upload Profile Picture With Gravatar</label>
+    <br />
+    <input type="email" name="gravEmail" class="form-control" ng-model="user.gravEmail"></input>
+    <br />
+    <br />
+    <label>First Name</label>
+    <input type="text" name="nameFirst" class="form-control" ng-model="user.nameFirst">
+    <br />
+    <label>Last Name</label>
+    <input type="text" name="nameLast" class="form-control" ng-model="user.nameLast">
+    <br />
+    <label>Description</label>
+    <textarea name="desc" class="form-control" ng-model="user.desc"></textarea>
+    <br />
+    <button type="button" ng-disabled="!user.nameFirst || !user.nameLast || !user.desc" ng-click="update()" class="btn btn-lg btn-custom btn-block">Update Profile</button>
+  </form>
+</div>
