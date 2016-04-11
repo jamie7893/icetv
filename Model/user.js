@@ -34,15 +34,27 @@ module.exports = function(sequelize, DataTypes) {
     },
     cell: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     email: {
-      type: DataTypes.BIGINT,
+      type: DataTypes.STRING,
       allowNull: true
+    },
+    desc: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    img: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   }, {
     tableName: 'user',
     freezeTableName: true,
-    timestamps: true
+    timestamps: false
   });
 };
+
