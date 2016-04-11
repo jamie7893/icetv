@@ -1,7 +1,7 @@
 angular.module('thesis.foursqure', ['ngRoute'])
 
-.controller('CheckinController', ['$scope', '$location', '$window', '$cookies', '$rootScope', '$http',
-  function checkInCtrl($scope, $location, $window, $cookies, $rootScope, $http) {
+.controller('CheckinController', ['$scope', '$location', '$window', '$cookies', '$rootScope', '$http', 'UserService',
+  function checkInCtrl($scope, $location, $window, $cookies, $rootScope, $http, UserService) {
 
     $scope.checkin = function() {
       if ($scope.search === undefined) {
@@ -20,15 +20,20 @@ angular.module('thesis.foursqure', ['ngRoute'])
         $.map(response.data, function(venues) {
           $scope.venue = [];
           $.map(venues.venues, function(venue) {
-            console.log(venue);
             $scope.venue.push(venue);
           });
         });
       });
     };
 
-    $scope.joinChat = function(id) {
-      console.log(id);
+    $scope.joinChat = function(id, name) {
+      $rootScope.venue = name;
+      $rootScope.id = id;
+      // UserService.joinchat(id, name).success(function(data) {
+        $location.path("/chatroom");
+      // });
     };
+
+
   }
 ]);
