@@ -34,7 +34,7 @@
         });
       },
       twitter: function(twitter, id) {
-          return $http.post('user/'+ id +'/twitter', {
+        return $http.post('user/' + id + '/twitter', {
           idUser: id,
           screenName: twitter
         });
@@ -43,8 +43,14 @@
         return $http.post('/gravatar', {
           email: email
         });
+      },
+      joinchat: function(id, name) {
+        return $http.post('/joinchat', {
+          id: id,
+          idSender: $cookies.get('id'),
+          name: name
+        });
       }
-
     };
   });
 })(window.angular);

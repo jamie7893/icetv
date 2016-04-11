@@ -1,7 +1,7 @@
 <ng-include src="'/templates/navbar.html'"></ng-include>
 <div class="container">
 <div class="row " style="padding-top:40px;">
-  <h3 class="text-center" >Thesis Chat </h3>
+  <h3 class="text-center" >{{venue}} </h3>
   <br /><br />
   <div class="col-md-8">
       <div class="panel panel-info">
@@ -11,94 +11,25 @@
           <div class="panel-body">
 <ul class="media-list">
 
-                                  <li class="media">
+                                  <li class="media" ng-repeat="message in messages">
 
                                       <div class="media-body">
 
                                           <div class="media">
                                               <a class="pull-left" href="#">
-                                                  <img class="media-object img-circle " src="assets/img/user.png" />
+                                                  <img class="media-object img-circle " src="{{user.img}}" />
                                               </a>
                                               <div class="media-body" >
-                                                  Donec sit amet ligula enim. Duis vel condimentum massa.
-
-            Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim.
-                                                  Duis vel condimentum massa.
-                                                  Donec sit amet ligula enim. Duis vel condimentum massa.
+                                          {{message}}
                                                   <br />
-                                                 <small class="text-muted">Alex Deo | 23rd June at 5:00pm</small>
+                                                 <small class="text-muted">Posted by USER, at TIME</small>
                                                   <hr />
                                               </div>
                                           </div>
 
                                       </div>
                                   </li>
-   <li class="media">
 
-                                      <div class="media-body">
-
-                                          <div class="media">
-                                              <a class="pull-left" href="#">
-                                                  <img class="media-object img-circle " src="assets/img/user.gif" />
-                                              </a>
-                                              <div class="media-body" >
-                                                  Donec sit amet ligula enim. Duis vel condimentum massa.
-
-            Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim.
-                                                  Duis vel condimentum massa.
-                                                  Donec sit amet ligula enim. Duis vel condimentum massa.
-                                                  <br />
-                                                 <small class="text-muted">Jhon Rexa | 23rd June at 5:00pm</small>
-                                                  <hr />
-                                              </div>
-                                          </div>
-
-                                      </div>
-                                  </li>
-   <li class="media">
-
-                                      <div class="media-body">
-
-                                          <div class="media">
-                                              <a class="pull-left" href="#">
-                                                  <img class="media-object img-circle " src="assets/img/user.png" />
-                                              </a>
-                                              <div class="media-body" >
-                                                  Donec sit amet ligula enim. Duis vel condimentum massa.
-
-            Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim.
-                                                  Duis vel condimentum massa.
-                                                  Donec sit amet ligula enim. Duis vel condimentum massa.
-                                                  <br />
-                                                 <small class="text-muted">Alex Deo | 23rd June at 5:00pm</small>
-                                                  <hr />
-                                              </div>
-                                          </div>
-
-                                      </div>
-                                  </li>
-   <li class="media">
-
-                                      <div class="media-body">
-
-                                          <div class="media">
-                                              <a class="pull-left" href="#">
-                                                  <img class="media-object img-circle " src="assets/img/user.gif" />
-                                              </a>
-                                              <div class="media-body" >
-                                                  Donec sit amet ligula enim. Duis vel condimentum massa.
-
-            Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim.
-                                                  Duis vel condimentum massa.
-                                                  Donec sit amet ligula enim. Duis vel condimentum massa.
-                                                  <br />
-                                                 <small class="text-muted">Jhon Rexa | 23rd June at 5:00pm</small>
-                                                  <hr />
-                                              </div>
-                                          </div>
-
-                                      </div>
-                                  </li>
                               </ul>
           </div>
           <div class="panel-footer">
@@ -119,7 +50,7 @@
           <div class="panel-body">
               <ul class="media-list">
 
-                                  <li class="media">
+                                  <li class="media" ng-repeat="user in users">
 
                                       <div class="media-body">
 
@@ -128,128 +59,9 @@
                                                   <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.png" />
                                               </a>
                                               <div class="media-body" >
-                                                  <h5>Alex Deo | User </h5>
+                                                  <h5>{{user}} | User </h5>
 
-                                                 <small class="text-muted">Active From 3 hours</small>
-                                              </div>
-                                          </div>
-
-                                      </div>
-                                  </li>
-   <li class="media">
-
-                                      <div class="media-body">
-
-                                          <div class="media">
-                                              <a class="pull-left" href="#">
-                                                  <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.gif" />
-                                              </a>
-                                              <div class="media-body" >
-                                                  <h5>Jhon Rexa | User </h5>
-
-                                                 <small class="text-muted">Active From 3 hours</small>
-                                              </div>
-                                          </div>
-
-                                      </div>
-                                  </li>
-                  <li class="media">
-
-                                      <div class="media-body">
-
-                                          <div class="media">
-                                              <a class="pull-left" href="#">
-                                                  <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.png" />
-                                              </a>
-                                              <div class="media-body" >
-                                                  <h5>Alex Deo | User </h5>
-
-                                                 <small class="text-muted">Active From 3 hours</small>
-                                              </div>
-                                          </div>
-
-                                      </div>
-                                  </li>
-                  <li class="media">
-
-                                      <div class="media-body">
-
-                                          <div class="media">
-                                              <a class="pull-left" href="#">
-                                                  <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.gif" />
-                                              </a>
-                                              <div class="media-body" >
-                                                  <h5>Jhon Rexa | User </h5>
-
-                                                 <small class="text-muted">Active From 3 hours</small>
-                                              </div>
-                                          </div>
-
-                                      </div>
-                                  </li>
-                   <li class="media">
-
-                                      <div class="media-body">
-
-                                          <div class="media">
-                                              <a class="pull-left" href="#">
-                                                  <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.png" />
-                                              </a>
-                                              <div class="media-body" >
-                                                  <h5>Alex Deo | User </h5>
-
-                                                 <small class="text-muted">Active From 3 hours</small>
-                                              </div>
-                                          </div>
-
-                                      </div>
-                                  </li>
-   <li class="media">
-
-                                      <div class="media-body">
-
-                                          <div class="media">
-                                              <a class="pull-left" href="#">
-                                                  <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.gif" />
-                                              </a>
-                                              <div class="media-body" >
-                                                  <h5>Jhon Rexa | User </h5>
-
-                                                 <small class="text-muted">Active From 3 hours</small>
-                                              </div>
-                                          </div>
-
-                                      </div>
-                                  </li>
-                  <li class="media">
-
-                                      <div class="media-body">
-
-                                          <div class="media">
-                                              <a class="pull-left" href="#">
-                                                  <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.png" />
-                                              </a>
-                                              <div class="media-body" >
-                                                  <h5>Alex Deo | User </h5>
-
-                                                 <small class="text-muted">Active From 3 hours</small>
-                                              </div>
-                                          </div>
-
-                                      </div>
-                                  </li>
-                  <li class="media">
-
-                                      <div class="media-body">
-
-                                          <div class="media">
-                                              <a class="pull-left" href="#">
-                                                  <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.gif" />
-                                              </a>
-                                              <div class="media-body" >
-                                                  <h5>Jhon Rexa | User </h5>
-
-                                                 <small class="text-muted">Active From 3 hours</small>
+                                                 <small class="text-muted">Online</small>
                                               </div>
                                           </div>
 
