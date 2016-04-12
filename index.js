@@ -12,15 +12,26 @@ const
   Sequelize = require('sequelize'),
   bcrypt = require('bcrypt-nodejs'),
   crypto = require('crypto'),
-  cookieParser = require('cookie-parser'),
+  uuid = require('uuid'),
+  sessionFileStore = require('session-file-store'),
   session = require('express-session');
+
+  let
+  FileStore = sessionFileStore(session);
 
 
 // Cookies
 app.set('trust proxy', 1); // trust first proxy
 var sess = {
-  secret: 'mqpetbxmzodjyyesmfpqirhgncmxssfr',
-  cookie: {}
+  genId: function(req){
+    return uuid.v4();
+  },
+  name: 'thesis-sessions',
+  secret: uuid.v4,
+  saveUnitialized: true,
+  resave: true,
+  store: new FileStore(),
+  cookie: {secure: false}
 };
 
 if (app.get('env') === 'production') {
@@ -32,7 +43,6 @@ app
   .use(morgan('dev')) // logs request to the console
   .use(express.static(path.join(__dirname, 'public')))
   .use(session(sess))
-  .use(cookieParser())
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({
     extended: true
@@ -54,7 +64,7 @@ module.exports.close = function() {
 };
 
 // sequelize initialization //
-const sequelize = new Sequelize('thesis', 'root', 'admin', {
+const sequelize = new Sequelize('thesis', 'root', 'CODA1931', {
   host: 'localhost',
   dialect: 'mysql',
   pool: {
