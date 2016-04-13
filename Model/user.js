@@ -16,39 +16,20 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    address: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    city: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    state: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    zipCode: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    cell: {
-      type: DataTypes.STRING,
-    },
     email: {
-      type: DataTypes.STRING,
+      type: DataTypes.CHAR(255),
       allowNull: true
     },
     desc: {
-      type: DataTypes.STRING,
+      type: DataTypes.CHAR(255),
       allowNull: true
     },
     img: {
-      type: DataTypes.STRING,
+      type: DataTypes.CHAR(255),
       allowNull: true
     },
     username: {
-      type: DataTypes.STRING,
+      type: DataTypes.CHAR(45),
       allowNull: false
     }
   }, {
@@ -57,4 +38,3 @@ module.exports = function(sequelize, DataTypes) {
     timestamps: false
   });
 };
-

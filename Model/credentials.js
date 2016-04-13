@@ -5,11 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     idUser: {
       type: DataTypes.INTEGER(10),
       allowNull: false,
-      primaryKey: true,
-      references: {
-        model: 'user',
-        key: 'id'
-      }
+      primaryKey: true
     },
     hash: {
       type: DataTypes.STRING,
