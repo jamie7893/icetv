@@ -1,4 +1,4 @@
-angular.module('thesis.foursqure', ['ngRoute'])
+angular.module('thesis.foursquare', ['ngRoute'])
 
 .controller('CheckinController', ['$scope', '$location', '$window', '$cookies', '$rootScope', '$http', 'UserService',
   function checkInCtrl($scope, $location, $window, $cookies, $rootScope, $http, UserService) {
