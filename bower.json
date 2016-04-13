@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular-scroll-glue": "^2.0.6"
+    "angular-scroll-glue": "^2.0.6",
+    "mobile-angular-ui": "^1.2.1"
   }
 }
