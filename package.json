@@ -4,7 +4,8 @@
   "description": "thesis project",
   "main": "index.js",
   "scripts": {
-    "test": "istanbul cover node_modules/mocha/bin/_mocha -- test/ -R spec"
+    "test": "istanbul cover node_modules/mocha/bin/_mocha -- test/ -R spec",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
