@@ -14,7 +14,7 @@
   .venueBox {
     height: 300px;
     width: 500px;
-    overflow: auto;
+    overflow-y: auto;
   }
   .theInput {
     margin-left: 10px;

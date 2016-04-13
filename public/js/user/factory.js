@@ -1,7 +1,7 @@
 (function(angular) {
   angular.module('thesis')
 
-  .factory('UserService', function($http, $cookieStore, $location) {
+  .factory('UserService', function($http, $cookies, $location) {
     var self = this;
 
     return {
@@ -37,11 +37,17 @@
           email: email
         });
       },
-      joinchat: function(id, name) {
+      joinchat: function(id) {
         return $http.post('/joinchat', {
           id: id,
-          idSender: $cookies.get('id'),
-          name: name
+          idSender: $cookies.get('id')
+        });
+      },
+      createMSG: function(msg, chatId, userId) {
+        return $http.post('/createMSG', {
+          message: msg,
+          chatId: chatId,
+          userId: userId
         });
       }
     };

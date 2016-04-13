@@ -8,7 +8,7 @@
           <div class="panel-heading">
               RECENT CHAT HISTORY
           </div>
-          <div class="panel-body">
+          <div scroll-glue class="panel-body" style="overflow-y: auto; height: 540px;">
 <ul class="media-list">
 
                                   <li class="media" ng-repeat="message in messages">
@@ -17,12 +17,12 @@
 
                                           <div class="media">
                                               <a class="pull-left" href="#">
-                                                  <img class="media-object img-circle " src="{{user.img}}" />
+                                                  <img class="media-object img-circle" style="height: 50px;" ng-src="{{message.img}}" />
                                               </a>
                                               <div class="media-body" >
-                                          {{message}}
+                                          {{message.message}}
                                                   <br />
-                                                 <small class="text-muted">Posted by USER, at TIME</small>
+                                                 <small class="text-muted">Posted by {{message.username}}, at {{message.createdAt}}</small>
                                                   <hr />
                                               </div>
                                           </div>
@@ -31,12 +31,13 @@
                                   </li>
 
                               </ul>
+
           </div>
           <div class="panel-footer">
               <div class="input-group">
-                                  <input type="text" class="form-control" placeholder="Enter Message" />
+                                  <input type="text" class="form-control" ng-model="message" placeholder="Enter Message" />
                                   <span class="input-group-btn">
-                                      <button class="btn btn-info" type="button">SEND</button>
+                                      <button class="btn btn-info" type="button" ng-click="createMSG(message)">SEND</button>
                                   </span>
                               </div>
           </div>
@@ -56,10 +57,10 @@
 
                                           <div class="media">
                                               <a class="pull-left" href="#">
-                                                  <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.png" />
+                                                  <img class="media-object img-circle" style="max-height:40px;" ng-src="{{user.img}}" />
                                               </a>
                                               <div class="media-body" >
-                                                  <h5>{{user}} | User </h5>
+                                                  <h5>{{user.username}} | User </h5>
 
                                                  <small class="text-muted">Online</small>
                                               </div>
