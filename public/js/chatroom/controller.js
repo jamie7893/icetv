@@ -41,9 +41,5 @@ angular.module('thesis.chatroom', ['luegg.directives'])
       UserService.createMSG(msg, chatId, $cookies.get('id')).then(function(data) {});
     };
 
-
-
-
-
   }
 ]);
