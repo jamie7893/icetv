@@ -27,7 +27,7 @@
         controller: 'ChatroomController',
         templateUrl: 'templates/chatroom.html'
       })
-      .when('/foursqure', {
+      .when('/foursquare', {
         controller: 'CheckinController',
         templateUrl: 'templates/checkin.html'
       })

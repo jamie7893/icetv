@@ -42,5 +42,6 @@ angular.module('thesis.chatroom', ['luegg.directives'])
 
 
 
+
   }
 ]);
