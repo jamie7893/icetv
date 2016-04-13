@@ -13,6 +13,8 @@ angular.module('thesis.chatroom', ['luegg.directives'])
         url: '/joinchat'
       }).then(function successCallback(response) {
         $scope.users = $.map(response.data, function(chat) {
+            console.log(chat.idChatroom);
+            console.log(chatId);
           if (chat.idChatroom === chatId) {
             return chat;
           }

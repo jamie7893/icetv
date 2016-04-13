@@ -13,6 +13,8 @@ const
   bcrypt = require('bcrypt-nodejs'),
   crypto = require('crypto'),
   uuid = require('uuid'),
+  config = require('./config.json'),
+  cookieParser = require('cookie-parser'),
   sessionFileStore = require('session-file-store'),
   session = require('express-session');
 
@@ -45,6 +47,7 @@ app
   .use(morgan('dev')) // logs request to the console
   .use(express.static(path.join(__dirname, 'public')))
   .use(session(sess))
+  .use(cookieParser())
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({
     extended: true
@@ -64,20 +67,8 @@ module.exports.close = function() {
   console.log('shutting down the server...');
   server.close();
 };
-
 // sequelize initialization //
-const sequelize = new Sequelize('thesis', 'root', 'admin', {
-  host: 'localhost',
-  dialect: 'mysql',
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  },
-  define: {
-    freezeTableName: true
-  }
-});
+const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
 
 
 // require userService files
@@ -120,9 +111,9 @@ sequelize.sync().then(function(res) {
     app.route('/joinchat')
       .post(chatService.join)
       .get(chatService.get);
-      app.route('/createMSG')
-        .post(chatService.createMSG)
-        .get(chatService.getMSG);
+    app.route('/createMSG')
+      .post(chatService.createMSG)
+      .get(chatService.getMSG);
 
 
 
