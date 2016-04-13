@@ -80,7 +80,7 @@ const
 
 var
   Chat = sequelize.import('./model/chatroom.js'),
-  // User = sequelize.import('./model/user.js'),
+  User = sequelize.import('./model/user.js'),
   UserChat = sequelize.import('./model/userchatroomjct.js'),
   Creds = sequelize.import('./model/credentials.js');
 
