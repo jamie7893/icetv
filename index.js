@@ -66,7 +66,7 @@ module.exports.close = function() {
 };
 
 // sequelize initialization //
-const sequelize = new Sequelize('thesis', 'root', 'admin', {
+const sequelize = new Sequelize('thesis', 'root', 'CODA1931', {
   host: 'localhost',
   dialect: 'mysql',
   pool: {

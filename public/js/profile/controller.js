@@ -15,7 +15,7 @@
       if (nameLast !== undefined && nameFirst !== undefined) {
         UserService.edit(desc, nameFirst, nameLast, email).success(function(data) {});
       }
-      $location.path("/foursqure");
+      $location.path("/foursquare");
     };
   });
 
