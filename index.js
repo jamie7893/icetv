@@ -16,22 +16,24 @@ const
   sessionFileStore = require('session-file-store'),
   session = require('express-session');
 
-  let
+let
   FileStore = sessionFileStore(session);
 
 
 // Cookies
 app.set('trust proxy', 1); // trust first proxy
 var sess = {
-  genId: function(req){
+  genId: function(req) {
     return uuid.v4();
   },
   name: 'thesis-sessions',
-  secret: uuid.v4,
+  secret: uuid.v4(),
   saveUnitialized: true,
   resave: true,
   store: new FileStore(),
-  cookie: {secure: false}
+  cookie: {
+    secure: false
+  }
 };
 
 if (app.get('env') === 'production') {
@@ -64,7 +66,7 @@ module.exports.close = function() {
 };
 
 // sequelize initialization //
-const sequelize = new Sequelize('thesis', 'root', 'CODA1931', {
+const sequelize = new Sequelize('thesis', 'root', 'admin', {
   host: 'localhost',
   dialect: 'mysql',
   pool: {
@@ -73,7 +75,7 @@ const sequelize = new Sequelize('thesis', 'root', 'CODA1931', {
     idle: 10000
   },
   define: {
-    timestamps: false,
+    freezeTableName: true
   }
 });
 
@@ -81,7 +83,9 @@ const sequelize = new Sequelize('thesis', 'root', 'CODA1931', {
 // require userService files
 // example
 // const colorsService = require("./service/colors")(sequelize);
-const userService = require("./service/user")(sequelize);
+const
+  userService = require("./service/user")(sequelize),
+  chatService = require("./service/chat")(sequelize);
 
 var
   Chat = sequelize.import('./model/chatroom.js'),
@@ -113,7 +117,12 @@ sequelize.sync().then(function(res) {
       .post(userService.create);
     app.route('/login')
       .post(userService.login);
-
+    app.route('/joinchat')
+      .post(chatService.join)
+      .get(chatService.get);
+      app.route('/createMSG')
+        .post(chatService.createMSG)
+        .get(chatService.getMSG);
 
 
 

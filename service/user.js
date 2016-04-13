@@ -73,7 +73,6 @@ module.exports = function(sequelize) {
       });
     },
     updateprofile: function(req, res, callback) {
-      console.log(req.body);
       var sess = req.session;
       User.findOne({
         where: {
@@ -93,7 +92,6 @@ module.exports = function(sequelize) {
           img: "https://s.gravatar.com/avatar/" + hash + "?s=200"
 
         };
-        console.log(userProfile);
         User.update(userProfile, {
           where: {
             id: user.id

@@ -29,9 +29,9 @@ angular.module('thesis.foursqure', ['ngRoute'])
     $scope.joinChat = function(id, name) {
       $rootScope.venue = name;
       $rootScope.id = id;
-      // UserService.joinchat(id, name).success(function(data) {
+      UserService.joinchat(id).success(function(data) {
         $location.path("/chatroom");
-      // });
+      });
     };
 
 

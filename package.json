@@ -36,6 +36,8 @@
     "morgan": "^1.7.0",
     "multer": "^1.1.0",
     "mysql": "^2.10.2",
-    "sequelize": "^3.19.3"
+    "sequelize": "^3.19.3",
+    "session-file-store": "^0.2.0",
+    "uuid": "^2.0.1"
   }
 }

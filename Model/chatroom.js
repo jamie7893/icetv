@@ -3,16 +3,12 @@
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('chatroom', {
     idChatroom: {
-      type: DataTypes.INTEGER(10),
+      type: DataTypes.CHAR(255),
       allowNull: false,
       primaryKey: true,
     },
-    idChatroomType: {
-      type: DataTypes.INTEGER(10),
-      allowNull: false
-    },
-    locationName: {
-      type: DataTypes.STRING,
+    message: {
+      type: DataTypes.CHAR(255),
       allowNull: false
     },
     idSender: {
@@ -25,7 +21,6 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     tableName: 'chatroom',
-    freezeTableName: true,
-    timestamps: true
+    freezeTableName: true
   });
 };
