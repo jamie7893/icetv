@@ -75,8 +75,8 @@ const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgr
 // example
 // const colorsService = require("./service/colors")(sequelize);
 const
-  userService = require("./service/user")(sequelize),
-  chatService = require("./service/chat")(sequelize);
+  userService = require("./service/user.js")(sequelize),
+  chatService = require("./service/chat.js")(sequelize);
 
 var
   Chat = sequelize.import('./model/chatroom.js'),
