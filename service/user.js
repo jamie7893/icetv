@@ -97,7 +97,7 @@ module.exports = function(sequelize) {
             id: user.id
           }
         });
-        res.redirect('/#/foursqure');
+        res.redirect('/#/foursquare');
       });
 
     },
