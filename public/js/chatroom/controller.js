@@ -6,16 +6,20 @@ angular.module('thesis.chatroom', ['luegg.directives'])
     $scope.messages = [];
     $scope.id = $rootScope.id;
     var chatId = $scope.id;
-    $http({
-      method: 'GET',
-      url: '/joinchat'
-    }).then(function successCallback(response) {
-      $.map(response.data, function(chat) {
-        if (chat.idChatroom === chatId) {
-          $scope.users.push(chat);
-        }
+
+    var refreshUsers = function() {
+      $http({
+        method: 'GET',
+        url: '/joinchat'
+      }).then(function successCallback(response) {
+        $scope.users = $.map(response.data, function(chat) {
+          if (chat.idChatroom === chatId) {
+            return chat;
+          }
+        });
+        setTimeout(refreshUsers, 1000);
       });
-    });
+    };
     var refreshMsgs = function() {
       $http({
         method: 'GET',
@@ -26,14 +30,13 @@ angular.module('thesis.chatroom', ['luegg.directives'])
             return data;
           }
         });
-        refreshMsgs();
+        setTimeout(refreshMsgs, 1000);
       });
     };
+    refreshUsers();
     refreshMsgs();
     $scope.createMSG = function(msg) {
-      UserService.createMSG(msg, chatId, $cookies.get('id')).then(function(data) {
-        refreshMsgs();
-      });
+      UserService.createMSG(msg, chatId, $cookies.get('id')).then(function(data) {});
     };
 
 
