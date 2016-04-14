@@ -4,23 +4,15 @@ module.exports = function(sequelize, DataTypes){
 	return sequelize.define('userChatroomJct', {
 		idUser: {
 			type: DataTypes.INTEGER(10),
-			allowNull: false,
-			references: {
-				model: 'user',
-				key: 'id'
-			}
+			allowNull: false
 		},
 		idChatroom: {
-			type: DataTypes.INTEGER(10),
-			allowNull: false,
-			references: {
-				model: 'chatroom',
-				key: 'idChatroom'
-			}
+			type: DataTypes.STRING,
+			allowNull: false
 		}
 	},{
 		tableName: 'userChatroomJct',
 		freezeTableName: true,
 		timestamps: false
-	})
-}
+	});
+};

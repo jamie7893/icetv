@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "uzjeoebhaoxwuk",
+    "password": "IVuScu6q96OjaUvc_fJBb8GVJl",
+    "database": "public",
+    "host": "ec2-54-163-254-231.compute-1.amazonaws.com",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "root",
+    "password": "admin",
+    "database": "thesis",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "uzjeoebhaoxwuk",
+    "password": "admin",
+    "database": "thesis",
+    "host": "ec2-54-163-254-231.compute-1.amazonaws.com",
+    "dialect": "postgres"
+  }
+}

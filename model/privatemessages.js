@@ -2,7 +2,7 @@
 
 /* jshint indent: 2 */
 
-module.exports = function(sequelize, DataTypes){
+module.exports = function(sequelize, DataTypes) {
   return sequelize.define('privateMessages', {
     idMessage: {
       type: DataTypes.INTEGER(10),
@@ -15,33 +15,23 @@ module.exports = function(sequelize, DataTypes){
     },
     idUserSender: {
       type: DataTypes.INTEGER(10),
-      allowNull: false,
-      references: {
-        model: 'user',
-        key: 'id'
-      }
+      allowNull: false
     },
-    idUserReceiver: 
-    type: DataTypes.INTEGER(10),
-    allowNull: false,
-    references: {
-      model: 'user',
-      key: 'id'
+    idUserReceiver: {
+      type: DataTypes.INTEGER(10),
+      allowNull: false
     },
     messageStatus: {
       type: DataTypes.INTEGER(1),
-      allowNull: false,
+      allowNull: false
     },
     messages: {
       type: DataTypes.TEXT,
       allowNull: true
-    },
-    date: {
-
     }
-  },{
+  }, {
     tableName: 'privateMessages',
     freezeTableName: true,
     timestamps: true
-  })
-}
+  });
+};

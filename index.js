@@ -13,6 +13,8 @@ const
   bcrypt = require('bcrypt-nodejs'),
   crypto = require('crypto'),
   uuid = require('uuid'),
+  config = require('./config.json'),
+  cookieParser = require('cookie-parser'),
   sessionFileStore = require('session-file-store'),
   session = require('express-session');
 
@@ -45,6 +47,7 @@ app
   .use(morgan('dev')) // logs request to the console
   .use(express.static(path.join(__dirname, 'public')))
   .use(session(sess))
+  .use(cookieParser())
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({
     extended: true
@@ -64,8 +67,8 @@ module.exports.close = function() {
   console.log('shutting down the server...');
   server.close();
 };
-
 // sequelize initialization //
+<<<<<<< HEAD
 const sequelize = new Sequelize('thesis', 'root', 'CODA1931', {
   host: 'localhost',
   dialect: 'mysql',
@@ -79,23 +82,39 @@ const sequelize = new Sequelize('thesis', 'root', 'CODA1931', {
   }
 });
 
+||||||| merged common ancestors
+const sequelize = new Sequelize('thesis', 'root', 'admin', {
+  host: 'localhost',
+  dialect: 'mysql',
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  },
+  define: {
+    freezeTableName: true
+  }
+});
+
+=======
+// for heroku
+// const sequelize = new Sequelize('postgres://uzjeoebhaoxwuk:IVuScu6q96OjaUvc_fJBb8GVJl@ec2-54-163-254-231.compute-1.amazonaws.com:5432/denten10cruhtj');
+// for local
+const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
+>>>>>>> 71a8d8a64e4f1274cd9a8cbb1aa4f323c714f0e1
 
 // require userService files
 // example
 // const colorsService = require("./service/colors")(sequelize);
 const
-  userService = require("./service/user")(sequelize),
-  chatService = require("./service/chat")(sequelize);
+  userService = require("./service/user.js")(sequelize),
+  chatService = require("./service/chat.js")(sequelize);
 
 var
   Chat = sequelize.import('./model/chatroom.js'),
   User = sequelize.import('./model/user.js'),
   UserChat = sequelize.import('./model/userchatroomjct.js'),
   Creds = sequelize.import('./model/credentials.js');
-
-
-
-// import every model
 
 sequelize.sync().then(function(res) {
     Chat.sync();
@@ -131,9 +150,9 @@ sequelize.sync().then(function(res) {
     app.route('/joinchat')
       .post(chatService.join)
       .get(chatService.get);
-      app.route('/createMSG')
-        .post(chatService.createMSG)
-        .get(chatService.getMSG);
+    app.route('/createMSG')
+      .post(chatService.createMSG)
+      .get(chatService.getMSG);
 
 
 
