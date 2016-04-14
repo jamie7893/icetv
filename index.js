@@ -85,11 +85,7 @@ var
   User = sequelize.import('./model/user.js'),
   UserChat = sequelize.import('./model/userchatroomjct.js'),
   Creds = sequelize.import('./model/credentials.js');
-
-
-
-// import every model
-
+  
 sequelize.sync().then(function(res) {
     Chat.sync();
     User.sync();
