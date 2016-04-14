@@ -15,7 +15,7 @@ angular.module('thesis.chatroom', ['luegg.directives', 'emoji', 'vkEmojiPicker',
         $scope.users = $.map(response.data, function(chat) {
             console.log(chat.idChatroom);
             console.log(chatId);
-          if (chat.idChatroom === "4b4e7802f964a520dfee26e3") {
+          if (chat.idChatroom === chatId) {
             return chat;
           }
         });
@@ -28,7 +28,7 @@ angular.module('thesis.chatroom', ['luegg.directives', 'emoji', 'vkEmojiPicker',
         url: '/createMSG'
       }).then(function successCallback(response) {
         $scope.messages = $.map(response.data, function(data) {
-          if (data.idChatroom === "4b4e7802f964a520dfee26e3") {
+          if (data.idChatroom === chatId) {
             return data;
           }
         });
