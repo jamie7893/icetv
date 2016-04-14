@@ -66,7 +66,7 @@ module.exports.close = function() {
 };
 
 // sequelize initialization //
-const sequelize = new Sequelize('thesis', 'root', 'admin', {
+const sequelize = new Sequelize('thesis', 'root', 'CODA1931', {
   host: 'localhost',
   dialect: 'mysql',
   pool: {
@@ -109,6 +109,17 @@ sequelize.sync().then(function(res) {
       res.send(hash);
 
     });
+
+    app.get('/auth/google',
+    passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+  // the callback after google has authenticated the user
+  app.get('/auth/google/callback',
+    passport.authenticate('google', {
+            successRedirect : '/profile',
+            failureRedirect : '/'
+    }));
+
     app.route('/logout')
       .get(userService.logout);
     app.route('/updateprofile')
