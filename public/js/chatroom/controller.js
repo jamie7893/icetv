@@ -1,4 +1,4 @@
-angular.module('thesis.chatroom', ['luegg.directives'])
+angular.module('thesis.chatroom', ['luegg.directives', 'emoji', 'vkEmojiPicker', 'mgcrea.ngStrap'])
 
 .controller('ChatroomController', ['$scope', '$location', '$window', '$cookies', '$rootScope', '$http', 'UserService',
   function AdminUserCtrl($scope, $location, $window, $cookies, $rootScope, $http, UserService) {
@@ -15,7 +15,7 @@ angular.module('thesis.chatroom', ['luegg.directives'])
         $scope.users = $.map(response.data, function(chat) {
             console.log(chat.idChatroom);
             console.log(chatId);
-          if (chat.idChatroom === chatId) {
+          if (chat.idChatroom === "4b4e7802f964a520dfee26e3") {
             return chat;
           }
         });
@@ -28,7 +28,7 @@ angular.module('thesis.chatroom', ['luegg.directives'])
         url: '/createMSG'
       }).then(function successCallback(response) {
         $scope.messages = $.map(response.data, function(data) {
-          if (data.idChatroom === chatId) {
+          if (data.idChatroom === "4b4e7802f964a520dfee26e3") {
             return data;
           }
         });
@@ -39,6 +39,7 @@ angular.module('thesis.chatroom', ['luegg.directives'])
     refreshMsgs();
     $scope.createMSG = function(msg) {
       UserService.createMSG(msg, chatId, $cookies.get('id')).then(function(data) {});
+      $scope.message = "";
     };
 
   }

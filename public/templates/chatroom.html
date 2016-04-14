@@ -21,7 +21,7 @@
                     <img class="media-object img-circle" style="height: 50px;" ng-src="{{message.img}}" />
                   </a>
                   <div class="media-body">
-                    {{message.message}}
+                    <p ng-bind-html="message.message | emoji"></p>
                     <br />
                     <small class="text-muted">Posted by <b>{{message.username}}</b>, at {{message.createdAt}}</small>
                     <hr />
@@ -30,9 +30,7 @@
 
               </div>
             </li>
-
           </ul>
-
         </div>
         <div class="panel-footer">
           <form ng-submit="createMSG(message)">
@@ -40,6 +38,7 @@
 
               <input type="text" class="form-control" ng-model="message" placeholder="Enter Message" />
               <span class="input-group-btn">
+                  <span style="margin: 0 20px;" emoji-picker="message" placement="right" title="Emoji" recent-limit="12"></span>
                                       <button class="btn btn-custom" type="submit">SEND</button>
                                   </span>
             </div>

@@ -30,7 +30,8 @@ module.exports = function(sequelize, DataTypes) {
     },
     username: {
       type: DataTypes.CHAR(45),
-      allowNull: false
+      allowNull: false,
+      unique: true
     }
   }, {
     tableName: 'user',
