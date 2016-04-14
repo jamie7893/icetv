@@ -68,6 +68,9 @@ module.exports.close = function() {
   server.close();
 };
 // sequelize initialization //
+// for heroku
+// const sequelize = new Sequelize('postgres://uzjeoebhaoxwuk:IVuScu6q96OjaUvc_fJBb8GVJl@ec2-54-163-254-231.compute-1.amazonaws.com:5432/denten10cruhtj');
+// for local
 const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
 
 // require userService files
@@ -82,10 +85,6 @@ var
   User = sequelize.import('./model/user.js'),
   UserChat = sequelize.import('./model/userchatroomjct.js'),
   Creds = sequelize.import('./model/credentials.js');
-
-
-
-// import every model
 
 sequelize.sync().then(function(res) {
     Chat.sync();

@@ -17,19 +17,19 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
     },
     email: {
-      type: DataTypes.CHAR(255),
+      type: DataTypes.STRING,
       allowNull: true
     },
     desc: {
-      type: DataTypes.CHAR(255),
+      type: DataTypes.STRING,
       allowNull: true
     },
     img: {
-      type: DataTypes.CHAR(255),
+      type: DataTypes.STRING,
       allowNull: true
     },
     username: {
-      type: DataTypes.CHAR(45),
+      type: DataTypes.STRING,
       allowNull: false,
       unique: true
     }
