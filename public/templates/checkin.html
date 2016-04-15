@@ -1,10 +1,11 @@
 <ng-include src="'/templates/navbar.html'"></ng-include>
 <div class="foursq">
 <h2>Search:</h2>
-<input ng-model="search"class="theInput" ng-keyup="checkin()"></input>
+<input ng-model="search"  class="theInput"></input>
 
 <h2>Near:</h2>
-<input ng-model="currentLocation" class="theInput" ng-keyup="checkin()"></input>
+<input  ng-model="currentLocation" class="theInput"></input>
+<button ng-click="checkin()">Search</button>
 <br />
 <br />
 
@@ -22,7 +23,7 @@
           <br /> {{venue.location.city}}, {{venue.location.state}} {{venue.location.postalCode}}
           <br />{{venue.contact.formattedPhone}}
 
-          <button ng-click="joinChat(venue.id, venue.name)" class="default-btn" style="float: right; margin-right: 15px;">Join Chat</button>
+          <button ng-click="joinChat(venue.id, venue.name, venue.photos)" class="default-btn" style="float: right; margin-right: 15px;">Join Chat</button>
           <br />  <br />
       </p>
       </li>

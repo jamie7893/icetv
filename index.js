@@ -55,7 +55,7 @@ app
 
 // Uploading Images
 var uploading = multer({
-  dest: './public/images/',
+  dest: './public/images/profile/',
   limits: {
     fileSize: 1000000,
     files: 1
@@ -69,9 +69,9 @@ module.exports.close = function() {
 };
 // sequelize initialization //
 // for heroku
-const sequelize = new Sequelize('postgres://uzjeoebhaoxwuk:IVuScu6q96OjaUvc_fJBb8GVJl@ec2-54-163-254-231.compute-1.amazonaws.com:5432/denten10cruhtj');
+// const sequelize = new Sequelize('postgres://uzjeoebhaoxwuk:IVuScu6q96OjaUvc_fJBb8GVJl@ec2-54-163-254-231.compute-1.amazonaws.com:5432/denten10cruhtj');
 // for local
-// const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
+const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
 
 // require userService files
 // example
@@ -92,16 +92,10 @@ sequelize.sync().then(function(res) {
     UserChat.sync();
     Creds.sync();
 
-    app.post('/gravatar', function(req, res) {
-      var email = req.body.email;
-      var hash = crypto.createHash('md5').update(email).digest('hex');
-      res.send(hash);
-
-    });
     app.route('/logout')
       .get(userService.logout);
     app.route('/updateprofile')
-      .put(userService.updateprofile);
+      .post(uploading.single('file'), userService.updateprofile);
     app.route('/signup')
       .post(userService.create);
     app.route('/login')

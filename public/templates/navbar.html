@@ -14,14 +14,14 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="#/chatroom">ChatRoom</a></li>
-        <li><a href="#/foursquare">Check-in</a></li>
+        <li><a href="#/foursquare" ng-click="checkin()">Check-in</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="#/profile">Profile</a>
+          <a href="#/profile" ng-click="profile()">Profile</a>
         </li>
         <li>
-          <a  href="#/" ng-click="logout()">Logout</a>
+          <a  href="#/login" ng-click="logout()">Logout</a>
         </li>
       </ul>
     </div>

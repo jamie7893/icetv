@@ -29,7 +29,6 @@ module.exports = function(sequelize) {
   });
   return {
     create: function(req, res, callback) {
-      console.log(req.body);
       var sess = req.session;
       User.findOne({
         where: {
@@ -73,8 +72,9 @@ module.exports = function(sequelize) {
       });
     },
     updateprofile: function(req, res, callback) {
+      console.log(req.body);
+      console.log(req.file);
       var sess = req.session;
-      console.log(req.cookies);
       User.findOne({
         where: {
           id: req.cookies.id
@@ -84,6 +84,7 @@ module.exports = function(sequelize) {
           var err = 'Your not logged in!';
           callback(err);
         }
+        if(req.body.email) {
         var email = req.body.email;
         var hash = crypto.createHash('md5').update(email).digest('hex');
         var userProfile = {
@@ -93,12 +94,20 @@ module.exports = function(sequelize) {
           img: "https://s.gravatar.com/avatar/" + hash + "?s=200"
 
         };
+      } else {
+        var userProfile = {
+          nameLast: req.body.nameLast,
+          nameFirst: req.body.nameFirst,
+          desc: req.body.desc,
+          img: "/images/profile/" + req.file.filename
+        };
+      }
         User.update(userProfile, {
           where: {
             id: user.id
           }
         });
-        res.redirect('/#/foursquare');
+        res.redirect('#/foursquare');
       });
 
     },

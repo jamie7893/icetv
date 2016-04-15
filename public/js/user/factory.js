@@ -24,19 +24,6 @@
           username: username
         });
       },
-      edit: function(desc, nameFirst, nameLast, email) {
-        return $http.put('/updateprofile', {
-          desc: desc,
-          nameFirst: nameFirst,
-          nameLast: nameLast,
-          email: email
-        });
-      },
-      grav: function(email) {
-        return $http.post('/gravatar', {
-          email: email
-        });
-      },
       joinchat: function(id) {
         return $http.post('/joinchat', {
           id: id,
