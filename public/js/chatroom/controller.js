@@ -10,6 +10,7 @@ angular.module('thesis.chatroom', ['luegg.directives', 'emoji', 'vkEmojiPicker',
             $scope.id = $rootScope.id;
             var chatId = $scope.id;
 
+  
             var refreshUsers = function() {
                 $http({
                     method: 'GET',

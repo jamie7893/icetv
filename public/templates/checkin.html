@@ -15,7 +15,7 @@
 
   <div class="venueBox">
     <ul>
-      <li class="venue" ng-repeat="venue in venue">
+      <li class="venue" ng-repeat="venue in venue track by $index">
         <p class="theVenue">
           <br />
           {{venue.name}}

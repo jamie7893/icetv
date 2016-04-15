@@ -5,6 +5,7 @@ angular.module('thesis.foursquare', ['ngRoute'])
         if (!$cookies.get('id')) {
             $location.path("/login");
         } else {
+          $scope.venue = [];
             $scope.checkin = function() {
                 if ($scope.search === undefined) {
                     $scope.search = "";
