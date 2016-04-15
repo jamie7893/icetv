@@ -14,7 +14,7 @@
 
             // upload on file select or drop
             $scope.upload = function(file) {
-              if(cookies.get('id')) {
+              if($cookies.get('id')) {
                 Upload.upload({
                     url: '/updateprofile',
                     data: {

@@ -107,8 +107,6 @@ sequelize.sync().then(function(res) {
       .post(chatService.createMSG)
       .get(chatService.getMSG);
 
-
-
     server = app.listen(process.env.PORT || 1738, process.env.IP || "0.0.0.0", function() {
       var addr = server.address();
       console.log("Server listening at", addr.address + ":" + addr.port);
