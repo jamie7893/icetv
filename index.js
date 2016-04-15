@@ -55,7 +55,7 @@ app
 
 // Uploading Images
 var uploading = multer({
-  dest: './path/to/img/dir/',
+  dest: './public/images/profile/',
   limits: {
     fileSize: 1000000,
     files: 1
@@ -92,16 +92,10 @@ sequelize.sync().then(function(res) {
     UserChat.sync();
     Creds.sync();
 
-    app.post('/gravatar', function(req, res) {
-      var email = req.body.email;
-      var hash = crypto.createHash('md5').update(email).digest('hex');
-      res.send(hash);
-
-    });
     app.route('/logout')
       .get(userService.logout);
     app.route('/updateprofile')
-      .put(userService.updateprofile);
+      .post(uploading.single('file'), userService.updateprofile);
     app.route('/signup')
       .post(userService.create);
     app.route('/login')
@@ -112,8 +106,6 @@ sequelize.sync().then(function(res) {
     app.route('/createMSG')
       .post(chatService.createMSG)
       .get(chatService.getMSG);
-
-
 
     server = app.listen(process.env.PORT || 1738, process.env.IP || "0.0.0.0", function() {
       var addr = server.address();
