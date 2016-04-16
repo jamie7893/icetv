@@ -9,13 +9,13 @@ angular.module('thesis.chatroom', ['luegg.directives', 'emoji', 'vkEmojiPicker',
             $scope.messages = [];
             $scope.id = $rootScope.id;
             var chatId = $scope.id;
+            $rootScope.id = null;
             chatSocket.emit('joinedChat', {
                 chatId: $scope.id
             });
 
             chatSocket.on('message', function(data) {
                 $scope.messages = data.messages;
-                console.log(data);
                 $scope.users = data.users;
             });
 
