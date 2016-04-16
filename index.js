@@ -103,7 +103,6 @@ io.on('connection', function(socket) {
         } else {
             var chatId = data.chatId;
             var chatroomSocket = setInterval(function() {
-
                 var messages = [];
                 var users = [];
                 Chat.findAll({
