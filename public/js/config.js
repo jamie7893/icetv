@@ -1,6 +1,6 @@
 /* global FastClick, smoothScroll */
 (function(angular) {
-  angular.module('thesis', ['ngAnimate', 'ngSanitize', 'ngRoute', 'ngFileUpload', 'ngCookies', 'thesis.login', 'thesis.register', 'thesis.foursquare', 'thesis.chatroom']);
+  angular.module('thesis', ['ngAnimate', 'ngSanitize', 'btford.socket-io', 'ngRoute', 'ngFileUpload', 'ngCookies', 'thesis.login', 'thesis.register', 'thesis.foursquare', 'thesis.chatroom']);
 
   var myApp = angular.module('thesis');
 
