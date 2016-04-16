@@ -51,26 +51,6 @@ module.exports = function(sequelize) {
         });
         res.send(200);
       },
-      get: function(req, res) {
-        userChatJct.findAll().then(function(chatroomUsers) {
-
-          var gettingUsers = _.map(chatroomUsers, function(chatroomUser) {
-            return User.findOne({
-              where: {
-                id: chatroomUser.idUser
-              },
-              attributes: ['username', 'img']
-            }).then(function(chatUsername) {
-              chatroomUser.dataValues.username = chatUsername.dataValues.username;
-              chatroomUser.dataValues.img = chatUsername.dataValues.img;
-              return chatroomUser.dataValues;
-            });
-          }); // end map
-          Promise.all(gettingUsers).then(function(data) {
-            res.json(data);
-          });
-        });
-      },
 
       createMSG: function(req, res) {
         var newMSG = {
