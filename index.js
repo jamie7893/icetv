@@ -98,64 +98,70 @@ io.on('connection', function(socket) {
     });
 
     socket.on('joinedChat', function(data) {
-        var chatId = data.chatId;
-        var chatroomSocket = setInterval(function() {
-            var messages = [];
-            var users = [];
-            Chat.findAll({
-                where: {
-                    idChatroom: chatId
-                }
-            }).then(function(messages) {
-                var gettingMSG = _.map(messages, function(message) {
-                    return User.findOne({
-                        where: {
-                            id: message.idSender
-                        },
-                    }).then(function(foundUser) {
-                        message.dataValues.username = foundUser.dataValues.username;
-                        message.dataValues.img = foundUser.dataValues.img;
-                        return message.dataValues;
-                    });
-                });
+        if (data.chatId === null) {
+            return;
+        } else {
+            var chatId = data.chatId;
+            var chatroomSocket = setInterval(function() {
 
-
-                UserChat.findAll({
+                var messages = [];
+                var users = [];
+                Chat.findAll({
                     where: {
                         idChatroom: chatId
                     }
-                }).then(function(chatroomUsers) {
-                    var gettingUsers = _.map(chatroomUsers, function(chatroomUser) {
+                }).then(function(messages) {
+                    var gettingMSG = _.map(messages, function(message) {
                         return User.findOne({
                             where: {
-                                id: chatroomUser.idUser
+                                id: message.idSender
                             },
-                            attributes: ['username', 'img']
-                        }).then(function(chatUsername) {
-                            chatroomUser.dataValues.username = chatUsername.dataValues.username;
-                            chatroomUser.dataValues.img = chatUsername.dataValues.img;
-                            return chatroomUser.dataValues;
+                        }).then(function(foundUser) {
+                            message.dataValues.username = foundUser.dataValues.username;
+                            message.dataValues.img = foundUser.dataValues.img;
+                            return message.dataValues;
                         });
-                    }); // end map
-                    Promise.all(gettingMSG).then(function(message) {
-                        Promise.all(gettingUsers).then(function(user) {
-                            socket.emit('message', {
-                                messages: message,
-                                users: user
+                    });
+
+
+                    UserChat.findAll({
+                        where: {
+                            idChatroom: chatId
+                        }
+                    }).then(function(chatroomUsers) {
+                        var gettingUsers = _.map(chatroomUsers, function(chatroomUser) {
+                            return User.findOne({
+                                where: {
+                                    id: chatroomUser.idUser
+                                },
+                                attributes: ['username', 'img']
+                            }).then(function(chatUsername) {
+                                chatroomUser.dataValues.username = chatUsername.dataValues.username;
+                                chatroomUser.dataValues.img = chatUsername.dataValues.img;
+                                return chatroomUser.dataValues;
+                            });
+                        }); // end map
+                        Promise.all(gettingMSG).then(function(message) {
+                            Promise.all(gettingUsers).then(function(user) {
+                                socket.emit('message', {
+                                    messages: message,
+                                    users: user
+                                });
                             });
                         });
                     });
                 });
+            }, 1000);
+
+            socket.on('leaveChat', function(data) {
+                clearInterval(chatroomSocket);
+                UserChat.destroy({
+                    where: {
+                        idUser: data.idUser
+                    }
+                });
             });
-        }, 1000);
-        socket.on('leaveChat', function(data) {
-            clearInterval(chatroomSocket);
-            UserChat.destroy({
-                where: {
-                    idUser: data.idUser
-                }
-            });
-        });
+        }
     });
     //
     // setInterval(function() {
