@@ -73,9 +73,9 @@ module.exports.close = function() {
 };
 // sequelize initialization //
 // for heroku
-// const sequelize = new Sequelize('postgres://uzjeoebhaoxwuk:IVuScu6q96OjaUvc_fJBb8GVJl@ec2-54-163-254-231.compute-1.amazonaws.com:5432/denten10cruhtj');
+const sequelize = new Sequelize('postgres://uzjeoebhaoxwuk:IVuScu6q96OjaUvc_fJBb8GVJl@ec2-54-163-254-231.compute-1.amazonaws.com:5432/denten10cruhtj');
 // for local
-const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
+// const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
 
 // require userService files
 // example
@@ -121,9 +121,9 @@ io.on('connection', function(socket) {
 
 
                 UserChat.findAll({
-                  where: {
-                    idChatroom: chatId
-                  }
+                    where: {
+                        idChatroom: chatId
+                    }
                 }).then(function(chatroomUsers) {
                     var gettingUsers = _.map(chatroomUsers, function(chatroomUser) {
                         return User.findOne({
@@ -156,7 +156,7 @@ io.on('connection', function(socket) {
                 }
             });
         });
-      });
+    });
     //
     // setInterval(function() {
     //     socket.emit('message', {
