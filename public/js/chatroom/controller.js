@@ -15,6 +15,7 @@ angular.module('thesis.chatroom', ['luegg.directives', 'emoji', 'vkEmojiPicker',
             });
 
             chatSocket.on('message', function(data) {
+              console.log(data);
                 $scope.messages = data.messages;
                 $scope.users = data.users;
             });
@@ -25,6 +26,7 @@ angular.module('thesis.chatroom', ['luegg.directives', 'emoji', 'vkEmojiPicker',
               chatSocket.emit('leaveChat', {
                   idUser: $cookies.get('id')
               });
+               chatSocket.removeListener();
             });
 
             // var refreshUsers = function() {
