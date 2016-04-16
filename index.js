@@ -160,18 +160,23 @@ io.on('connection', function(socket) {
                     }
                 });
             });
+
+            socket.on('DestroyChat', function(data) {
+                clearInterval(chatroomSocket);
+                Chat.destroy({
+                    where: {
+                        idChatroom: data.idChatroom
+                    }
+                }).then(function(deletedChat) {
+                  UserChat.destroy({
+                      where: {
+                          idUser: data.idUser
+                      }
+                  });
+                });
+            });
         }
     });
-    //
-    // setInterval(function() {
-    //     socket.emit('message', {
-    //         message: i
-    //     });
-    //     i++;
-    // }, 1000);
-
-
-
 });
 
 
@@ -191,11 +196,9 @@ sequelize.sync().then(function(res) {
         app.route('/login')
             .post(userService.login);
         app.route('/joinchat')
-            .post(chatService.join)
-            .get(chatService.get);
+            .post(chatService.join);
         app.route('/createMSG')
-            .post(chatService.createMSG)
-            .get(chatService.getMSG);
+            .post(chatService.createMSG);
 
         // server = app.listen(process.env.PORT || 1738, process.env.IP || "0.0.0.0", function() {
         //     var addr = server.address();
