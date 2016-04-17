@@ -5,19 +5,13 @@ angular.module('thesis.foursquare', ['ngRoute'])
         if (!$cookies.get('id')) {
             $location.path("/login");
         } else {
-          $scope.venue = [];
-            $scope.checkin = function() {
-                if ($scope.search === undefined) {
-                    $scope.search = "";
-                }
-                if ($scope.currentLocation === undefined) {
-                    $scope.currentLocation = "";
-                }
-                search = $scope.search.replace(" ", "_").toLowerCase();
-                currentLocation = $scope.currentLocation.replace(" ", "_").toLowerCase();
+            // get users gps coords
+            navigator.geolocation.getCurrentPosition(function(position) {
+                $scope.lat = position.coords.latitude;
+                $scope.long = position.coords.longitude;
                 $http({
                     method: 'GET',
-                    url: 'https://api.foursquare.com/v2/venues/explore/?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=40.7,-74&query=' + search + '&near=' + currentLocation
+                    url: 'https://api.foursquare.com/v2/venues/explore/?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=' + $scope.lat + ',' + $scope.long
                 }).then(function successCallback(response) {
                     $scope.venue = [];
                     $.map(response.data.response.groups[0].items, function(venues) {
@@ -32,9 +26,23 @@ angular.module('thesis.foursquare', ['ngRoute'])
                             }
                         });
                     });
-                    // https://api.foursquare.com/v2/venues/explore/?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=40.7,-74&query=canes&near=kenner&venuePhotos=5
                 });
+            }, function error(msg) {
+                alert('Please enable your GPS position future.');
+            }, {
+                maximumAge: 600000,
+                timeout: 5000,
+                enableHighAccuracy: true
+            });
+
+            $scope.venue = [];
+            var checkin = function() {
+
             };
+
+            // url: 'https://api.foursquare.com/v2/venues/explore/?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=40.7,-74&query=' + search + '&near=' + currentLocation
+
+            // https://api.foursquare.com/v2/venues/explore/?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=29.9407336,-90.0820647&radius=200
 
             $scope.joinChat = function(id, name) {
                 if ($cookies.get('id')) {
@@ -42,9 +50,9 @@ angular.module('thesis.foursquare', ['ngRoute'])
                     $rootScope.id = id;
                     $http({
                         method: 'GET',
-                        url: 'https://api.foursquare.com/v2/venues/'+ id +'/photos?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=40.7,-74&limit=5'
+                        url: 'https://api.foursquare.com/v2/venues/' + id + '/photos?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=40.7,-74&limit=5'
                     }).then(function successCallback(response) {
-                      $rootScope.photos = response.data.response.photos.items;
+                        $rootScope.photos = response.data.response.photos.items;
                     });
                     UserService.joinchat(id).success(function(data) {
                         $location.path("/chatroom");
