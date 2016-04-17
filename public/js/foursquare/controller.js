@@ -5,7 +5,7 @@ angular.module('thesis.foursquare', ['ngRoute'])
         if (!$cookies.get('id')) {
             $location.path("/login");
         } else {
-          $scope.venue = [];
+            $scope.venue = [];
             $scope.checkin = function() {
                 if ($scope.search === undefined) {
                     $scope.search = "";
@@ -32,7 +32,6 @@ angular.module('thesis.foursquare', ['ngRoute'])
                             }
                         });
                     });
-                    // https://api.foursquare.com/v2/venues/explore/?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=40.7,-74&query=canes&near=kenner&venuePhotos=5
                 });
             };
 
@@ -42,9 +41,9 @@ angular.module('thesis.foursquare', ['ngRoute'])
                     $rootScope.id = id;
                     $http({
                         method: 'GET',
-                        url: 'https://api.foursquare.com/v2/venues/'+ id +'/photos?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=40.7,-74&limit=5'
+                        url: 'https://api.foursquare.com/v2/venues/' + id + '/photos?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=40.7,-74&limit=5'
                     }).then(function successCallback(response) {
-                      $rootScope.photos = response.data.response.photos.items;
+                        $rootScope.photos = response.data.response.photos.items;
                     });
                     UserService.joinchat(id).success(function(data) {
                         $location.path("/chatroom");
