@@ -41,12 +41,8 @@
     "morgan": "^1.7.0",
     "multer": "^1.1.0",
     "mysql": "^2.10.2",
-<<<<<<< HEAD
     "passport-google-oauth": "^1.0.0",
-||||||| merged common ancestors
-=======
     "pg": "^4.5.3",
->>>>>>> 71a8d8a64e4f1274cd9a8cbb1aa4f323c714f0e1
     "sequelize": "^3.19.3",
     "sequelize-cli": "^2.3.1",
     "session-file-store": "^0.2.0",

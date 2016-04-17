@@ -15,6 +15,7 @@ const
   uuid = require('uuid'),
   config = require('./config.json'),
   cookieParser = require('cookie-parser'),
+  passport = require('passport-google-oauth'),
   sessionFileStore = require('session-file-store'),
   session = require('express-session');
 
@@ -68,40 +69,38 @@ module.exports.close = function() {
   server.close();
 };
 // sequelize initialization //
-<<<<<<< HEAD
-const sequelize = new Sequelize('thesis', 'root', 'CODA1931', {
-  host: 'localhost',
-  dialect: 'mysql',
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  },
-  define: {
-    freezeTableName: true
-  }
-});
+// const sequelize = new Sequelize('thesis', 'root', 'CODA1931', {
+//   host: 'localhost',
+//   dialect: 'mysql',
+//   pool: {
+//     max: 5,
+//     min: 0,
+//     idle: 10000
+//   },
+//   define: {
+//     freezeTableName: true
+//   }
+// });
 
-||||||| merged common ancestors
-const sequelize = new Sequelize('thesis', 'root', 'admin', {
-  host: 'localhost',
-  dialect: 'mysql',
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  },
-  define: {
-    freezeTableName: true
-  }
-});
+// const sequelize = new Sequelize('thesis', 'root', 'admin', {
+//   host: 'localhost',
+//   dialect: 'mysql',
+//   pool: {
+//     max: 5,
+//     min: 0,
+//     idle: 10000
+//   },
+//   define: {
+//     freezeTableName: true
+//   }
+// });
 
-=======
+// =======
 // for heroku
 // const sequelize = new Sequelize('postgres://uzjeoebhaoxwuk:IVuScu6q96OjaUvc_fJBb8GVJl@ec2-54-163-254-231.compute-1.amazonaws.com:5432/denten10cruhtj');
 // for local
-const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
->>>>>>> 71a8d8a64e4f1274cd9a8cbb1aa4f323c714f0e1
+const sequelize = new Sequelize('postgres://postgres:CODA1931@localhost:5433/postgres');
+// >>>>>>> 71a8d8a64e4f1274cd9a8cbb1aa4f323c714f0e1
 
 // require userService files
 // example
@@ -129,15 +128,15 @@ sequelize.sync().then(function(res) {
 
     });
 
-    app.get('/auth/google',
-    passport.authenticate('google', { scope: ['profile', 'email'] }));
+    // app.get('/auth/google',
+    // passport.authenticate('google', { scope: ['profile', 'email'] }));
 
   // the callback after google has authenticated the user
-  app.get('/auth/google/callback',
-    passport.authenticate('google', {
-            successRedirect : '/profile',
-            failureRedirect : '/'
-    }));
+  // app.get('/auth/google/callback',
+  //   passport.authenticate('google', {
+  //           successRedirect : '/updateprofile',
+  //           failureRedirect : '/'
+  //   }));
 
     app.route('/logout')
       .get(userService.logout);

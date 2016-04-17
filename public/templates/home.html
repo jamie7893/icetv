@@ -23,10 +23,10 @@
       <input type="password" name="password" class="form-control" ng-model="user.password" ng-minlength="8">
       <p class="help-block" ng-show="regForm.password.$error.minlength">Min password length is 8 characters.</p>
       Already have a account? <a href="#/login"> Login</a>
-      Or login through Google! <a href="/auth/google" class="btn btn-danger btn-sm"><span class="fa fa-google-plus"></span> Google</a>
+      Or login through Google! <span id="googleSignIn"><span id="signInButton"></span>
+</span>
   </div>
 <button type="button" ng-disabled="!user.email || !user.password" ng-click="register()" class="btn btn-lg btn-custom btn-block">Register</button>
 </form>
 </div>
 </div>
-<li><a href="/auth/google" class="btn btn-danger btn-sm"><span class="fa fa-google-plus"></span> Google</a></li>
