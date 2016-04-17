@@ -15,6 +15,7 @@ angular.module('thesis.login', ['ngRoute'])
             $location.path("/profile");
 
           }).error(function(status, data) {
+
           });
         }
 
@@ -24,9 +25,22 @@ angular.module('thesis.login', ['ngRoute'])
           $cookies.remove('name');
           $cookies.remove('id');
           $rootScope.$broadcast('userLoggedOut');
-          $location.path("/");
+          $location.path("/login");
         });
+      };
 
+      $scope.profile = function() {
+        if($cookies.get('id')) {
+        $location.path("/profile");
+      }
+        $location.path("/login");
+      };
+
+      $scope.checkin = function() {
+        if($cookies.get('id')) {
+        $location.path("/foursquare");
+      }
+        $location.path("/login");
       };
     }
   ]);

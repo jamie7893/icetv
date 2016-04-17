@@ -1,14 +1,12 @@
 /* global FastClick, smoothScroll */
 (function(angular) {
-  angular.module('thesis', ['ngAnimate', 'ngSanitize', 'ngRoute', 'ngCookies', 'thesis.login', 'thesis.register', 'thesis.foursquare', 'thesis.chatroom']);
+  angular.module('thesis', ['ngAnimate', 'ngSanitize', 'btford.socket-io', 'ngRoute', 'ngFileUpload', 'ngCookies', 'thesis.login', 'thesis.register', 'thesis.foursquare', 'thesis.chatroom']);
 
   var myApp = angular.module('thesis');
 
-  myApp
-    .config(config);
 
-  config.$inject = ['$routeProvider', '$locationProvider'];
 
+var config = ['$routeProvider', '$locationProvider',
   function config($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
@@ -38,6 +36,7 @@
       .otherwise({
         redirectTo: '/'
       });
-  }
-
+  }]
+  myApp
+    .config(config);
 })(window.angular);
