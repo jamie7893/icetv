@@ -17,7 +17,7 @@ angular.module('thesis.foursquare', ['ngRoute'])
                 currentLocation = $scope.currentLocation.replace(" ", "_").toLowerCase();
                 $http({
                     method: 'GET',
-                    url: 'https://api.foursquare.com/v2/venues/explore/?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=40.7,-74&query=' + search + '&near=' + currentLocation + '&venuePhotos=1'
+                    url: 'https://api.foursquare.com/v2/venues/explore/?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=40.7,-74&query=' + search + '&near=' + currentLocation
                 }).then(function successCallback(response) {
                     $scope.venue = [];
                     $.map(response.data.response.groups[0].items, function(venues) {
@@ -26,7 +26,6 @@ angular.module('thesis.foursquare', ['ngRoute'])
                                 var aVenue = {};
                                 aVenue.id = venue.id;
                                 aVenue.name = venue.name;
-                                aVenue.photos = venue.photos;
                                 aVenue.location = venue.location;
                                 aVenue.contact = venue.contact;
                                 $scope.venue.push(aVenue);
@@ -37,11 +36,16 @@ angular.module('thesis.foursquare', ['ngRoute'])
                 });
             };
 
-            $scope.joinChat = function(id, name, photos) {
+            $scope.joinChat = function(id, name) {
                 if ($cookies.get('id')) {
                     $rootScope.venue = name;
-                    $rootScope.photos = photos;
                     $rootScope.id = id;
+                    $http({
+                        method: 'GET',
+                        url: 'https://api.foursquare.com/v2/venues/'+ id +'/photos?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=40.7,-74&limit=5'
+                    }).then(function successCallback(response) {
+                      $rootScope.photos = response.data.response.photos.items;
+                    });
                     UserService.joinchat(id).success(function(data) {
                         $location.path("/chatroom");
                     });

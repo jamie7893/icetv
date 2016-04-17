@@ -1,8 +1,6 @@
 <ng-include src="'/templates/navbar.html'"></ng-include>
-<div ng-repeat="aPhoto in photos.groups" >
-  <div ng-repeat="photo in aPhoto.items">
+<div ng-repeat="photo in photos" >
   <img ng-src="{{photo.prefix}}300x300{{photo.suffix}}"></img>
-</div>
 </div>
 <div class="container">
     <div class="row " style="padding-top:40px;">
