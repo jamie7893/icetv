@@ -1,7 +1,7 @@
 (function(angular) {
     var myApp = angular.module('thesis');
 
-    myApp.controller('EditProfileController', function($scope, $http, $cookies, UserService, $location, Upload) {
+    myApp.controller('EditProfileController', function($scope, $http, $cookies, UserService, $location, Upload, $auth, toastr) {
         if (!$cookies.get('id')) {
             $location.path("/login");
         } else {
@@ -38,6 +38,26 @@
                 $location.path('/login');
               }
             };
+            $scope.link = function(provider) {
+                $auth.link(provider)
+                .then(function() {
+                toastr.success('You have successfully linked a ' + provider + ' account');
+                $scope.getProfile();
+                })
+                .catch(function(response) {
+                toastr.error(response.data.message, response.status);
+                });
+            };
+            $scope.unlink = function(provider) {
+                $auth.unlink(provider)
+                .then(function() {
+                toastr.info('You have unlinked a ' + provider + ' account');
+                $scope.getProfile();
+              })
+              .catch(function(response) {
+              toastr.error(response.data ? response.data.message : 'Could not unlink ' + provider + ' account', response.status);
+         });
+    };
         }
     });
 

@@ -75,7 +75,9 @@ module.exports.close = function() {
 // for heroku
 const sequelize = new Sequelize('postgres://uzjeoebhaoxwuk:IVuScu6q96OjaUvc_fJBb8GVJl@ec2-54-163-254-231.compute-1.amazonaws.com:5432/denten10cruhtj');
 // for local
-// const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
+
+// const sequelize = new Sequelize('postgres://postgres:CODA1931@localhost:5433/postgres');
+
 
 // require userService files
 // example

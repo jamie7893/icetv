@@ -10,6 +10,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/toastr.css" />
     <link href="https://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
     <link href="./bower_components/angular-emoji/dist/emoji.min.css" rel="stylesheet">
 </head>
@@ -18,8 +19,9 @@
 
     <main ng-view></main>
 
-    <!-- /.container -->
-    </div>
+  <!-- /.container -->
+  </div>
+ 
     <!-- /.main -->
     <footer class="footer">
     </footer>
@@ -44,6 +46,8 @@
     <script src="./bower_components/ng-file-upload/ng-file-upload-all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
     <script src="./bower_components/angular-socket-io/socket.js"></script>
+    <link rel="stylesheet" type="text/css" href="./bower_components/angular-toastr/dist/angular-toastr.css" />
+    <script type="text/javascript" src="./bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
     <script src="js/config.js"></script>
     <script src="js/user/factory.js"></script>
     <script src="js/login/controller.js"></script>
@@ -51,11 +55,11 @@
     <script src="js/profile/controller.js"></script>
     <script src="js/foursquare/controller.js"></script>
     <script src="js/chatroom/controller.js"></script>
-    <!--
-  <script src="js/user/factory.js"></script>
+    <script src="bower_components/satellizer/satellizer.js"></script>
+  <!-- <script src="js/user/factory.js"></script>
   <script src="js/navbar/sideNavBar/controller.js"></script>
   <script src="js/navbar/controller.js"></script>
-  <script src="js/user/profile/controller.js"></script> -->
+  <script src="js/user/profile/controller.js"></script> --> 
 </body>
 
 </html>
