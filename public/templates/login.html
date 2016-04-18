@@ -18,9 +18,11 @@
           Don't have a account? <a href="#/"> Sign Up</a>
         </label>
         <button ng-disabled="!user.email || !user.password" type="button" ng-click="login()" class="btn btn-lg btn-custom btn-block">Login</button>
+        <h6 class='text'>or</h6>
+        <button class="btn btn-block btn-google-plus" ng-click="authenticate('google')"><span class="ion-social-googleplus:before"></span>Sign in with Google</button>
         <!-- login.tpl.html -->
         <!-- ... -->
-        <input type="submit" ng-controller="GoogleCtrl" ng-click="auth.signin()" />
+        <!-- <input type="submit" ng-controller="GoogleCtrl" ng-click="auth.signin()" /> -->
         <!-- ... -->
     </form>
 </div>

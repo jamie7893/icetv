@@ -30,3 +30,25 @@
 </form>
 </div>
 </div>
+
+ <!-- <div class="form-group has-feedback" ng-class="{ 'has-error' : regForm.password.$invalid && regForm.password.$dirty }">
+            <input password-strength class="form-control input-lg" type="password" name="password" ng-model="user.password" placeholder="Password" required>
+            <span class="ion-key form-control-feedback"></span>
+            <div class="help-block text-danger" ng-if="regForm.password.$dirty" ng-messages="regForm.password.$error">
+              <div ng-message="required">Password is required.</div>
+              <input type="password" name="password" class="form-control" ng-model="user.password" ng-minlength="8">
+              <p class="help-block" ng-show="regForm.password.$error.minlength">Min password length is 8 characters.</p>
+            </div>
+          </div>
+          <div class="form-group has-feedback" ng-class="{ 'has-error' : regForm.confirmPassword.$invalid && regForm.confirmPassword.$dirty }">
+            <input password-match="user.password" class="form-control input-lg" type="password" name="confirmPassword" ng-model="confirmPassword" placeholder="Confirm Password">
+            <span class="ion-key form-control-feedback"></span>
+            <div class="help-block text-danger" ng-if="regForm.confirmPassword.$dirty" ng-messages="regForm.confirmPassword.$error">
+              <div ng-message="compareTo">Password must match.</div>
+            </div>
+
+
+            <input type="password" name="password" class="form-control" ng-model="user.password" ng-minlength="8">
+      <p class="help-block" ng-show="regForm.password.$error.minlength">Min password length is 8 characters.</p>
+
+      <button type="submit" ng-disabled="regForm.$invalid" class="btn btn-lg btn-block btn-primary">Sign up</button> -->

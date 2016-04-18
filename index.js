@@ -3,38 +3,6 @@
 let server;
 
 const
-<<<<<<< HEAD
-  express = require('express'),
-  app = express(),
-  path = require('path'),
-  bodyParser = require('body-parser'),
-  morgan = require('morgan'),
-  multer = require('multer'),
-  Sequelize = require('sequelize'),
-  bcrypt = require('bcrypt-nodejs'),
-  crypto = require('crypto'),
-  uuid = require('uuid'),
-  config = require('./config.json'),
-  cookieParser = require('cookie-parser'),
-  passport = require('passport-google-oauth'),
-  sessionFileStore = require('session-file-store'),
-  session = require('express-session');
-||||||| merged common ancestors
-  express = require('express'),
-  app = express(),
-  path = require('path'),
-  bodyParser = require('body-parser'),
-  morgan = require('morgan'),
-  multer = require('multer'),
-  Sequelize = require('sequelize'),
-  bcrypt = require('bcrypt-nodejs'),
-  crypto = require('crypto'),
-  uuid = require('uuid'),
-  config = require('./config.json'),
-  cookieParser = require('cookie-parser'),
-  sessionFileStore = require('session-file-store'),
-  session = require('express-session');
-=======
     express = require('express'),
     app = express(),
     path = require('path'),
@@ -53,7 +21,6 @@ const
     _ = require('lodash'),
     session = require('express-session');
 
->>>>>>> f7bdb152fc785589623ec9bdc067722937c811e7
 
 let
     FileStore = sessionFileStore(session);
@@ -105,38 +72,10 @@ module.exports.close = function() {
     server.close();
 };
 // sequelize initialization //
-// const sequelize = new Sequelize('thesis', 'root', 'CODA1931', {
-//   host: 'localhost',
-//   dialect: 'mysql',
-//   pool: {
-//     max: 5,
-//     min: 0,
-//     idle: 10000
-//   },
-//   define: {
-//     freezeTableName: true
-//   }
-// });
-
-// const sequelize = new Sequelize('thesis', 'root', 'admin', {
-//   host: 'localhost',
-//   dialect: 'mysql',
-//   pool: {
-//     max: 5,
-//     min: 0,
-//     idle: 10000
-//   },
-//   define: {
-//     freezeTableName: true
-//   }
-// });
-
-// =======
 // for heroku
 // const sequelize = new Sequelize('postgres://uzjeoebhaoxwuk:IVuScu6q96OjaUvc_fJBb8GVJl@ec2-54-163-254-231.compute-1.amazonaws.com:5432/denten10cruhtj');
 // for local
 const sequelize = new Sequelize('postgres://postgres:CODA1931@localhost:5433/postgres');
-// >>>>>>> 71a8d8a64e4f1274cd9a8cbb1aa4f323c714f0e1
 
 // require userService files
 // example
@@ -238,60 +177,6 @@ io.on('connection', function(socket) {
             });
         }
     });
-<<<<<<< HEAD
-
-    // app.get('/auth/google',
-    // passport.authenticate('google', { scope: ['profile', 'email'] }));
-
-  // the callback after google has authenticated the user
-  // app.get('/auth/google/callback',
-  //   passport.authenticate('google', {
-  //           successRedirect : '/updateprofile',
-  //           failureRedirect : '/'
-  //   }));
-
-    app.route('/logout')
-      .get(userService.logout);
-    app.route('/updateprofile')
-      .put(userService.updateprofile);
-    app.route('/signup')
-      .post(userService.create);
-    app.route('/login')
-      .post(userService.login);
-    app.route('/joinchat')
-      .post(chatService.join)
-      .get(chatService.get);
-    app.route('/createMSG')
-      .post(chatService.createMSG)
-      .get(chatService.getMSG);
-
-
-
-    server = app.listen(process.env.PORT || 1738, process.env.IP || "0.0.0.0", function() {
-      var addr = server.address();
-      console.log("Server listening at", addr.address + ":" + addr.port);
-||||||| merged common ancestors
-    app.route('/logout')
-      .get(userService.logout);
-    app.route('/updateprofile')
-      .put(userService.updateprofile);
-    app.route('/signup')
-      .post(userService.create);
-    app.route('/login')
-      .post(userService.login);
-    app.route('/joinchat')
-      .post(chatService.join)
-      .get(chatService.get);
-    app.route('/createMSG')
-      .post(chatService.createMSG)
-      .get(chatService.getMSG);
-
-
-
-    server = app.listen(process.env.PORT || 1738, process.env.IP || "0.0.0.0", function() {
-      var addr = server.address();
-      console.log("Server listening at", addr.address + ":" + addr.port);
-=======
 });
 
 
@@ -327,5 +212,4 @@ sequelize.sync().then(function(res) {
     })
     .catch(function(e) {
         console.log('Error in sequelize.sync(): ' + e);
->>>>>>> f7bdb152fc785589623ec9bdc067722937c811e7
     });
