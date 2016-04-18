@@ -11,7 +11,7 @@ angular.module('thesis.foursquare', ['ngRoute'])
                 $scope.long = position.coords.longitude;
                 $http({
                     method: 'GET',
-                    url: 'https://api.foursquare.com/v2/venues/explore/?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=' + $scope.lat + ',' + $scope.long
+                    url: 'https://api.foursquare.com/v2/venues/explore/?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=' + $scope.lat + ',' + $scope.long + '&radius=800'
                 }).then(function successCallback(response) {
                     $scope.venue = [];
                     $.map(response.data.response.groups[0].items, function(venues) {
