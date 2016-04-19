@@ -93,27 +93,27 @@ var Form = React.createClass({
 
 
         <p class="formTitle">
-          Login to check-in and chat with others.
+          Update your profile
         </p>
 
 
         <form
-          className="create_account_form"
+          className="form-signin"
           name="regForm"
           onSubmit={this.saveAndContinue}>
 
 
           <div class="form-group" >
-
+            <label>Gravatar Email Address for profile image (optional)</label>
             <Input
-              text="Gravatar Email Address for profile image (optional)"
+              text="Gravatar Email Address"
               ref="gravEmail"
               type="text"
               value={this.state.gravEmail}
               onChange={this.handleGravInput}
               />
 
-
+            <label>First Name</label>
               <Input
                 text="First Name"
                 type="text"
@@ -124,6 +124,7 @@ var Form = React.createClass({
                 emptyMessage="First name can't be empty"
                 />
 
+              <label>Last Name</label>
                 <Input
                   text="Last Name"
                   type="text"
@@ -134,15 +135,13 @@ var Form = React.createClass({
                   emptyMessage="Last name can't be empty"
                   />
 
-
+                <label>Description Name</label>
             <Input
               text="Description"
               ref="desc"
               type="text"
-              validate={this.isEmpty}
               value={this.state.desc}
               onChange={this.handleDescInput}
-              emptyMessage="Description can't be empty"
               />
 
 
@@ -165,37 +164,3 @@ var Form = React.createClass({
 }
 });
 export default Form;
-
-
-
-<div class="form-profile" ng-controller="EditProfileController">
-    <h2 align="center">Edit Profile</h2>
-    <form class="form-signin" name="regForm" enctype="multipart/form-data">
-        <label>Gravatar Email: (optional)</label>
-        <br />
-        <br />
-        <label>Upload Profile Picture With Gravatar</label>
-        <br />
-        <input type="email" name="gravEmail" class="form-control" ng-model="user.gravEmail"></input>
-        <br />
-        <br />
-        <label>Upload your product picture here:</label>
-        <br />
-        <br /> Single Image with validations
-        <br />
-        <br />
-        <button class="default-btn" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" ngf-resize="{width: 100, height: 100}">Choose Image</button>
-        <br />
-        <br />
-        <label>First Name</label>
-        <input type="text" name="nameFirst" class="form-control" ng-model="user.nameFirst">
-        <br />
-        <label>Last Name</label>
-        <input type="text" name="nameLast" class="form-control" ng-model="user.nameLast">
-        <br />
-        <label>Description</label>
-        <textarea name="desc" class="form-control" ng-model="user.desc"></textarea>
-        <br />
-        <button type="button" ng-disabled="!user.nameFirst || !user.nameLast || !user.desc" ng-click="submit()" class="btn btn-lg btn-custom btn-block">Update Profile</button>
-    </form>
-</div>

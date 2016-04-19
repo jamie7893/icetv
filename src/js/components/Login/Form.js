@@ -1,6 +1,7 @@
 import React from 'react';
 import  _ from 'lodash';
 import Input from './Input.js';
+import {hashHistory} from 'react-router';
 
 var Form = React.createClass({
   getInitialState: function () {
@@ -40,6 +41,7 @@ var Form = React.createClass({
           console.log(info);
         }
       });
+      hashHistory.push('/profile');
       console.log('yep');
     } else {
       this.refs.email.isValid();

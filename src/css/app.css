@@ -8,6 +8,9 @@
       border-bottom: 1px solid black;
       background-color: white;
   }
+  .form-signin {
+    margin-left: 21px; 
+  }
   .foursquare {
       margin-left: -122px;
   }
