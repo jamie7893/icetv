@@ -20,7 +20,6 @@ module.exports = function(sequelize) {
       model: userChatJct
     }
   });
-
   Chat.belongsToMany(User, {
     "foreignKey": "idChatroom",
     "through": {
@@ -112,6 +111,7 @@ module.exports = function(sequelize) {
 
     },
     login: function(req, res, callback) {
+      console.log(req.body);
       var sess = req.session;
       User.findOne({
         where: {
