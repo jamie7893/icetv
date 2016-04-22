@@ -1,20 +1,19 @@
 import React from "react";
-import Checkin from "./Foursquare/Checkin";
+import Chat from "./Chat/Chatroom";
 import Navbar from "./Navbar/Navbar.js";
 
-var Login = React.createClass({
+var Chatroom = React.createClass({
 
   render: function() {
     return (
       <div>
         <Navbar />
       <div>
-
-          <Checkin />
+          <Chat />
       </div>
     </div>
-    );
+  );
   }
 });
 
-export default Login;
+export default Chatroom;

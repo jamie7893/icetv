@@ -6,6 +6,7 @@ import Layout from "./components/Layout.js";
 import Login from "./components/Login.js";
 import Profile from "./components/Profile.js";
 import Foursquare from "./components/Foursquare.js"
+import Chatroom from "./components/Chatroom.js"
 
 const app = document.getElementById('app');
 ReactDOM.render(
@@ -14,5 +15,6 @@ ReactDOM.render(
     <Route path="/login" component={Login}/>
     <Route path="/profile" component={Profile}/>
     <Route path="/checkin" component={Foursquare}/>
+    <Route path="/chatroom" component={Chatroom}/>
   </Router>,
 app);

@@ -43,7 +43,9 @@ if (app.get('env') === 'production') {
 }
 
 app.use(morgan('dev')). // logs request to the console
-use(express.static(path.join(__dirname, 'src'))).set('view engine', 'jsx').engine('jsx', require('express-react-views').createEngine()).use(session(sess)).use(cookieParser()).use(bodyParser.json()).use(bodyParser.urlencoded({extended: true}));
+use(express.static(path.join(__dirname, 'src'))).set('view engine', 'jsx').engine('jsx', require('express-react-views').createEngine()).use(session(sess)).use(cookieParser()).use(bodyParser.json()).use(bodyParser.urlencoded({
+    extended: true
+}));
 
 // Uploading Images
 var uploading = multer({
@@ -71,10 +73,10 @@ const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgr
 const userService = require("./service/user.js")(sequelize),
     chatService = require("./service/chat.js")(sequelize);
 
-var Chat = sequelize.import ('./model/chatroom.js'),
-    User = sequelize.import ('./model/user.js'),
-    UserChat = sequelize.import ('./model/userchatroomjct.js'),
-    Creds = sequelize.import ('./model/credentials.js');
+var Chat = sequelize.import('./model/chatroom.js'),
+    User = sequelize.import('./model/user.js'),
+    UserChat = sequelize.import('./model/userchatroomjct.js'),
+    Creds = sequelize.import('./model/credentials.js');
 
 io.on('connection', function(socket) {
     console.log('a user connected');
@@ -82,18 +84,17 @@ io.on('connection', function(socket) {
         console.log('a user disconnected');
 
     });
-
     socket.on('joinedChat', function(data) {
-        if (data.chatId === null) {
-            return;
-        } else {
-            var chatId = data.chatId;
+        UserChat.findOne({
+            where: {
+                idUser: data.idUser
+            }
+        }).then(function(foundUser) {
             var chatroomSocket = setInterval(function() {
-                var messages = [];
-                var users = [];
+                // get  messages
                 Chat.findAll({
                     where: {
-                        idChatroom: chatId
+                        idChatroom: foundUser.idChatroom
                     }
                 }).then(function(messages) {
                     var gettingMSG = _.map(messages, function(message) {
@@ -107,60 +108,69 @@ io.on('connection', function(socket) {
                             return message.dataValues;
                         });
                     });
-
-                    UserChat.findAll({
-                        where: {
-                            idChatroom: chatId
-                        }
-                    }).then(function(chatroomUsers) {
-                        var gettingUsers = _.map(chatroomUsers, function(chatroomUser) {
-                            return User.findOne({
-                                where: {
-                                    id: chatroomUser.idUser
-                                },
-                                attributes: ['username', 'img']
-                            }).then(function(chatUsername) {
-                                chatroomUser.dataValues.username = chatUsername.dataValues.username;
-                                chatroomUser.dataValues.img = chatUsername.dataValues.img;
-                                return chatroomUser.dataValues;
-                            });
-                        }); // end map
-                        Promise.all(gettingMSG).then(function(message) {
-                            Promise.all(gettingUsers).then(function(user) {
-                                socket.emit('message', {
-                                    messages: message,
-                                    users: user
-                                });
-                            });
+                    Promise.all(gettingMSG).then(function(msgs) {
+                        socket.emit('messages', {
+                            messages: msgs,
+                            idChat: foundUser.idChatroom
                         });
+
                     });
+
                 });
+
+
+                // get users
+
+                // UserChat.findAll({
+                //     where: {
+                //         idChatroom: data.idChatroom
+                //     }
+                // }).then(function(chatroomUsers) {
+                //     var gettingUsers = _.map(chatroomUsers, function(chatroomUser) {
+                //         return User.findOne({
+                //             where: {
+                //                 id: chatroomUser.idUser
+                //             },
+                //             attributes: ['username', 'img']
+                //         }).then(function(chatUsername) {
+                //             chatroomUser.dataValues.username = chatUsername.dataValues.username;
+                //             chatroomUser.dataValues.img = chatUsername.dataValues.img;
+                //             return chatroomUser.dataValues;
+                //         });
+                //     }); // end map
+                //     Promise.all(gettingUsers).then(function(users) {
+                //         socket.emit('users', {
+                //             "users": users
+                //         });
+                //     });
+                // });
             }, 1000);
+        });
 
-            socket.on('leaveChat', function(data) {
-                clearInterval(chatroomSocket);
-                UserChat.destroy({
-                    where: {
-                        idUser: data.idUser
-                    }
-                });
-            });
+        // socket.on('leaveChat', function(data) {
+        //     clearInterval(chatroomSocket);
+        //     UserChat.destroy({
+        //         where: {
+        //             idUser: data.idUser
+        //         }
+        //     });
+        // });
+        //
+        // socket.on('DestroyChat', function(data) {
+        //     clearInterval(chatroomSocket);
+        //     Chat.destroy({
+        //         where: {
+        //             idChatroom: data.idChatroom
+        //         }
+        //     }).then(function(deletedChat) {
+        //         UserChat.destroy({
+        //             where: {
+        //                 idUser: data.idUser
+        //             }
+        //         });
+        //     });
+        // });
 
-            socket.on('DestroyChat', function(data) {
-                clearInterval(chatroomSocket);
-                Chat.destroy({
-                    where: {
-                        idChatroom: data.idChatroom
-                    }
-                }).then(function(deletedChat) {
-                    UserChat.destroy({
-                        where: {
-                            idUser: data.idUser
-                        }
-                    });
-                });
-            });
-        }
     });
 });
 
@@ -171,7 +181,7 @@ sequelize.sync().then(function(res) {
     Creds.sync();
 
     app.route('/').get(function(req, res) {
-      res.render('./src/client.min.js');
+        res.render('./src/client.min.js');
     });
     app.route('/logout').get(userService.logout);
     app.route('/updateprofile').post(uploading.single('file'), userService.updateprofile);

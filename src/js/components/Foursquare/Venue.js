@@ -1,9 +1,25 @@
 import React from 'react';
+import cookie from 'react-cookie';
+import {hashHistory} from 'react-router';
 
 var Venue = React.createClass({
 
-    render: function() {
+  _joinChat: function() {
+    var joinChat = {
+      idChat: this.props.venue.id,
+      idUser: cookie.load('id')
+    };
+    console.log(joinChat);
+    $.ajax({
+      type: 'POST',
+      url: '/joinchat',
+        data: joinChat,
+    }).then((data) => {
+      hashHistory.push('/chatroom');
+    })
+  },
 
+    render: function() {
         return (
                 <li class="venue" >
                   <p class="theVenue">
@@ -13,7 +29,7 @@ var Venue = React.createClass({
                     <br /> {this.props.venue.location.city}, {this.props.venue.location.state} {this.props.venue.location.postalCode}
                     <br />{this.props.venue.contact.formattedPhone}
 
-                    <button  class="default-btn" >Join Chat</button>
+                    <button onClick={this._joinChat} class="default-btn" >Join Chat</button>
                     <br />  <br />
                 </p>
                 </li>

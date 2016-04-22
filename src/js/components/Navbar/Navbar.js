@@ -20,7 +20,7 @@ var Navbar = React.createClass({
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li><a href="#/chatroom">ChatRoom</a></li>
-              <li><a href="#/foursquare" >Check-in</a></li>
+              <li><a href="#/checkin" >Check-in</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li>
@@ -31,7 +31,7 @@ var Navbar = React.createClass({
               </li>
             </ul>
           </div>
-  
+
         </div>
 
       </nav>
