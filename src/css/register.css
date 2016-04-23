@@ -5,8 +5,6 @@ Source Code: https://github.com/mikepro4/react-signup-form
 html {
     color: #000;
     background: #FFF;
-    overflow-y: scroll;
-    overflow-x: hidden;
     font-size: 100%;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
@@ -1094,7 +1092,6 @@ table td {
 html {
     width: 100%;
     height: 100%;
-    overflow: hidden;
 }
 body {
     position: absolute;
@@ -1102,9 +1099,7 @@ body {
     height: 100%;
     -webkit-font-smoothing: subpixel-antialiased;
     background: #f0f4f5;
-    overflow: hidden;
     font: normal normal 100 14px/1.6 'Roboto', sans-serif;
-    -webkit-overflow-scrolling: touch;
     display: block;
 }
 .application_wrapper {

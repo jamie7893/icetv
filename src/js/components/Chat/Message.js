@@ -3,9 +3,14 @@ import React from 'react';
 
 var Message = React.createClass({
 
+
+
+
     render: function() {
+
         return (
-          <li class="media" >
+
+          <div class="media" >
 
 
             <div class="media-body">
@@ -15,7 +20,7 @@ var Message = React.createClass({
 
                 <a class="pull-left" href="#">
 
-                  <img class="media-object img-circle" />
+                  <img class="media-object img-circle msgImage" src={this.props.message.img}/>
 
                 </a>
 
@@ -28,10 +33,10 @@ var Message = React.createClass({
                   <br />
 
                   <small class="text-muted">
-                    Posted by <b></b>, at
+                    Posted by <b class="online">{this.props.message.username}</b>, at {this.props.message.createdAt}
                   </small>
 
-                  <hr />
+                  <br />
 
                 </div>
 
@@ -40,7 +45,7 @@ var Message = React.createClass({
 
             </div>
 
-          </li>
+          </div>
 
         )
     }

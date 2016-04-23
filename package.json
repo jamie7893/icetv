@@ -19,10 +19,11 @@
   },
   "homepage": "https://github.com/jamie7893/thesis#readme",
   "peerDependencies": {
-    "react": "*",
+    "react": "0.14.*",
     "express-react-views": "^0.10.1",
-    "react-dom": "*",
-    "classnames": "^2.2.3"
+    "react-dom": "0.14.*",
+    "classnames": "^2.2.3",
+    "react-infinite-scroll-mixin": "*"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -33,7 +34,6 @@
     "supertest": "^1.2.0"
   },
   "dependencies": {
-    "angular-emoji-filter-hd": "0.0.9",
     "babel-loader": "^6.2.0",
     "babel-plugin-add-module-exports": "^0.1.2",
     "babel-plugin-react-html-attrs": "^2.0.0",
@@ -48,7 +48,6 @@
     "cookie-parser": "^1.4.1",
     "crypto": "0.0.3",
     "express": "^4.13.4",
-    "express-mysql-session": "^1.0.0-rc.0",
     "express-session": "^1.13.0",
     "fs": "0.0.2",
     "history": "^1.17.0",
@@ -58,6 +57,7 @@
     "passport-google-oauth": "^1.0.0",
     "pg": "^4.5.3",
     "react-router": "^2.3.0",
+    "react-scrollbar": "^0.4.1",
     "sequelize": "^3.19.3",
     "sequelize-cli": "^2.3.1",
     "session-file-store": "^0.2.0",

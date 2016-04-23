@@ -6,47 +6,42 @@ var Checkin = React.createClass({
 
   getInitialState: function () {
     return {
-      venues: []
+      venues: [],
+      longitude: 0,
+      latitude: 0
     }
   },
 
-  componentWillMount: function() {
-     navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) =>
-       $.ajax({
-         type: 'GET',
-         url: `https://api.foursquare.com/v2/venues/explore/?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=${latitude},${longitude}&radius=100`,
-       }).then(({response: {groups}}) => {
-           const venues = groups[0].items
-                         .map(x => x.venue)
-                         .filter(v => v.id);
-           this.setState({venues})
-       }),
-       function error(msg) {
-                console.log(msg);
-            })
-   },
+  componentWillMount() {
+    var location = navigator.geolocation.watchPosition(({coords: {latitude, longitude}}) =>
+      $.ajax({
+        type: 'GET',
+        url: `https://api.foursquare.com/v2/venues/explore/?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=${latitude},${longitude}&radius=100`,
+      }).then(({response: {groups}}) => {
+        console.log(groups);
+          const venues = groups[0].items
+                        .map(x => x.venue)
+                        .filter(v => v.id);
+          this.setState({venues, latitude, longitude})
+      }),
+      function error(msg) {
+               console.log(msg);
+           }, {
+             frequency: 2 * 60 * 1000,
+             timeout : 2.5 * 60 * 1000,
+               enableHighAccuracy: true
+           });
+           this.setState({
+             "location": location
+           });
+  },
 
-   componentDidMount: function() {
-      navigator.geolocation.watchPosition(({coords: {latitude, longitude}}) =>
-        $.ajax({
-          type: 'GET',
-          url: `https://api.foursquare.com/v2/venues/explore/?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=${latitude},${longitude}&radius=100`,
-        }).then(({response: {groups}}) => {
-            const venues = groups[0].items
-                          .map(x => x.venue)
-                          .filter(v => v.id);
-            this.setState({venues})
-        }),
-        function error(msg) {
-                 console.log(msg);
-             }, {
-               frequency: 2 * 60 * 1000,
-               timeout : 2.5 * 60 * 1000,
-                 enableHighAccuracy: true
-             });
-    },
-
+componentWillUnmount() {
+  navigator.geolocation.clearWatch(this.state.location);
+},
   render: function() {
+    console.log(this.state);
+
     return (
       <div class="foursq">
 
