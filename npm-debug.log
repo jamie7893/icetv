@@ -1,0 +1,795 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   'react-infinite' ]
+2 info using npm@2.14.12
+3 info using node@v4.3.2
+4 verbose install initial load of C:\Users\jamie\OneDrive\Documents\GitHub\thesis\package.json
+5 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\babel-core\package.json
+6 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\babel-loader\package.json
+7 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\babel-plugin-add-module-exports\package.json
+8 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\babel-plugin-react-html-attrs\package.json
+9 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\babel-plugin-transform-class-properties\package.json
+10 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\babel-plugin-transform-decorators-legacy\package.json
+11 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\babel-preset-es2015\package.json
+12 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\babel-preset-react\package.json
+13 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\babel-preset-stage-0\package.json
+14 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\bcrypt-nodejs\package.json
+15 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\body-parser\package.json
+16 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\bower\package.json
+17 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\chai\package.json
+18 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\classnames\package.json
+19 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\cookie-parser\package.json
+20 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\crypto\package.json
+21 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\express\package.json
+22 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\express-mysql-session\package.json
+23 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\express-react-views\package.json
+24 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\express-session\package.json
+25 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\fs\package.json
+26 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\history\package.json
+27 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\istanbul\package.json
+28 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\lodash\package.json
+29 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\mocha\package.json
+30 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\mockery\package.json
+31 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\morgan\package.json
+32 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\multer\package.json
+33 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\passport-google-oauth\package.json
+34 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\pg\package.json
+35 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react\package.json
+36 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-chatview\package.json
+37 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-cookie\package.json
+38 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-dom\package.json
+39 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-router\package.json
+40 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-scrollbar\package.json
+41 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-socket\package.json
+42 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\sequelize\package.json
+43 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\sequelize-cli\package.json
+44 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\session-file-store\package.json
+45 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\sinon\package.json
+46 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\socket.io\package.json
+47 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\supertest\package.json
+48 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\underscore\package.json
+49 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\uuid\package.json
+50 verbose installManyTop reading scoped package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\webpack\package.json
+51 info package.json bcrypt-nodejs@0.0.3 No license field.
+52 info package.json crypto@0.0.3 crypto is also the name of a node core module.
+53 info package.json crypto@0.0.3 No license field.
+54 info package.json fs@0.0.2 fs is also the name of a node core module.
+55 info package.json fs@0.0.2 No description
+56 info package.json fs@0.0.2 No repository field.
+57 info package.json mockery@1.4.1 No license field.
+58 info package.json uuid@2.0.1 No license field.
+59 info package.json react-chatview@0.0.1-alpha.8 No license field.
+60 verbose readDependencies loading dependencies from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\package.json
+61 silly cache add args [ 'react-infinite', null ]
+62 verbose cache add spec react-infinite
+63 silly cache add parsed spec Result {
+63 silly cache add   raw: 'react-infinite',
+63 silly cache add   scope: null,
+63 silly cache add   name: 'react-infinite',
+63 silly cache add   rawSpec: '',
+63 silly cache add   spec: 'latest',
+63 silly cache add   type: 'tag' }
+64 silly addNamed react-infinite@latest
+65 verbose addNamed "latest" is being treated as a dist-tag for react-infinite
+66 info addNameTag [ 'react-infinite', 'latest' ]
+67 silly mapToRegistry name react-infinite
+68 silly mapToRegistry using default registry
+69 silly mapToRegistry registry https://registry.npmjs.org/
+70 silly mapToRegistry uri https://registry.npmjs.org/react-infinite
+71 verbose addNameTag registry:https://registry.npmjs.org/react-infinite not in flight; fetching
+72 verbose request uri https://registry.npmjs.org/react-infinite
+73 verbose request no auth needed
+74 info attempt registry request try #1 at 12:17:33 AM
+75 verbose request id f4f7d9a5ef1cf457
+76 verbose etag "BKUWJ6SQJAPGNZ7B3PYQQ60ZR"
+77 http request GET https://registry.npmjs.org/react-infinite
+78 http 304 https://registry.npmjs.org/react-infinite
+79 verbose headers { date: 'Sun, 24 Apr 2016 05:17:34 GMT',
+79 verbose headers   via: '1.1 varnish',
+79 verbose headers   'cache-control': 'max-age=300',
+79 verbose headers   etag: '"BKUWJ6SQJAPGNZ7B3PYQQ60ZR"',
+79 verbose headers   age: '49',
+79 verbose headers   connection: 'keep-alive',
+79 verbose headers   'x-served-by': 'cache-atl6244-ATL',
+79 verbose headers   'x-cache': 'HIT',
+79 verbose headers   'x-cache-hits': '1',
+79 verbose headers   'x-timer': 'S1461475054.208751,VS0,VE0',
+79 verbose headers   vary: 'Accept-Encoding' }
+80 silly get cb [ 304,
+80 silly get   { date: 'Sun, 24 Apr 2016 05:17:34 GMT',
+80 silly get     via: '1.1 varnish',
+80 silly get     'cache-control': 'max-age=300',
+80 silly get     etag: '"BKUWJ6SQJAPGNZ7B3PYQQ60ZR"',
+80 silly get     age: '49',
+80 silly get     connection: 'keep-alive',
+80 silly get     'x-served-by': 'cache-atl6244-ATL',
+80 silly get     'x-cache': 'HIT',
+80 silly get     'x-cache-hits': '1',
+80 silly get     'x-timer': 'S1461475054.208751,VS0,VE0',
+80 silly get     vary: 'Accept-Encoding' } ]
+81 verbose etag https://registry.npmjs.org/react-infinite from cache
+82 verbose get saving react-infinite to C:\Users\jamie\AppData\Roaming\npm-cache\registry.npmjs.org\react-infinite\.cache.json
+83 silly addNameTag next cb for react-infinite with tag latest
+84 silly addNamed react-infinite@0.9.2
+85 verbose addNamed "0.9.2" is a plain semver version for react-infinite
+86 silly cache afterAdd react-infinite@0.9.2
+87 verbose afterAdd C:\Users\jamie\AppData\Roaming\npm-cache\react-infinite\0.9.2\package\package.json not in flight; writing
+88 verbose afterAdd C:\Users\jamie\AppData\Roaming\npm-cache\react-infinite\0.9.2\package\package.json written
+89 silly install resolved [ { name: 'react-infinite',
+89 silly install resolved     version: '0.9.2',
+89 silly install resolved     description: 'A browser-ready efficient scrolling container based on UITableView',
+89 silly install resolved     main: 'build/react-infinite.js',
+89 silly install resolved     repository:
+89 silly install resolved      { type: 'git',
+89 silly install resolved        url: 'git+https://github.com/seatgeek/react-infinite.git' },
+89 silly install resolved     keywords:
+89 silly install resolved      [ 'react',
+89 silly install resolved        'react-component',
+89 silly install resolved        'scrolling',
+89 silly install resolved        'uitableview',
+89 silly install resolved        'infinite' ],
+89 silly install resolved     author: { name: 'Gareth Tan' },
+89 silly install resolved     license: 'BSD-3-Clause',
+89 silly install resolved     bugs: { url: 'https://github.com/seatgeek/react-infinite/issues' },
+89 silly install resolved     browser: 'build/react-infinite.js',
+89 silly install resolved     scripts:
+89 silly install resolved      { test: 'node ./node_modules/.bin/jest',
+89 silly install resolved        lint: 'eslint ./src --ext .jsx --ext .js',
+89 silly install resolved        fix: 'eslint --fix --ext .jsx --ext .js ./src ./__tests__ ./pipeline',
+89 silly install resolved        typecheck: 'flow check',
+89 silly install resolved        verify: 'npm test && npm run typecheck && npm run lint',
+89 silly install resolved        preversion: 'npm run verify',
+89 silly install resolved        prepublish: 'gulp release' },
+89 silly install resolved     jest:
+89 silly install resolved      { scriptPreprocessor: '<rootDir>/node_modules/babel-jest',
+89 silly install resolved        testPathDirs: [Object],
+89 silly install resolved        testPathIgnorePatterns: [Object],
+89 silly install resolved        testFileExtensions: [Object],
+89 silly install resolved        unmockedModulePathPatterns: [Object],
+89 silly install resolved        collectCoverage: true,
+89 silly install resolved        verbose: true },
+89 silly install resolved     homepage: 'https://github.com/seatgeek/react-infinite',
+89 silly install resolved     devDependencies:
+89 silly install resolved      { 'babel-eslint': '^4.0.7',
+89 silly install resolved        'babel-jest': '^5.3.0',
+89 silly install resolved        babelify: '^6.3.0',
+89 silly install resolved        browserify: '^9.0.3',
+89 silly install resolved        coveralls: '^2.11.2',
+89 silly install resolved        del: '2.0.2',
+89 silly install resolved        envify: '3.4.0',
+89 silly install resolved        eslint: '1.9.0',
+89 silly install resolved        'eslint-config-semistandard': '^5.0.0',
+89 silly install resolved        'eslint-config-standard': '^4.1.0',
+89 silly install resolved        'eslint-plugin-react': '^3.2.3',
+89 silly install resolved        'eslint-plugin-standard': '^1.2.0',
+89 silly install resolved        'flow-bin': '0.22.0',
+89 silly install resolved        gulp: '^3.8.8',
+89 silly install resolved        'gulp-babel': '^5.2.1',
+89 silly install resolved        'gulp-concat': '^2.4.3',
+89 silly install resolved        'gulp-size': '^2.0.0',
+89 silly install resolved        'gulp-sourcemaps': '^1.2.4',
+89 silly install resolved        'gulp-uglify': '^1.0.1',
+89 silly install resolved        'gulp-webserver': '^0.9.1',
+89 silly install resolved        'jest-cli': '0.4.19',
+89 silly install resolved        moment: '^2.10.6',
+89 silly install resolved        'react-addons-test-utils': '^15.0.0',
+89 silly install resolved        uglifyify: '3.0.1',
+89 silly install resolved        'vinyl-buffer': '^1.0.0',
+89 silly install resolved        'vinyl-source-stream': '^1.0.0',
+89 silly install resolved        watch: '^0.16.0',
+89 silly install resolved        watchify: '^3.4.0',
+89 silly install resolved        yargs: '^1.3.2' },
+89 silly install resolved     dependencies:
+89 silly install resolved      { 'lodash.isarray': '3.0.4',
+89 silly install resolved        'lodash.isfinite': '3.2.0',
+89 silly install resolved        'object-assign': '4.0.1' },
+89 silly install resolved     peerDependencies: { react: '^15.0.0', 'react-dom': '^15.0.0' },
+89 silly install resolved     browserify: { transform: [Object] },
+89 silly install resolved     gitHead: '66d3bd59261ef4ddcc6a2a766d239e0d7b05cb4b',
+89 silly install resolved     _id: 'react-infinite@0.9.2',
+89 silly install resolved     _shasum: 'c407d8f18b465f4ff70ecb6d16f6a5513f59a43b',
+89 silly install resolved     _from: 'react-infinite@latest',
+89 silly install resolved     _npmVersion: '2.15.2',
+89 silly install resolved     _nodeVersion: '0.10.40',
+89 silly install resolved     _npmUser: { name: 'garetht', email: 'garethwtan@gmail.com' },
+89 silly install resolved     dist:
+89 silly install resolved      { shasum: 'c407d8f18b465f4ff70ecb6d16f6a5513f59a43b',
+89 silly install resolved        tarball: 'https://registry.npmjs.org/react-infinite/-/react-infinite-0.9.2.tgz' },
+89 silly install resolved     maintainers: [ [Object] ],
+89 silly install resolved     _npmOperationalInternal:
+89 silly install resolved      { host: 'packages-12-west.internal.npmjs.com',
+89 silly install resolved        tmp: 'tmp/react-infinite-0.9.2.tgz_1461339700531_0.6584162784274668' },
+89 silly install resolved     directories: {},
+89 silly install resolved     _resolved: 'https://registry.npmjs.org/react-infinite/-/react-infinite-0.9.2.tgz',
+89 silly install resolved     readme: 'ERROR: No README data found!' } ]
+90 info install react-infinite@0.9.2 into C:\Users\jamie\OneDrive\Documents\GitHub\thesis
+91 info installOne react-infinite@0.9.2
+92 verbose installOne of react-infinite to C:\Users\jamie\OneDrive\Documents\GitHub\thesis not in flight; installing
+93 verbose lock using C:\Users\jamie\AppData\Roaming\npm-cache\_locks\react-infinite-619184a9122e5110.lock for C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite
+94 silly install write writing react-infinite 0.9.2 to C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite
+95 verbose unbuild node_modules\react-infinite
+96 silly gentlyRm C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite is being purged from base C:\Users\jamie\OneDrive\Documents\GitHub\thesis
+97 verbose gentlyRm don't care about contents; nuking C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite
+98 verbose tar unpack C:\Users\jamie\AppData\Roaming\npm-cache\react-infinite\0.9.2\package.tgz
+99 verbose tar unpacking to C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite
+100 silly gentlyRm C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite is being purged
+101 verbose gentlyRm don't care about contents; nuking C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite
+102 silly gunzTarPerm modes [ '777', '666' ]
+103 silly gunzTarPerm extractEntry package.json
+104 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+105 silly gunzTarPerm extractEntry .npmignore
+106 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+107 silly gunzTarPerm extractEntry README.md
+108 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+109 silly gunzTarPerm extractEntry Gulpfile.js
+110 silly gunzTarPerm modified mode [ 'Gulpfile.js', 420, 438 ]
+111 silly gunzTarPerm extractEntry .travis.yml
+112 silly gunzTarPerm modified mode [ '.travis.yml', 420, 438 ]
+113 silly gunzTarPerm extractEntry .eslintrc
+114 silly gunzTarPerm modified mode [ '.eslintrc', 420, 438 ]
+115 silly gunzTarPerm extractEntry LICENSE.txt
+116 silly gunzTarPerm modified mode [ 'LICENSE.txt', 420, 438 ]
+117 silly gunzTarPerm extractEntry .flowconfig
+118 silly gunzTarPerm modified mode [ '.flowconfig', 420, 438 ]
+119 silly gunzTarPerm extractEntry __tests__/array_infinite_computer_test.js
+120 silly gunzTarPerm modified mode [ '__tests__/array_infinite_computer_test.js', 420, 438 ]
+121 silly gunzTarPerm extractEntry __tests__/binary_search_test.js
+122 silly gunzTarPerm modified mode [ '__tests__/binary_search_test.js', 420, 438 ]
+123 silly gunzTarPerm extractEntry __tests__/bottom_upwards_infinite_test.js
+124 silly gunzTarPerm modified mode [ '__tests__/bottom_upwards_infinite_test.js', 420, 438 ]
+125 silly gunzTarPerm extractEntry __tests__/constant_infinite_computer_test.js
+126 silly gunzTarPerm modified mode [ '__tests__/constant_infinite_computer_test.js', 420, 438 ]
+127 silly gunzTarPerm extractEntry __tests__/infinite_error_test.js
+128 silly gunzTarPerm modified mode [ '__tests__/infinite_error_test.js', 420, 438 ]
+129 silly gunzTarPerm extractEntry __tests__/infinite_styles_test.js
+130 silly gunzTarPerm modified mode [ '__tests__/infinite_styles_test.js', 420, 438 ]
+131 silly gunzTarPerm extractEntry __tests__/infinite_test.js
+132 silly gunzTarPerm modified mode [ '__tests__/infinite_test.js', 420, 438 ]
+133 silly gunzTarPerm extractEntry __tests__/helpers/renderHelpers.js
+134 silly gunzTarPerm modified mode [ '__tests__/helpers/renderHelpers.js', 420, 438 ]
+135 silly gunzTarPerm extractEntry bower.json
+136 silly gunzTarPerm modified mode [ 'bower.json', 420, 438 ]
+137 silly gunzTarPerm extractEntry .coveralls.yml
+138 silly gunzTarPerm modified mode [ '.coveralls.yml', 420, 438 ]
+139 silly gunzTarPerm extractEntry build/react-infinite.js
+140 silly gunzTarPerm modified mode [ 'build/react-infinite.js', 420, 438 ]
+141 silly gunzTarPerm extractEntry build/computers/arrayInfiniteComputer.js
+142 silly gunzTarPerm modified mode [ 'build/computers/arrayInfiniteComputer.js', 420, 438 ]
+143 silly gunzTarPerm extractEntry build/computers/constantInfiniteComputer.js
+144 silly gunzTarPerm modified mode [ 'build/computers/constantInfiniteComputer.js', 420, 438 ]
+145 silly gunzTarPerm extractEntry build/computers/infiniteComputer.js
+146 silly gunzTarPerm modified mode [ 'build/computers/infiniteComputer.js', 420, 438 ]
+147 silly gunzTarPerm extractEntry build/utils/binaryIndexSearch.js
+148 silly gunzTarPerm modified mode [ 'build/utils/binaryIndexSearch.js', 420, 438 ]
+149 silly gunzTarPerm extractEntry build/utils/checkProps.js
+150 silly gunzTarPerm modified mode [ 'build/utils/checkProps.js', 420, 438 ]
+151 silly gunzTarPerm extractEntry build/utils/establish-polyfills.js
+152 silly gunzTarPerm modified mode [ 'build/utils/establish-polyfills.js', 420, 438 ]
+153 silly gunzTarPerm extractEntry build/utils/infiniteHelpers.js
+154 silly gunzTarPerm modified mode [ 'build/utils/infiniteHelpers.js', 420, 438 ]
+155 silly gunzTarPerm extractEntry build/utils/scaleEnum.js
+156 silly gunzTarPerm modified mode [ 'build/utils/scaleEnum.js', 420, 438 ]
+157 silly gunzTarPerm extractEntry build/utils/types.js
+158 silly gunzTarPerm modified mode [ 'build/utils/types.js', 420, 438 ]
+159 silly gunzTarPerm extractEntry config/travis/test.sh
+160 silly gunzTarPerm modified mode [ 'config/travis/test.sh', 493, 511 ]
+161 silly gunzTarPerm extractEntry dist/react-infinite.js
+162 silly gunzTarPerm modified mode [ 'dist/react-infinite.js', 420, 438 ]
+163 silly gunzTarPerm extractEntry dist/react-infinite.min.js
+164 silly gunzTarPerm modified mode [ 'dist/react-infinite.min.js', 420, 438 ]
+165 silly gunzTarPerm extractEntry docs/developing.md
+166 silly gunzTarPerm modified mode [ 'docs/developing.md', 420, 438 ]
+167 silly gunzTarPerm extractEntry examples/borderless-window.html
+168 silly gunzTarPerm modified mode [ 'examples/borderless-window.html', 420, 438 ]
+169 silly gunzTarPerm extractEntry examples/borderless-window.jsx
+170 silly gunzTarPerm modified mode [ 'examples/borderless-window.jsx', 420, 438 ]
+171 silly gunzTarPerm extractEntry examples/chat.html
+172 silly gunzTarPerm modified mode [ 'examples/chat.html', 420, 438 ]
+173 silly gunzTarPerm extractEntry examples/chat.jsx
+174 silly gunzTarPerm modified mode [ 'examples/chat.jsx', 420, 438 ]
+175 silly gunzTarPerm extractEntry examples/example.html
+176 silly gunzTarPerm modified mode [ 'examples/example.html', 420, 438 ]
+177 silly gunzTarPerm extractEntry examples/index.jsx
+178 silly gunzTarPerm modified mode [ 'examples/index.jsx', 420, 438 ]
+179 silly gunzTarPerm extractEntry examples/window.html
+180 silly gunzTarPerm modified mode [ 'examples/window.html', 420, 438 ]
+181 silly gunzTarPerm extractEntry examples/window.jsx
+182 silly gunzTarPerm modified mode [ 'examples/window.jsx', 420, 438 ]
+183 silly gunzTarPerm extractEntry src/computers/arrayInfiniteComputer.js
+184 silly gunzTarPerm modified mode [ 'src/computers/arrayInfiniteComputer.js', 420, 438 ]
+185 silly gunzTarPerm extractEntry src/computers/constantInfiniteComputer.js
+186 silly gunzTarPerm modified mode [ 'src/computers/constantInfiniteComputer.js', 420, 438 ]
+187 silly gunzTarPerm extractEntry src/computers/infiniteComputer.js
+188 silly gunzTarPerm modified mode [ 'src/computers/infiniteComputer.js', 420, 438 ]
+189 silly gunzTarPerm extractEntry src/react-infinite.jsx
+190 silly gunzTarPerm modified mode [ 'src/react-infinite.jsx', 420, 438 ]
+191 silly gunzTarPerm extractEntry src/utils/binaryIndexSearch.js
+192 silly gunzTarPerm modified mode [ 'src/utils/binaryIndexSearch.js', 420, 438 ]
+193 silly gunzTarPerm extractEntry src/utils/checkProps.js
+194 silly gunzTarPerm modified mode [ 'src/utils/checkProps.js', 420, 438 ]
+195 silly gunzTarPerm extractEntry src/utils/establish-polyfills.js
+196 silly gunzTarPerm modified mode [ 'src/utils/establish-polyfills.js', 420, 438 ]
+197 silly gunzTarPerm extractEntry src/utils/infiniteHelpers.js
+198 silly gunzTarPerm modified mode [ 'src/utils/infiniteHelpers.js', 420, 438 ]
+199 silly gunzTarPerm extractEntry src/utils/scaleEnum.js
+200 silly gunzTarPerm modified mode [ 'src/utils/scaleEnum.js', 420, 438 ]
+201 silly gunzTarPerm extractEntry src/utils/types.js
+202 silly gunzTarPerm modified mode [ 'src/utils/types.js', 420, 438 ]
+203 silly gunzTarPerm extractEntry pipeline/browserify.js
+204 silly gunzTarPerm modified mode [ 'pipeline/browserify.js', 420, 438 ]
+205 silly gunzTarPerm extractEntry typelib/component/infinite_computer_types.js
+206 silly gunzTarPerm modified mode [ 'typelib/component/infinite_computer_types.js', 420, 438 ]
+207 silly gunzTarPerm extractEntry typelib/component/react_infinite_types.js
+208 silly gunzTarPerm modified mode [ 'typelib/component/react_infinite_types.js', 420, 438 ]
+209 verbose write writing to C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\package.json
+210 info preinstall react-infinite@0.9.2
+211 verbose readDependencies loading dependencies from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\package.json
+212 silly prepareForInstallMany adding lodash.isarray@3.0.4 from react-infinite dependencies
+213 silly prepareForInstallMany adding lodash.isfinite@3.2.0 from react-infinite dependencies
+214 silly prepareForInstallMany adding object-assign@4.0.1 from react-infinite dependencies
+215 silly prepareForInstallMany adding react@^15.0.0 from react-infinite peerDependencies
+216 silly prepareForInstallMany adding react-dom@^15.0.0 from react-infinite peerDependencies
+217 warn peerDependencies The peer dependency react@^15.0.0 included from react-infinite will no
+218 warn peerDependencies longer be automatically installed to fulfill the peerDependency
+219 warn peerDependencies in npm 3+. Your application will need to depend on it explicitly.
+220 warn peerDependencies The peer dependency react-dom@^15.0.0 included from react-infinite will no
+221 warn peerDependencies longer be automatically installed to fulfill the peerDependency
+222 warn peerDependencies in npm 3+. Your application will need to depend on it explicitly.
+223 verbose readDependencies loading dependencies from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\package.json
+224 silly cache add args [ 'object-assign@4.0.1', null ]
+225 verbose cache add spec object-assign@4.0.1
+226 silly cache add parsed spec Result {
+226 silly cache add   raw: 'object-assign@4.0.1',
+226 silly cache add   scope: null,
+226 silly cache add   name: 'object-assign',
+226 silly cache add   rawSpec: '4.0.1',
+226 silly cache add   spec: '4.0.1',
+226 silly cache add   type: 'version' }
+227 silly addNamed object-assign@4.0.1
+228 verbose addNamed "4.0.1" is a plain semver version for object-assign
+229 silly mapToRegistry name object-assign
+230 silly mapToRegistry using default registry
+231 silly mapToRegistry registry https://registry.npmjs.org/
+232 silly mapToRegistry uri https://registry.npmjs.org/object-assign
+233 verbose addNameVersion registry:https://registry.npmjs.org/object-assign not in flight; fetching
+234 silly cache add args [ 'lodash.isarray@3.0.4', null ]
+235 verbose cache add spec lodash.isarray@3.0.4
+236 silly cache add parsed spec Result {
+236 silly cache add   raw: 'lodash.isarray@3.0.4',
+236 silly cache add   scope: null,
+236 silly cache add   name: 'lodash.isarray',
+236 silly cache add   rawSpec: '3.0.4',
+236 silly cache add   spec: '3.0.4',
+236 silly cache add   type: 'version' }
+237 silly addNamed lodash.isarray@3.0.4
+238 verbose addNamed "3.0.4" is a plain semver version for lodash.isarray
+239 silly mapToRegistry name lodash.isarray
+240 silly mapToRegistry using default registry
+241 silly mapToRegistry registry https://registry.npmjs.org/
+242 silly mapToRegistry uri https://registry.npmjs.org/lodash.isarray
+243 verbose addNameVersion registry:https://registry.npmjs.org/lodash.isarray not in flight; fetching
+244 silly cache add args [ 'lodash.isfinite@3.2.0', null ]
+245 verbose cache add spec lodash.isfinite@3.2.0
+246 silly cache add parsed spec Result {
+246 silly cache add   raw: 'lodash.isfinite@3.2.0',
+246 silly cache add   scope: null,
+246 silly cache add   name: 'lodash.isfinite',
+246 silly cache add   rawSpec: '3.2.0',
+246 silly cache add   spec: '3.2.0',
+246 silly cache add   type: 'version' }
+247 silly addNamed lodash.isfinite@3.2.0
+248 verbose addNamed "3.2.0" is a plain semver version for lodash.isfinite
+249 silly mapToRegistry name lodash.isfinite
+250 silly mapToRegistry using default registry
+251 silly mapToRegistry registry https://registry.npmjs.org/
+252 silly mapToRegistry uri https://registry.npmjs.org/lodash.isfinite
+253 verbose addNameVersion registry:https://registry.npmjs.org/lodash.isfinite not in flight; fetching
+254 verbose request uri https://registry.npmjs.org/lodash.isfinite
+255 verbose request no auth needed
+256 info attempt registry request try #1 at 12:17:34 AM
+257 verbose etag "3B4B3YZOOYVK8TS4R62I29PGD"
+258 http request GET https://registry.npmjs.org/lodash.isfinite
+259 verbose request uri https://registry.npmjs.org/lodash.isarray
+260 verbose request no auth needed
+261 info attempt registry request try #1 at 12:17:34 AM
+262 verbose etag "DD13L05CGB0BXKMJO8EVTLF3F"
+263 http request GET https://registry.npmjs.org/lodash.isarray
+264 verbose request uri https://registry.npmjs.org/object-assign
+265 verbose request no auth needed
+266 info attempt registry request try #1 at 12:17:34 AM
+267 verbose etag "3UHJXUFD8C949HWJZEDVTENTY"
+268 http request GET https://registry.npmjs.org/object-assign
+269 http 304 https://registry.npmjs.org/lodash.isfinite
+270 verbose headers { date: 'Sun, 24 Apr 2016 05:17:34 GMT',
+270 verbose headers   via: '1.1 varnish',
+270 verbose headers   'cache-control': 'max-age=300',
+270 verbose headers   etag: '"3B4B3YZOOYVK8TS4R62I29PGD"',
+270 verbose headers   age: '37',
+270 verbose headers   connection: 'keep-alive',
+270 verbose headers   'x-served-by': 'cache-atl6228-ATL',
+270 verbose headers   'x-cache': 'HIT',
+270 verbose headers   'x-cache-hits': '1',
+270 verbose headers   'x-timer': 'S1461475054.914100,VS0,VE0',
+270 verbose headers   vary: 'Accept-Encoding' }
+271 silly get cb [ 304,
+271 silly get   { date: 'Sun, 24 Apr 2016 05:17:34 GMT',
+271 silly get     via: '1.1 varnish',
+271 silly get     'cache-control': 'max-age=300',
+271 silly get     etag: '"3B4B3YZOOYVK8TS4R62I29PGD"',
+271 silly get     age: '37',
+271 silly get     connection: 'keep-alive',
+271 silly get     'x-served-by': 'cache-atl6228-ATL',
+271 silly get     'x-cache': 'HIT',
+271 silly get     'x-cache-hits': '1',
+271 silly get     'x-timer': 'S1461475054.914100,VS0,VE0',
+271 silly get     vary: 'Accept-Encoding' } ]
+272 verbose etag https://registry.npmjs.org/lodash.isfinite from cache
+273 verbose get saving lodash.isfinite to C:\Users\jamie\AppData\Roaming\npm-cache\registry.npmjs.org\lodash.isfinite\.cache.json
+274 http 304 https://registry.npmjs.org/lodash.isarray
+275 verbose headers { date: 'Sun, 24 Apr 2016 05:17:34 GMT',
+275 verbose headers   via: '1.1 varnish',
+275 verbose headers   'cache-control': 'max-age=300',
+275 verbose headers   etag: '"DD13L05CGB0BXKMJO8EVTLF3F"',
+275 verbose headers   age: '289',
+275 verbose headers   connection: 'keep-alive',
+275 verbose headers   'x-served-by': 'cache-atl6242-ATL',
+275 verbose headers   'x-cache': 'HIT',
+275 verbose headers   'x-cache-hits': '3',
+275 verbose headers   'x-timer': 'S1461475054.921084,VS0,VE0',
+275 verbose headers   vary: 'Accept-Encoding' }
+276 silly get cb [ 304,
+276 silly get   { date: 'Sun, 24 Apr 2016 05:17:34 GMT',
+276 silly get     via: '1.1 varnish',
+276 silly get     'cache-control': 'max-age=300',
+276 silly get     etag: '"DD13L05CGB0BXKMJO8EVTLF3F"',
+276 silly get     age: '289',
+276 silly get     connection: 'keep-alive',
+276 silly get     'x-served-by': 'cache-atl6242-ATL',
+276 silly get     'x-cache': 'HIT',
+276 silly get     'x-cache-hits': '3',
+276 silly get     'x-timer': 'S1461475054.921084,VS0,VE0',
+276 silly get     vary: 'Accept-Encoding' } ]
+277 verbose etag https://registry.npmjs.org/lodash.isarray from cache
+278 verbose get saving lodash.isarray to C:\Users\jamie\AppData\Roaming\npm-cache\registry.npmjs.org\lodash.isarray\.cache.json
+279 http 304 https://registry.npmjs.org/object-assign
+280 verbose headers { date: 'Sun, 24 Apr 2016 05:17:34 GMT',
+280 verbose headers   via: '1.1 varnish',
+280 verbose headers   'cache-control': 'max-age=300',
+280 verbose headers   etag: '"3UHJXUFD8C949HWJZEDVTENTY"',
+280 verbose headers   age: '160',
+280 verbose headers   connection: 'keep-alive',
+280 verbose headers   'x-served-by': 'cache-atl6243-ATL',
+280 verbose headers   'x-cache': 'HIT',
+280 verbose headers   'x-cache-hits': '3',
+280 verbose headers   'x-timer': 'S1461475054.923142,VS0,VE0',
+280 verbose headers   vary: 'Accept-Encoding' }
+281 silly get cb [ 304,
+281 silly get   { date: 'Sun, 24 Apr 2016 05:17:34 GMT',
+281 silly get     via: '1.1 varnish',
+281 silly get     'cache-control': 'max-age=300',
+281 silly get     etag: '"3UHJXUFD8C949HWJZEDVTENTY"',
+281 silly get     age: '160',
+281 silly get     connection: 'keep-alive',
+281 silly get     'x-served-by': 'cache-atl6243-ATL',
+281 silly get     'x-cache': 'HIT',
+281 silly get     'x-cache-hits': '3',
+281 silly get     'x-timer': 'S1461475054.923142,VS0,VE0',
+281 silly get     vary: 'Accept-Encoding' } ]
+282 verbose etag https://registry.npmjs.org/object-assign from cache
+283 verbose get saving object-assign to C:\Users\jamie\AppData\Roaming\npm-cache\registry.npmjs.org\object-assign\.cache.json
+284 silly cache afterAdd lodash.isfinite@3.2.0
+285 verbose afterAdd C:\Users\jamie\AppData\Roaming\npm-cache\lodash.isfinite\3.2.0\package\package.json not in flight; writing
+286 silly cache afterAdd lodash.isarray@3.0.4
+287 verbose afterAdd C:\Users\jamie\AppData\Roaming\npm-cache\lodash.isarray\3.0.4\package\package.json not in flight; writing
+288 verbose afterAdd C:\Users\jamie\AppData\Roaming\npm-cache\lodash.isfinite\3.2.0\package\package.json written
+289 verbose afterAdd C:\Users\jamie\AppData\Roaming\npm-cache\lodash.isarray\3.0.4\package\package.json written
+290 silly cache afterAdd object-assign@4.0.1
+291 verbose afterAdd C:\Users\jamie\AppData\Roaming\npm-cache\object-assign\4.0.1\package\package.json not in flight; writing
+292 verbose afterAdd C:\Users\jamie\AppData\Roaming\npm-cache\object-assign\4.0.1\package\package.json written
+293 silly install resolved [ { name: 'lodash.isfinite',
+293 silly install resolved     version: '3.2.0',
+293 silly install resolved     description: 'The modern build of lodash’s `_.isFinite` as a module.',
+293 silly install resolved     homepage: 'https://lodash.com/',
+293 silly install resolved     icon: 'https://lodash.com/icon.svg',
+293 silly install resolved     license: 'MIT',
+293 silly install resolved     keywords: [ 'lodash', 'lodash-modularized', 'stdlib', 'util' ],
+293 silly install resolved     author:
+293 silly install resolved      { name: 'John-David Dalton',
+293 silly install resolved        email: 'john.david.dalton@gmail.com',
+293 silly install resolved        url: 'http://allyoucanleet.com/' },
+293 silly install resolved     contributors: [ [Object], [Object], [Object], [Object], [Object] ],
+293 silly install resolved     repository: { type: 'git', url: 'git+https://github.com/lodash/lodash.git' },
+293 silly install resolved     scripts: { test: 'echo "See https://travis-ci.org/lodash/lodash-cli for testing details."' },
+293 silly install resolved     bugs: { url: 'https://github.com/lodash/lodash/issues' },
+293 silly install resolved     _id: 'lodash.isfinite@3.2.0',
+293 silly install resolved     _shasum: 'aa69ffb93a37e82fab0ce18862655f9174ced339',
+293 silly install resolved     _from: 'lodash.isfinite@3.2.0',
+293 silly install resolved     _npmVersion: '2.12.0',
+293 silly install resolved     _nodeVersion: '0.12.5',
+293 silly install resolved     _npmUser: { name: 'jdalton', email: 'john.david.dalton@gmail.com' },
+293 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object] ],
+293 silly install resolved     dist:
+293 silly install resolved      { shasum: 'aa69ffb93a37e82fab0ce18862655f9174ced339',
+293 silly install resolved        tarball: 'https://registry.npmjs.org/lodash.isfinite/-/lodash.isfinite-3.2.0.tgz' },
+293 silly install resolved     directories: {},
+293 silly install resolved     _resolved: 'https://registry.npmjs.org/lodash.isfinite/-/lodash.isfinite-3.2.0.tgz',
+293 silly install resolved     readme: 'ERROR: No README data found!' },
+293 silly install resolved   { name: 'lodash.isarray',
+293 silly install resolved     version: '3.0.4',
+293 silly install resolved     description: 'The modern build of lodash’s `_.isArray` as a module.',
+293 silly install resolved     homepage: 'https://lodash.com/',
+293 silly install resolved     icon: 'https://lodash.com/icon.svg',
+293 silly install resolved     license: 'MIT',
+293 silly install resolved     keywords: [ 'lodash', 'lodash-modularized', 'stdlib', 'util' ],
+293 silly install resolved     author:
+293 silly install resolved      { name: 'John-David Dalton',
+293 silly install resolved        email: 'john.david.dalton@gmail.com',
+293 silly install resolved        url: 'http://allyoucanleet.com/' },
+293 silly install resolved     contributors: [ [Object], [Object], [Object], [Object], [Object] ],
+293 silly install resolved     repository: { type: 'git', url: 'git+https://github.com/lodash/lodash.git' },
+293 silly install resolved     scripts: { test: 'echo "See https://travis-ci.org/lodash/lodash-cli for testing details."' },
+293 silly install resolved     bugs: { url: 'https://github.com/lodash/lodash/issues' },
+293 silly install resolved     _id: 'lodash.isarray@3.0.4',
+293 silly install resolved     _shasum: '79e4eb88c36a8122af86f844aa9bcd851b5fbb55',
+293 silly install resolved     _from: 'lodash.isarray@3.0.4',
+293 silly install resolved     _npmVersion: '2.12.0',
+293 silly install resolved     _nodeVersion: '0.12.5',
+293 silly install resolved     _npmUser: { name: 'jdalton', email: 'john.david.dalton@gmail.com' },
+293 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object] ],
+293 silly install resolved     dist:
+293 silly install resolved      { shasum: '79e4eb88c36a8122af86f844aa9bcd851b5fbb55',
+293 silly install resolved        tarball: 'http://registry.npmjs.org/lodash.isarray/-/lodash.isarray-3.0.4.tgz' },
+293 silly install resolved     directories: {},
+293 silly install resolved     _resolved: 'https://registry.npmjs.org/lodash.isarray/-/lodash.isarray-3.0.4.tgz',
+293 silly install resolved     readme: 'ERROR: No README data found!' },
+293 silly install resolved   { name: 'object-assign',
+293 silly install resolved     version: '4.0.1',
+293 silly install resolved     description: 'ES6 Object.assign() ponyfill',
+293 silly install resolved     license: 'MIT',
+293 silly install resolved     repository:
+293 silly install resolved      { type: 'git',
+293 silly install resolved        url: 'git+https://github.com/sindresorhus/object-assign.git' },
+293 silly install resolved     author:
+293 silly install resolved      { name: 'Sindre Sorhus',
+293 silly install resolved        email: 'sindresorhus@gmail.com',
+293 silly install resolved        url: 'http://sindresorhus.com' },
+293 silly install resolved     engines: { node: '>=0.10.0' },
+293 silly install resolved     scripts: { test: 'xo && mocha', bench: 'matcha bench.js' },
+293 silly install resolved     files: [ 'index.js' ],
+293 silly install resolved     keywords:
+293 silly install resolved      [ 'object',
+293 silly install resolved        'assign',
+293 silly install resolved        'extend',
+293 silly install resolved        'properties',
+293 silly install resolved        'es6',
+293 silly install resolved        'ecmascript',
+293 silly install resolved        'harmony',
+293 silly install resolved        'ponyfill',
+293 silly install resolved        'prollyfill',
+293 silly install resolved        'polyfill',
+293 silly install resolved        'shim',
+293 silly install resolved        'browser' ],
+293 silly install resolved     devDependencies: { lodash: '^3.10.1', matcha: '^0.6.0', mocha: '*', xo: '*' },
+293 silly install resolved     xo: { envs: [Object] },
+293 silly install resolved     gitHead: 'b0c40d37cbc43e89ad3326a9bad4c6b3133ba6d3',
+293 silly install resolved     bugs: { url: 'https://github.com/sindresorhus/object-assign/issues' },
+293 silly install resolved     homepage: 'https://github.com/sindresorhus/object-assign#readme',
+293 silly install resolved     _id: 'object-assign@4.0.1',
+293 silly install resolved     _shasum: '99504456c3598b5cad4fc59c26e8a9bb107fe0bd',
+293 silly install resolved     _from: 'object-assign@4.0.1',
+293 silly install resolved     _npmVersion: '2.13.3',
+293 silly install resolved     _nodeVersion: '3.0.0',
+293 silly install resolved     _npmUser: { name: 'sindresorhus', email: 'sindresorhus@gmail.com' },
+293 silly install resolved     dist:
+293 silly install resolved      { shasum: '99504456c3598b5cad4fc59c26e8a9bb107fe0bd',
+293 silly install resolved        tarball: 'https://registry.npmjs.org/object-assign/-/object-assign-4.0.1.tgz' },
+293 silly install resolved     maintainers: [ [Object] ],
+293 silly install resolved     directories: {},
+293 silly install resolved     _resolved: 'https://registry.npmjs.org/object-assign/-/object-assign-4.0.1.tgz',
+293 silly install resolved     readme: 'ERROR: No README data found!' } ]
+294 info install lodash.isfinite@3.2.0 into C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite
+295 info install lodash.isarray@3.0.4 into C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite
+296 info install object-assign@4.0.1 into C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite
+297 info installOne lodash.isfinite@3.2.0
+298 verbose installOne of lodash.isfinite to C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite not in flight; installing
+299 info installOne lodash.isarray@3.0.4
+300 verbose installOne of lodash.isarray to C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite not in flight; installing
+301 info installOne object-assign@4.0.1
+302 verbose installOne of object-assign to C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite not in flight; installing
+303 verbose lock using C:\Users\jamie\AppData\Roaming\npm-cache\_locks\lodash-isfinite-ca72e2ecf6ea0947.lock for C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isfinite
+304 verbose lock using C:\Users\jamie\AppData\Roaming\npm-cache\_locks\lodash-isarray-4b9e32d388aae4e6.lock for C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isarray
+305 silly install write writing lodash.isfinite 3.2.0 to C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isfinite
+306 silly install write writing lodash.isarray 3.0.4 to C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isarray
+307 verbose lock using C:\Users\jamie\AppData\Roaming\npm-cache\_locks\object-assign-dd79d3822f086981.lock for C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\object-assign
+308 silly install write writing object-assign 4.0.1 to C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\object-assign
+309 verbose unbuild node_modules\react-infinite\node_modules\lodash.isfinite
+310 verbose unbuild node_modules\react-infinite\node_modules\lodash.isarray
+311 silly gentlyRm C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isfinite is being purged from base C:\Users\jamie\OneDrive\Documents\GitHub\thesis
+312 verbose gentlyRm don't care about contents; nuking C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isfinite
+313 silly gentlyRm C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isarray is being purged from base C:\Users\jamie\OneDrive\Documents\GitHub\thesis
+314 verbose gentlyRm don't care about contents; nuking C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isarray
+315 verbose unbuild node_modules\react-infinite\node_modules\object-assign
+316 verbose tar unpack C:\Users\jamie\AppData\Roaming\npm-cache\lodash.isfinite\3.2.0\package.tgz
+317 verbose tar unpacking to C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isfinite
+318 silly gentlyRm C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isfinite is being purged
+319 verbose gentlyRm don't care about contents; nuking C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isfinite
+320 verbose tar unpack C:\Users\jamie\AppData\Roaming\npm-cache\lodash.isarray\3.0.4\package.tgz
+321 verbose tar unpacking to C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isarray
+322 silly gentlyRm C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isarray is being purged
+323 verbose gentlyRm don't care about contents; nuking C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isarray
+324 silly gunzTarPerm modes [ '777', '666' ]
+325 silly gunzTarPerm modes [ '777', '666' ]
+326 silly gentlyRm C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\object-assign is being purged from base C:\Users\jamie\OneDrive\Documents\GitHub\thesis
+327 verbose gentlyRm don't care about contents; nuking C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\object-assign
+328 verbose tar unpack C:\Users\jamie\AppData\Roaming\npm-cache\object-assign\4.0.1\package.tgz
+329 verbose tar unpacking to C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\object-assign
+330 silly gentlyRm C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\object-assign is being purged
+331 verbose gentlyRm don't care about contents; nuking C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\object-assign
+332 silly gunzTarPerm modes [ '777', '666' ]
+333 silly gunzTarPerm extractEntry package.json
+334 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+335 silly gunzTarPerm extractEntry package.json
+336 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+337 silly gunzTarPerm extractEntry package.json
+338 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+339 silly gunzTarPerm extractEntry README.md
+340 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+341 silly gunzTarPerm extractEntry LICENSE
+342 silly gunzTarPerm modified mode [ 'LICENSE', 420, 438 ]
+343 silly gunzTarPerm extractEntry README.md
+344 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+345 silly gunzTarPerm extractEntry LICENSE
+346 silly gunzTarPerm modified mode [ 'LICENSE', 420, 438 ]
+347 silly gunzTarPerm extractEntry index.js
+348 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+349 silly gunzTarPerm extractEntry license
+350 silly gunzTarPerm modified mode [ 'license', 420, 438 ]
+351 silly gunzTarPerm extractEntry index.js
+352 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+353 silly gunzTarPerm extractEntry index.js
+354 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+355 silly gunzTarPerm extractEntry readme.md
+356 silly gunzTarPerm modified mode [ 'readme.md', 420, 438 ]
+357 verbose write writing to C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isfinite\package.json
+358 verbose write writing to C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\object-assign\package.json
+359 info preinstall lodash.isfinite@3.2.0
+360 verbose readDependencies loading dependencies from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isfinite\package.json
+361 verbose write writing to C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isarray\package.json
+362 info preinstall object-assign@4.0.1
+363 verbose readDependencies loading dependencies from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isfinite\package.json
+364 verbose readDependencies loading dependencies from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\object-assign\package.json
+365 silly install resolved []
+366 verbose about to build C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isfinite
+367 info build C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isfinite
+368 verbose readDependencies loading dependencies from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\object-assign\package.json
+369 info preinstall lodash.isarray@3.0.4
+370 info linkStuff lodash.isfinite@3.2.0
+371 silly linkStuff lodash.isfinite@3.2.0 has C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules as its parent node_modules
+372 verbose readDependencies loading dependencies from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isarray\package.json
+373 silly install resolved []
+374 verbose about to build C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\object-assign
+375 info build C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\object-assign
+376 info linkStuff object-assign@4.0.1
+377 silly linkStuff object-assign@4.0.1 has C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules as its parent node_modules
+378 verbose readDependencies loading dependencies from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isarray\package.json
+379 verbose linkBins lodash.isfinite@3.2.0
+380 verbose linkMans lodash.isfinite@3.2.0
+381 verbose rebuildBundles lodash.isfinite@3.2.0
+382 info install lodash.isfinite@3.2.0
+383 silly install resolved []
+384 verbose about to build C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isarray
+385 info build C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isarray
+386 info postinstall lodash.isfinite@3.2.0
+387 verbose linkBins object-assign@4.0.1
+388 verbose linkMans object-assign@4.0.1
+389 verbose rebuildBundles object-assign@4.0.1
+390 verbose unlock done using C:\Users\jamie\AppData\Roaming\npm-cache\_locks\lodash-isfinite-ca72e2ecf6ea0947.lock for C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isfinite
+391 info linkStuff lodash.isarray@3.0.4
+392 silly linkStuff lodash.isarray@3.0.4 has C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules as its parent node_modules
+393 info install object-assign@4.0.1
+394 info postinstall object-assign@4.0.1
+395 verbose linkBins lodash.isarray@3.0.4
+396 verbose linkMans lodash.isarray@3.0.4
+397 verbose rebuildBundles lodash.isarray@3.0.4
+398 verbose unlock done using C:\Users\jamie\AppData\Roaming\npm-cache\_locks\object-assign-dd79d3822f086981.lock for C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\object-assign
+399 info install lodash.isarray@3.0.4
+400 info postinstall lodash.isarray@3.0.4
+401 verbose unlock done using C:\Users\jamie\AppData\Roaming\npm-cache\_locks\lodash-isarray-4b9e32d388aae4e6.lock for C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\node_modules\lodash.isarray
+402 verbose about to build C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite
+403 info build C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite
+404 info linkStuff react-infinite@0.9.2
+405 silly linkStuff react-infinite@0.9.2 has C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules as its parent node_modules
+406 verbose linkBins react-infinite@0.9.2
+407 verbose linkMans react-infinite@0.9.2
+408 verbose rebuildBundles react-infinite@0.9.2
+409 verbose rebuildBundles [ 'lodash.isarray', 'lodash.isfinite', 'object-assign' ]
+410 info install react-infinite@0.9.2
+411 info postinstall react-infinite@0.9.2
+412 verbose readDependencies loading dependencies from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\package.json
+413 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\babel-core\package.json
+414 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\babel-loader\package.json
+415 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\babel-plugin-add-module-exports\package.json
+416 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\babel-plugin-react-html-attrs\package.json
+417 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\babel-plugin-transform-class-properties\package.json
+418 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\babel-plugin-transform-decorators-legacy\package.json
+419 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\babel-preset-es2015\package.json
+420 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\babel-preset-react\package.json
+421 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\babel-preset-stage-0\package.json
+422 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\bcrypt-nodejs\package.json
+423 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\body-parser\package.json
+424 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\bower\package.json
+425 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\chai\package.json
+426 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\classnames\package.json
+427 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\cookie-parser\package.json
+428 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\crypto\package.json
+429 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\express\package.json
+430 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\express-mysql-session\package.json
+431 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\express-react-views\package.json
+432 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\express-session\package.json
+433 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\fs\package.json
+434 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\history\package.json
+435 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\istanbul\package.json
+436 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\lodash\package.json
+437 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\mocha\package.json
+438 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\mockery\package.json
+439 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\morgan\package.json
+440 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\multer\package.json
+441 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\passport-google-oauth\package.json
+442 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\pg\package.json
+443 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react\package.json
+444 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-chatview\package.json
+445 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-cookie\package.json
+446 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-dom\package.json
+447 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite\package.json
+448 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-router\package.json
+449 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-scrollbar\package.json
+450 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-socket\package.json
+451 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\sequelize\package.json
+452 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\sequelize-cli\package.json
+453 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\session-file-store\package.json
+454 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\sinon\package.json
+455 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\socket.io\package.json
+456 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\supertest\package.json
+457 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\underscore\package.json
+458 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\uuid\package.json
+459 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\webpack\package.json
+460 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\.bin\bower\package.json
+461 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\.bin\bower.cmd\package.json
+462 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\.bin\db-migrate\package.json
+463 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\.bin\db-migrate.cmd\package.json
+464 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\.bin\istanbul\package.json
+465 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\.bin\istanbul.cmd\package.json
+466 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\.bin\mocha\package.json
+467 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\.bin\mocha.cmd\package.json
+468 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\.bin\sequelize\package.json
+469 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\.bin\sequelize.cmd\package.json
+470 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\.bin\webpack\package.json
+471 verbose targetResolver reading package data from C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\.bin\webpack.cmd\package.json
+472 verbose already installed skipping react@^15.0.0 C:\Users\jamie\OneDrive\Documents\GitHub\thesis
+473 verbose already installed skipping react-dom@^15.0.0 C:\Users\jamie\OneDrive\Documents\GitHub\thesis
+474 silly install resolved []
+475 verbose unlock done using C:\Users\jamie\AppData\Roaming\npm-cache\_locks\react-infinite-619184a9122e5110.lock for C:\Users\jamie\OneDrive\Documents\GitHub\thesis\node_modules\react-infinite
+476 verbose validateInstall loading C:\Users\jamie\OneDrive\Documents\GitHub\thesis\package.json for validation
+477 verbose stack Error: The package react@0.14.8 does not satisfy its siblings' peerDependencies requirements!
+477 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\install.js:125:32
+477 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\install.js:268:7
+477 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:142:5
+477 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+477 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+477 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+477 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+477 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+477 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+477 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+478 verbose cwd C:\Users\jamie\OneDrive\Documents\GitHub\thesis
+479 error Windows_NT 10.0.10586
+480 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "--save" "react-infinite"
+481 error node v4.3.2
+482 error npm  v2.14.12
+483 error code EPEERINVALID
+484 error peerinvalid The package react@0.14.8 does not satisfy its siblings' peerDependencies requirements!
+484 error peerinvalid Peer react-motion@0.3.1 wants react@>=0.13.2 || ^0.14
+485 verbose exit [ 1, true ]

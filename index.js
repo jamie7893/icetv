@@ -89,12 +89,13 @@ io.on('connection', function(socket) {
         venue = data.venue;
     });
     socket.on('joinedChat', function(data) {
+          var chatroomSocket = setInterval(function() {
         UserChat.findOne({
             where: {
                 idUser: data.idUser
             }
         }).then(function(foundUser) {
-            var chatroomSocket = setInterval(function() {
+
                 // get  messages
                 Chat.findAll({
                     where: {
@@ -143,6 +144,7 @@ io.on('connection', function(socket) {
                         });
                     });
                 });
+              });
             }, 1000);
 
             var callback = (stream) => {
@@ -177,7 +179,7 @@ io.on('connection', function(socket) {
                 });
             });
 
-        });
+
 
     });
 });

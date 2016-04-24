@@ -3,7 +3,7 @@ import cookie from 'react-cookie';
 import Message from './Message';
 import User from './User';
 import ReactDOM from 'react-dom';
-import ScrollArea from 'react-scrollbar';
+import Infinite from 'react-infinite';
 import {hashHistory} from 'react-router';
 
 var socket = io();
@@ -14,11 +14,10 @@ var Chat = React.createClass({
       users: [],
       messages: [],
       message: "",
-      venue: {}
+      venue: {},
+      newMSG: 1,
+      sinceScroll: 0
     }
-  },
-  componentDidUpdate: function() {
-
   },
   _sendMsg(e) {
     e.preventDefault();
@@ -42,15 +41,27 @@ var Chat = React.createClass({
     })
   },
   componentDidMount() {
-      var component = this;
+    var component = this;
     socket.on('messages', function(data) {
-        if(component.isMounted()) {
-      component.setState({
-        messages: data.messages,
-        idChat: data.idChat,
-        users: data.users,
-        venue: data.venue
-      });
+      var doc = document.getElementById('chat');
+      if(component.isMounted()) {
+        if(data.messages.length !== component.state.messages.length && doc.scrollTop === (doc.scrollHeight - doc.offsetHeight)) {
+        component.setState({
+          newMSG: 1
+        });
+      } else if(component.state.newMSG === 1){
+        component.setState({
+          newMSG: 0
+        });
+      }
+      if(data.messages.length !== component.state.messages.length) {
+        component.setState({
+          messages: data.messages,
+          idChat: data.idChat,
+          users: data.users,
+          venue: data.venue
+        });
+      }
     }
     });
 
@@ -60,70 +71,84 @@ var Chat = React.createClass({
     socket.emit('joinedChat', {
       idUser: cookie.load('id')
     });
-
   },
-  recreateNode(el, withChildren) {
-  if (withChildren) {
-    el.parentNode.replaceChild(el.cloneNode(true), el);
-  } else {
-    var newEl = el.cloneNode(false);
-    while (el.hasChildNodes()) newEl.appendChild(el.firstChild);
-    el.parentNode.replaceChild(newEl, el);
-  }
-},
+
+  _handleScroll() {
+    // set current time of last scrollTop
+    var time = new Date().getTime();
+    this.setState({
+      sinceScroll: new Date().getTime() / 1000 * 60
+    });
+  },
+  componentDidUpdate() {
+    if(this.state.newMSG === 1) {
+      document.getElementById('chat').scrollTop = document.getElementById('chat').scrollHeight;
+    }
+  },
 
   componentWillUnmount() {
     var component = this;
     if (this.state.users.length === 1) {
-    socket.emit('destroyChat', {
-      idChat: this.state.idChat
-    });
-  } else {
-    socket.emit('leaveChat', {
-      idUser: cookie.load('id')
-    });
-  }
-  component.forceUpdate();
+      socket.emit('destroyChat', {
+        idChat: this.state.idChat
+      });
+    } else {
+      socket.emit('leaveChat', {
+        idUser: cookie.load('id')
+      });
+    }
+    component.forceUpdate();
     socket.removeListener();
   },
 
   render() {
-console.log(hashHistory);
     return (
       <div>
+
 
 
         <div>
 
 
+
           <img />
+
 
 
         </div>
 
 
+
         <div class="container">
+
 
 
           <div class="row " >
 
 
+
             <h3 class="text-center">
+
 
               {this.state.venue.name}
             </h3>
 
 
+
             <br />
 
 
+
             <br />
+
 
 
             <div class="col-md-8">
 
 
+
               <div class="panel panel-info">
+
 
 
                 <div class="panel-heading">
@@ -132,19 +157,19 @@ console.log(hashHistory);
 
 
 
-                <ScrollArea
-             speed={0.8}
-             className="chatBox"
-             contentClassName="content"
-             horizontal={false}
-             >
-                    { this.state.messages.map((message) => {
-                      return (
-                        <Message ref="msg" message={message} key={message.id}/>
-                      );
-                    })}
 
-                </ScrollArea>
+                <div id="chat" class="chatBox" onScroll={this._handleScroll}>
+
+                  { this.state.messages.map((message) => {
+                    return (
+                      <Message
+                        message={message}
+                        key={message.id}/>
+                    );
+                  })}
+
+                </div>
+
 
 
 
@@ -153,10 +178,13 @@ console.log(hashHistory);
                 <div class="panel-footer">
 
 
+
                   <form >
 
 
+
                     <div class="input-group">
+
 
 
 
@@ -168,7 +196,9 @@ console.log(hashHistory);
                         placeholder="Enter Message" />
 
 
+
                       <span class="input-group-btn">
+
 
 
                         <button
@@ -177,28 +207,37 @@ console.log(hashHistory);
                           type="submit">SEND</button>
 
 
+
                       </span>
+
 
 
                     </div>
 
 
+
                   </form>
+
 
 
                 </div>
 
 
+
               </div>
+
 
 
             </div>
 
 
+
             <div class="col-md-4">
 
 
+
               <div class="panel panel-primary">
+
 
 
                 <div class="panel-heading">
@@ -206,10 +245,13 @@ console.log(hashHistory);
                 </div>
 
 
+
                 <div class="panel-body">
 
 
+
                   <ul class="media-list">
+
 
 
                     { this.state.users.map((user) => {
@@ -221,27 +263,35 @@ console.log(hashHistory);
                   </ul>
 
 
+
                 </div>
+
 
 
               </div>
 
 
 
+
             </div>
+
 
 
           </div>
 
 
+
         </div>
+
 
 
         <div>
 
 
 
+
         </div>
+
 
 
       </div>

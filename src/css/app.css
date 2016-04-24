@@ -20,7 +20,10 @@
   .chatBox {
       margin-left: 20px;
       margin-top: 20px;
-      height: 540px;
+      height: 550px;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
   }
   .online {
       color: green;
