@@ -58,13 +58,13 @@ var Form = React.createClass({
 
       $.ajax({
         type: "POST",
-        url: 'http://localhost:1738/signup',
+        url: '/signup',
         data: newUser,
         success: function(info) {
-          console.log(info);
+          hashHistory.push('/profile');
         }
       });
-      console.log('yep');
+
     } else {
       this.refs.email.isValid();
       this.refs.nameFirst.isValid();

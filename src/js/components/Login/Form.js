@@ -35,14 +35,14 @@ var Form = React.createClass({
 
       $.ajax({
         type: "POST",
-        url: 'http://localhost:1738/login',
+        url: window.location.hostname + '/login',
         data: checkUser,
         success: function(info) {
-          console.log(info);
+      hashHistory.push('/profile');
         }
       });
-      hashHistory.push('/profile');
-      console.log('yep');
+
+
     } else {
       this.refs.email.isValid();
       this.refs.password.isValid();
