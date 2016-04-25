@@ -7,8 +7,8 @@ const express = require('express'),
     path = require('path'),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
-    https = require('https').Server(app),
-    io = require('socket.io')(https),
+    http = require('http').Server(app),
+    io = require('socket.io')(http),
     multer = require('multer'),
     Sequelize = require('sequelize'),
     bcrypt = require('bcrypt-nodejs'),
@@ -79,6 +79,11 @@ var Chat = sequelize.import('./model/chatroom.js'),
     UserChat = sequelize.import('./model/userchatroomjct.js'),
     Creds = sequelize.import('./model/credentials.js');
 
+io.configure(function() {
+    io.set("transports", ["xhr-polling"]);
+    io.set("polling duration", 10);
+});
+
 io.on('connection', function(socket) {
     console.log('a user connected');
     socket.on('disconnect', function() {
@@ -90,12 +95,12 @@ io.on('connection', function(socket) {
         venue = data.venue;
     });
     socket.on('joinedChat', function(data) {
-          var chatroomSocket = setInterval(function() {
-        UserChat.findOne({
-            where: {
-                idUser: data.idUser
-            }
-        }).then(function(foundUser) {
+        var chatroomSocket = setInterval(function() {
+            UserChat.findOne({
+                where: {
+                    idUser: data.idUser
+                }
+            }).then(function(foundUser) {
 
                 // get  messages
                 Chat.findAll({
@@ -145,40 +150,40 @@ io.on('connection', function(socket) {
                         });
                     });
                 });
-              });
-            }, 1000);
+            });
+        }, 1000);
 
-            var callback = (stream) => {
-  console.log('someone disconnected!');
-};
+        var callback = (stream) => {
+            console.log('someone disconnected!');
+        };
 
-            socket.on('leaveChat', function(data) {
-                  console.log(data);
-                clearInterval(chatroomSocket);
+        socket.on('leaveChat', function(data) {
+            console.log(data);
+            clearInterval(chatroomSocket);
 
+            UserChat.destroy({
+                where: {
+                    idUser: data.idUser
+                }
+            });
+        });
+
+        socket.on('destroyChat', function(data) {
+
+            clearInterval(chatroomSocket);
+            Chat.destroy({
+                where: {
+                    idChatroom: data.idChat
+                }
+            }).then(function(deletedChat) {
                 UserChat.destroy({
                     where: {
                         idUser: data.idUser
                     }
                 });
+
             });
-
-            socket.on('destroyChat', function(data) {
-
-                clearInterval(chatroomSocket);
-                Chat.destroy({
-                    where: {
-                        idChatroom: data.idChat
-                    }
-                }).then(function(deletedChat) {
-                    UserChat.destroy({
-                        where: {
-                            idUser: data.idUser
-                        }
-                    });
-
-                });
-            });
+        });
 
 
 
@@ -205,7 +210,7 @@ sequelize.sync().then(function(res) {
     //     var addr = server.address();
     //     console.log("Server listening at", addr.address + ":" + addr.port);
     // });
-    server = https.listen(process.env.PORT || 1738, process.env.IP || "0.0.0.0", function() {
+    server = http.listen(process.env.PORT || 1738, process.env.IP || "0.0.0.0", function() {
         var addr = server.address();
         console.log("Server listening at", addr.address + ":" + addr.port);
 
