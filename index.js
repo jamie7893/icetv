@@ -69,6 +69,9 @@ const sequelize = new Sequelize('postgres://uzjeoebhaoxwuk:IVuScu6q96OjaUvc_fJBb
 // const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
 
 
+
+
+
 // require userService files
 // example
 // const colorsService = require("./service/colors")(sequelize);
