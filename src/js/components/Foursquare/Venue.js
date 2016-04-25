@@ -6,6 +6,9 @@ var socket = io('http://localhost:1738');
 var Venue = React.createClass({
 
   _joinChat: function() {
+    if(!cookie.load('id')) {
+      hashHistory.push('/login');
+    } else {
     var joinChat = {
       idChat: this.props.venue.id,
       idUser: cookie.load('id')
@@ -22,6 +25,7 @@ var Venue = React.createClass({
     socket.emit('venue', {
       venue: this.props.venue
     });
+  }
   },
 
     render: function() {

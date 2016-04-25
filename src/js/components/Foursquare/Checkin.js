@@ -1,6 +1,7 @@
 import React from "react";
 import Venue from "./Venue.js";
-
+import {hashHistory} from 'react-router';
+import cookie from 'react-cookie';
 
 var Checkin = React.createClass({
 
@@ -13,6 +14,9 @@ var Checkin = React.createClass({
   },
 
   componentWillMount() {
+    if (!cookie.load('id')) {
+       hashHistory.push('/login');
+    } else {
     var location = navigator.geolocation.watchPosition(({coords: {latitude, longitude}}) =>
       $.ajax({
         type: 'GET',
@@ -34,14 +38,13 @@ var Checkin = React.createClass({
            this.setState({
              "location": location
            });
+         }
   },
 
 componentWillUnmount() {
   navigator.geolocation.clearWatch(this.state.location);
 },
   render: function() {
-    console.log(this.state);
-
     return (
       <div class="foursq">
 

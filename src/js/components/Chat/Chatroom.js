@@ -3,7 +3,6 @@ import cookie from 'react-cookie';
 import Message from './Message';
 import User from './User';
 import ReactDOM from 'react-dom';
-import Infinite from 'react-infinite';
 import {hashHistory} from 'react-router';
 
 var socket = io();
@@ -20,6 +19,7 @@ var Chat = React.createClass({
     }
   },
   _sendMsg(e) {
+    if(cookie.load('id')) {
     e.preventDefault();
     $.ajax({
       type: 'POST',
@@ -33,6 +33,9 @@ var Chat = React.createClass({
     this.setState({
       message: ""
     });
+  } else {
+    hashHistory.push('/login');
+  }
   },
 
   _handleMsgInput(e) {
@@ -45,6 +48,7 @@ var Chat = React.createClass({
     socket.on('messages', function(data) {
       var doc = document.getElementById('chat');
       if(component.isMounted()) {
+
         if(data.messages.length !== component.state.messages.length && doc.scrollTop === (doc.scrollHeight - doc.offsetHeight)) {
         component.setState({
           newMSG: 1
@@ -54,6 +58,7 @@ var Chat = React.createClass({
           newMSG: 0
         });
       }
+
       if(data.messages.length !== component.state.messages.length) {
         component.setState({
           messages: data.messages,
@@ -67,10 +72,14 @@ var Chat = React.createClass({
 
   },
   componentWillMount() {
+    if(!cookie.load('id')) {
+       hashHistory.push('/login');
+    } else {
     var component = this;
     socket.emit('joinedChat', {
       idUser: cookie.load('id')
     });
+  }
   },
 
   _handleScroll() {
