@@ -19,7 +19,6 @@ var Form = React.createClass({
 
   saveAndContinue: function (e) {
     e.preventDefault();
-    console.log(this.refs.password.isValid());
     var canProceed = this.validateEmail(this.state.email)
     && this.refs.password.isValid()
 
@@ -35,7 +34,7 @@ var Form = React.createClass({
 
       $.ajax({
         type: "POST",
-        url: window.location.hostname + '/login',
+        url: '/login',
         data: checkUser,
         success: function(info) {
       hashHistory.push('/profile');

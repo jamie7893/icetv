@@ -1,6 +1,7 @@
 import React from 'react';
 import  _ from 'lodash';
 import Input from './Input.js';
+import {hashHistory} from 'react-router';
 
 var Form = React.createClass({
   getInitialState: function () {
@@ -32,7 +33,6 @@ var Form = React.createClass({
 
   saveAndContinue: function (e) {
     e.preventDefault();
-    console.log(this.refs.password.isValid());
     var canProceed = this.validateEmail(this.state.email)
     && !_.isEmpty(this.state.nameFirst)
     && !_.isEmpty(this.state.nameLast)
