@@ -22,14 +22,12 @@ var Checkin = React.createClass({
         type: 'GET',
         url: `https://api.foursquare.com/v2/venues/explore/?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=${latitude},${longitude}&radius=100`,
       }).then(({response: {groups}}) => {
-        console.log(groups);
           const venues = groups[0].items
                         .map(x => x.venue)
                         .filter(v => v.id);
           this.setState({venues, latitude, longitude})
       }),
       function error(msg) {
-               console.log(msg);
            }, {
              frequency: 2 * 60 * 1000,
              timeout : 2.5 * 60 * 1000,
