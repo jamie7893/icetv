@@ -79,10 +79,6 @@ var Chat = sequelize.import('./model/chatroom.js'),
     UserChat = sequelize.import('./model/userchatroomjct.js'),
     Creds = sequelize.import('./model/credentials.js');
 
-io.configure(function() {
-    io.set("transports", ["xhr-polling"]);
-    io.set("polling duration", 10);
-});
 
 io.on('connection', function(socket) {
     console.log('a user connected');
@@ -140,7 +136,7 @@ io.on('connection', function(socket) {
                         }); // end map
                         Promise.all(gettingMSG).then(function(msgs) {
                             Promise.all(gettingUsers).then(function(users) {
-                                socket.emit('messages', {
+                                  socket.emit('messages', {
                                     'messages': msgs,
                                     'idChat': foundUser.idChatroom,
                                     'users': users,
