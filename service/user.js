@@ -150,7 +150,7 @@ module.exports = function(sequelize) {
               res.cookie("id", user.dataValues.id, {
                 expires: date
               });
-              res.send(200);
+              res.sendStatus(200);
             });
           }
         });
@@ -158,8 +158,7 @@ module.exports = function(sequelize) {
     },
     logout: function(req, res) {
       req.session.destroy();
-      res.clearCookie();
-      res.send(200);
+      res.clearCookie('id').redirect('/');
     }
   };
 };

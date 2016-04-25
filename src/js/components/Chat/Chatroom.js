@@ -58,7 +58,7 @@ var Chat = React.createClass({
           newMSG: 0
         });
       }
-  if(data.messages.length !== component.state.messages.length) {
+  if(data.messages.length !== component.state.messages.length || !component.state.users[0]) {
         component.setState({
           messages: data.messages,
           idChat: data.idChat,
@@ -71,6 +71,7 @@ var Chat = React.createClass({
 
   },
   componentWillMount() {
+    this.forceUpdate();
     if(!cookie.load('id')) {
        hashHistory.push('/login');
     } else {
@@ -110,6 +111,7 @@ var Chat = React.createClass({
   },
 
   render() {
+    console.log(this.state);
     return (
       <div>
 

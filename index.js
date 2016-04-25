@@ -32,6 +32,7 @@ var sess = {
     saveUnitialized: true,
     resave: true,
     store: new FileStore(),
+    saveUninitialized: true,
     cookie: {
         secure: false
     }
@@ -62,10 +63,10 @@ module.exports.close = function() {
 };
 // sequelize initialization //
 // for heroku
-const sequelize = new Sequelize('postgres://uzjeoebhaoxwuk:IVuScu6q96OjaUvc_fJBb8GVJl@ec2-54-163-254-231.compute-1.amazonaws.com:5432/denten10cruhtj');
+// const sequelize = new Sequelize('postgres://uzjeoebhaoxwuk:IVuScu6q96OjaUvc_fJBb8GVJl@ec2-54-163-254-231.compute-1.amazonaws.com:5432/denten10cruhtj');
 // for local
 
-// const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
+const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
 
 
 // require userService files
@@ -92,16 +93,16 @@ io.on('connection', function(socket) {
     });
     socket.on('joinedChat', function(data) {
         var chatroomSocket = setInterval(function() {
-            UserChat.findOne({
+            User.findOne({
                 where: {
-                    idUser: data.idUser
+                    id: data.idUser
                 }
             }).then(function(foundUser) {
 
                 // get  messages
                 Chat.findAll({
                     where: {
-                        idChatroom: foundUser.idChatroom
+                        idChatroom: foundUser.lastChatJoined
                     }
                 }).then(function(messages) {
                     var gettingMSG = _.map(messages, function(message) {
@@ -119,7 +120,7 @@ io.on('connection', function(socket) {
 
                     UserChat.findAll({
                         where: {
-                            idChatroom: foundUser.idChatroom
+                            idChatroom: foundUser.lastChatJoined
                         }
                     }).then(function(chatroomUsers) {
                         var gettingUsers = _.map(chatroomUsers, function(chatroomUser) {
@@ -136,9 +137,9 @@ io.on('connection', function(socket) {
                         }); // end map
                         Promise.all(gettingMSG).then(function(msgs) {
                             Promise.all(gettingUsers).then(function(users) {
-                                  socket.emit('messages', {
+                                socket.emit('messages', {
                                     'messages': msgs,
-                                    'idChat': foundUser.idChatroom,
+                                    'idChat': foundUser.lastChatJoined,
                                     'users': users,
                                     'venue': venue
                                 });

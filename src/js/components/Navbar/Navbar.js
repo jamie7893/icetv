@@ -27,7 +27,7 @@ var Navbar = React.createClass({
                 <a href="#/profile" >Profile</a>
               </li>
               <li>
-                <a  href="#/login" >Logout</a>
+                <a  href="/logout" >Logout</a>
               </li>
             </ul>
           </div>

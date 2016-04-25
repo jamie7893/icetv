@@ -30,6 +30,15 @@ module.exports = function(sequelize) {
       join: function(req, res) {
         var user = req.body.idUser;
         var chatroom = req.body.idChat;
+
+        var addChat = {
+          lastChatJoined: chatroom
+        };
+        User.update(addChat, {
+          where: {
+            id: user
+          }
+        });
         userChatJct.findOne({
           where: {
             idUser: user
@@ -49,7 +58,7 @@ module.exports = function(sequelize) {
             userChatJct.create(newChat);
           }
         });
-        res.send(200);
+        res.sendStatus(200);
       },
 
       createMSG: function(req, res) {
@@ -59,7 +68,7 @@ module.exports = function(sequelize) {
           idSender: parseInt(req.body.userId)
         };
         Chat.create(newMSG).then(function(theMSG) {
-          res.send(200);
+          res.sendStatus(200);
         });
       },
       getMSG: function(req, res) {

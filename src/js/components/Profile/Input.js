@@ -40,7 +40,6 @@ var Input = React.createClass({
   },
 
   handleChange: function(event){
-    console.log(event);
     this.setState({
       value: event.target.value,
       empty: _.isEmpty(event.target.value)

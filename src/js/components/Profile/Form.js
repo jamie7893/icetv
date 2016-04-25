@@ -1,6 +1,8 @@
 import React from 'react';
 import  _ from 'lodash';
 import Input from './Input.js';
+import {hashHistory} from 'react-router';
+import cookie from 'react-cookie';
 
 var Form = React.createClass({
   getInitialState: function () {
@@ -13,6 +15,7 @@ var Form = React.createClass({
   },
 
   saveAndContinue: function (e) {
+        if(cookie.load('id')) {
     e.preventDefault();
     var canProceed = !_.isEmpty(this.state.nameFirst)
     && !_.isEmpty(this.state.nameLast)
@@ -44,9 +47,12 @@ var Form = React.createClass({
         url: '/updateprofile',
         data: checkUser,
         success: function(info) {
-
+          hashHistory.push('/checkin')
         }
       });
+    } else {
+      hashHistory.push('/login');
+    }
 
     } else {
       this.refs.nameFirst.isValid();
