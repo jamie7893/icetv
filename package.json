@@ -4,12 +4,11 @@
   "description": "thesis project",
   "main": "index.js",
   "engines": {
-  "node": "4.1.1"
+  "node": "4.3.2"
 },
   "scripts": {
     "test": "istanbul cover node_modules/mocha/bin/_mocha -- test/ -R spec",
-    "start": "node index.js",
-    "postinstall": "bower install"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
