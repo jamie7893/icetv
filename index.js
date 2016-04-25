@@ -8,7 +8,7 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
     http = require('http').Server(app),
-    io = require('socket.io')(http),
+    io = require('socket.io')(https),
     multer = require('multer'),
     Sequelize = require('sequelize'),
     bcrypt = require('bcrypt-nodejs'),
@@ -66,6 +66,7 @@ const sequelize = new Sequelize('postgres://uzjeoebhaoxwuk:IVuScu6q96OjaUvc_fJBb
 // for local
 
 // const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
+
 
 // require userService files
 // example
@@ -204,7 +205,7 @@ sequelize.sync().then(function(res) {
     //     var addr = server.address();
     //     console.log("Server listening at", addr.address + ":" + addr.port);
     // });
-    server = http.listen(process.env.PORT, process.env.IP, function() {
+    server = https.listen(process.env.PORT || 1738, process.env.IP || "0.0.0.0", function() {
         var addr = server.address();
         console.log("Server listening at", addr.address + ":" + addr.port);
 
