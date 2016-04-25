@@ -5,24 +5,24 @@
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('privateMessages', {
     idMessage: {
-      type: DataTypes.INTEGER(10),
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
     messageType: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     idUserSender: {
-      type: DataTypes.INTEGER(10),
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     idUserReceiver: {
-      type: DataTypes.INTEGER(10),
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     messageStatus: {
-      type: DataTypes.INTEGER(1),
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     messages: {

@@ -3,15 +3,15 @@
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('chatroom', {
     idChatroom: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     message: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     idSender: {
-      type: DataTypes.INTEGER(10),
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   }, {

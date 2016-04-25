@@ -3,11 +3,11 @@
 module.exports = function(sequelize, DataTypes){
 	return sequelize.define('userChatroomJct', {
 		idUser: {
-			type: DataTypes.INTEGER(10),
+			type: DataTypes.INTEGER,
 			allowNull: false
 		},
 		idChatroom: {
-			type: DataTypes.STRING,
+			type: DataTypes.TEXT,
 			allowNull: false
 		}
 	},{

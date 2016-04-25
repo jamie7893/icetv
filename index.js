@@ -34,7 +34,8 @@ var sess = {
     store: new FileStore(),
     cookie: {
         secure: false
-    }
+    },
+    saveUninitialized: true
 };
 
 if (app.get('env') === 'production') {
