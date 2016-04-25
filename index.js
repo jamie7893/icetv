@@ -66,10 +66,6 @@ const sequelize = new Sequelize('postgres://uzjeoebhaoxwuk:IVuScu6q96OjaUvc_fJBb
 // for local
 
 // const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
-<<<<<<< HEAD
-
-=======
->>>>>>> b7105ad3c574496855fedb96e75cb4b8e76c5cb4
 
 // require userService files
 // example
