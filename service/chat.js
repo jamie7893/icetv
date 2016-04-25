@@ -28,8 +28,8 @@ module.exports = function(sequelize) {
 
     return {
       join: function(req, res) {
-        var user = req.body.idSender;
-        var chatroom = req.body.id;
+        var user = req.body.idUser;
+        var chatroom = req.body.idChat;
         userChatJct.findOne({
           where: {
             idUser: user
