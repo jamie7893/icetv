@@ -5,7 +5,7 @@ import User from './User';
 import ReactDOM from 'react-dom';
 import {hashHistory} from 'react-router';
 
-var socket = io.connect(window.location.hostname);
+var socket = io();
 var Chat = React.createClass({
   getInitialState() {
     return {
