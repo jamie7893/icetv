@@ -5,7 +5,7 @@ import User from './User';
 import ReactDOM from 'react-dom';
 import {hashHistory} from 'react-router';
 
-var socket = io();
+var socket = io("https://thesis-react.herokuapp.com/");
 var Chat = React.createClass({
   getInitialState() {
     return {
