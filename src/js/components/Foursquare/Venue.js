@@ -2,7 +2,7 @@ import React from 'react';
 import cookie from 'react-cookie';
 import {hashHistory} from 'react-router';
 
-var socket = io('http://localhost:1738');
+var socket = io(window.location.hostname);
 var Venue = React.createClass({
 
   _joinChat: function() {
