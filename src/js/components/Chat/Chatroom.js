@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import {hashHistory} from 'react-router';
 
 var socket = io();
+
 var Chat = React.createClass({
   getInitialState() {
     return {
@@ -82,6 +83,7 @@ var Chat = React.createClass({
   }
   },
 
+
   _handleScroll() {
     // set current time of last scrollTop
     var time = new Date().getTime();
@@ -93,6 +95,13 @@ var Chat = React.createClass({
     if(this.state.newMSG === 1) {
       document.getElementById('chat').scrollTop = document.getElementById('chat').scrollHeight;
     }
+  },
+
+  _handleEmoji(e) {
+    console.log(e);
+    this.setState({
+      message: this.state.message + ' ' + e.shortname
+    });
   },
 
   componentWillUnmount() {
@@ -111,7 +120,7 @@ var Chat = React.createClass({
   },
 
   render() {
-    console.log(this.state);
+
     return (
       <div>
 
@@ -205,8 +214,6 @@ var Chat = React.createClass({
                         onChange={this._handleMsgInput}
                         placeholder="Enter Message" />
 
-
-
                       <span class="input-group-btn">
 
 
@@ -219,6 +226,7 @@ var Chat = React.createClass({
 
 
                       </span>
+
 
 
 

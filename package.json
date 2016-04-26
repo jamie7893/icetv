@@ -4,8 +4,8 @@
   "description": "thesis project",
   "main": "index.js",
   "engines": {
-  "node": "4.3.2"
-},
+    "node": "4.3.2"
+  },
   "scripts": {
     "test": "istanbul cover node_modules/mocha/bin/_mocha -- test/ -R spec",
     "start": "node index.js"
@@ -20,12 +20,6 @@
     "url": "https://github.com/jamie7893/thesis/issues"
   },
   "homepage": "https://github.com/jamie7893/thesis#readme",
-  "peerDependencies": {
-    "react": "0.14.*",
-    "express-react-views": "^0.10.1",
-    "react-dom": "0.14.*",
-    "classnames": "^2.2.3"
-  },
   "devDependencies": {
     "chai": "^3.5.0",
     "istanbul": "^0.4.2",
@@ -46,9 +40,12 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.0",
     "bower": "1.7.9",
+    "classnames": "^2.2.3",
     "cookie-parser": "^1.4.1",
     "crypto": "0.0.3",
+    "emojione-picker": "^0.3.6",
     "express": "^4.13.4",
+    "express-react-views": "^0.10.1",
     "express-session": "^1.13.0",
     "fs": "0.0.2",
     "history": "^1.17.0",
@@ -57,6 +54,11 @@
     "multer": "^1.1.0",
     "passport-google-oauth": "^1.0.0",
     "pg": "^4.5.3",
+    "react": "0.14.*",
+    "react-cookie": "^0.4.5",
+    "react-dom": "0.14.*",
+    "react-emoji": "^0.4.4",
+    "react-emoji-picker": "^1.0.10",
     "react-router": "^2.3.0",
     "react-scrollbar": "^0.4.1",
     "sequelize": "^3.19.3",

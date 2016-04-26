@@ -1,10 +1,12 @@
 import React from 'react';
-
+import ReactEmojiMixin from '../src/react-emoji';
 
 var Message = React.createClass({
 
 
-
+  mixins: [
+     ReactEmoji
+   ],
 
     render: function() {
 
@@ -27,7 +29,7 @@ var Message = React.createClass({
                 <div class="media-body">
 
                   <p class="chatText">
-                    {this.props.message.message}
+                    {this.emojify(this.emojify(this.props.message.message))}
                   </p>
 
                   <br />
