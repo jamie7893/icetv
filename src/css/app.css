@@ -42,12 +42,14 @@
       width: 450px;
   }
   .foursq {
-      margin-left: 500px;
+      /*margin-left: 500px;*/
   }
   .venueBox {
-      height: 300px;
-      width: 500px;
-      overflow-y: auto;
+    /* height: 300px; */
+    /* width: 500px; */
+    overflow-y: auto;
+    margin-left: 5%;
+    margin-right: 5%;
   }
   .theInput {
       margin-left: 10px;
@@ -92,15 +94,21 @@
       display: -webkit-flex;
       display: flex;
       align-content: flex-start;
-      margin-bottom: 35px;
+      /* margin-bottom: 35px; */
       flex-direction: row;
       flex-wrap: nowrap;
-      width: 941px;
-      height: auto;
-      margin-left: 23%;
-      margin-top: 100px;
-      margin-right: 00px;
+      width: 80VW;
+      height: 85VH;
+      /* max-width: 1000px; */
+      max-width: 1000px;
+      /* margin-left: 10%; */
+      /* margin-top: 10%; */
+      /* margin-right: 10%; */
       background-color: white;
+      margin-left: 10VW;
+      margin-right: 10VW;
+      margin-top: 5%;
+      min-height: 620px;
   }
   .form-profile {
       -moz-box-shadow: 3px 3px 5px 6px #ccc;
@@ -124,8 +132,9 @@
       font-size: 17px;
       font-weight: 600;
       line-height: 20px;
-      margin: 0 40px 10px;
+      margin: auto;
       text-align: center;
+      margin-bottom: 20px;
   }
   #lean_overlay {
       position: fixed;
@@ -211,6 +220,7 @@
   .btn {
       padding: 10px 20px;
       background: #F4F4F2;
+      margin-left: 15%;
   }
   .btn_red {
       background: #ED6347;

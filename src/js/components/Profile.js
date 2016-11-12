@@ -8,7 +8,7 @@ var Profile = React.createClass({
     return (
       <div>
         <Navbar />
-      <div class="form-profile">
+      <div class="formFlex">
 
 
         <Form />

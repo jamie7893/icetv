@@ -221,7 +221,7 @@ var Form = React.createClass({
               />
 
 
-            Already have a account? <a href="#/login"> Login</a>
+            <div class="already">Already have a account? <a href="#/login"> Login</a> </div>
 
       </div>
 
