@@ -1,6 +1,7 @@
 import React from 'react';
 import  _ from 'lodash';
 import Input from './Input.js';
+import {hashHistory} from 'react-router';
 
 var Form = React.createClass({
   getInitialState: function () {
@@ -44,10 +45,9 @@ var Form = React.createClass({
         url: 'http://localhost:1738/updateprofile',
         data: checkUser,
         success: function(info) {
-          console.log(info);
+        hashHistory.push('/checkin');
         }
       });
-      console.log('yep');
     } else {
       this.refs.nameFirst.isValid();
       this.refs.nameLast.isValid();

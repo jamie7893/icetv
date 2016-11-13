@@ -9,11 +9,7 @@ var Profile = React.createClass({
       <div>
         <Navbar />
       <div class="formFlex">
-
-
         <Form />
-
-
       </div>
     </div>
     );

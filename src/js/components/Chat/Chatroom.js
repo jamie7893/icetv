@@ -59,7 +59,7 @@ var Chat = React.createClass({
         });
       }
 
-      if(data.messages.length !== component.state.messages.length) {
+      if(data.messages.length !== component.state.messages.length || data.users.length !== component.state.users.length) {
         component.setState({
           messages: data.messages,
           idChat: data.idChat,

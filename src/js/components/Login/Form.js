@@ -39,10 +39,9 @@ var Form = React.createClass({
         data: checkUser,
         success: function(info) {
           console.log(info);
+          hashHistory.push('/profile');
         }
       });
-      hashHistory.push('/profile');
-      console.log('yep');
     } else {
       this.refs.email.isValid();
       this.refs.password.isValid();
