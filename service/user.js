@@ -66,7 +66,7 @@ module.exports = function(sequelize) {
                         res.cookie("id", aNewUser.id, {
                             expires: date
                         });
-                        res.send(200);
+                        res.send(aNewUser);
                     });
                 });
               }
@@ -113,7 +113,7 @@ module.exports = function(sequelize) {
                         id: user.id
                     }
                 });
-                res.redirect('/#/foursquare');
+                res.send(200);
             });
 
         },
@@ -153,7 +153,7 @@ module.exports = function(sequelize) {
                                 res.cookie("id", user.dataValues.id, {
                                     expires: date
                                 });
-                                res.send(200);
+                                res.send(user);
                             });
                         }
                     });

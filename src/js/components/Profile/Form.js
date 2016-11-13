@@ -1,10 +1,11 @@
 import React from 'react';
 import  _ from 'lodash';
 import Input from './Input.js';
-import {hashHistory} from 'react-router';
-
+import {hashHistory, Router} from 'react-router';
+  console.log(this)
 var Form = React.createClass({
   getInitialState: function () {
+    console.log(Router, hashHistory)
     return {
       gravEmail: "",
       nameFirst: "",
@@ -45,6 +46,7 @@ var Form = React.createClass({
         url: 'http://localhost:1738/updateprofile',
         data: checkUser,
         success: function(info) {
+          console.log(info)
         hashHistory.push('/checkin');
         }
       });

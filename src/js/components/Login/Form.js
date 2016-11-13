@@ -39,7 +39,11 @@ var Form = React.createClass({
         data: checkUser,
         success: function(info) {
           console.log(info);
-          hashHistory.push('/profile');
+          hashHistory.push({
+            pathname: '/profile',
+            state: {user: info}
+          });
+
         }
       });
     } else {
