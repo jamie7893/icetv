@@ -35,7 +35,7 @@ var Form = React.createClass({
 
       $.ajax({
         type: "POST",
-        url: 'http://localhost:1738/login',
+        url: '/login',
         data: checkUser,
         success: function(info) {
           console.log(info);

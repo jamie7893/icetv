@@ -59,7 +59,7 @@ var Form = React.createClass({
 
       $.ajax({
         type: "POST",
-        url: 'http://localhost:1738/signup',
+        url: '/signup',
         data: newUser,
         success: function(info) {
           console.log(info);

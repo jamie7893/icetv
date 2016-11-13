@@ -60,6 +60,7 @@
     "passport-google-oauth": "^1.0.0",
     "pg": "^4.5.3",
     "react": "^0.14.8",
+    "react-cookie": "^0.4.8",
     "react-dom": "^0.14.8",
     "react-infinite-scroll-mixin": "^0.3.0",
     "react-router": "^2.3.0",

@@ -43,7 +43,7 @@ var Form = React.createClass({
 
       $.ajax({
         type: "POST",
-        url: 'http://localhost:1738/updateprofile',
+        url: '/updateprofile',
         data: checkUser,
         success: function(info) {
           console.log(info)
