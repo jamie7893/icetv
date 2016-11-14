@@ -1275,6 +1275,7 @@ body {
     color: #D3D3D3;
     font: normal normal 100 14px/1.6 'Roboto', sans-serif;
     display: block;
+    width: 100VW;
 }
 
 .application_wrapper {
