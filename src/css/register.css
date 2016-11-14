@@ -1270,7 +1270,6 @@ table td {
 
 body {
     position: absolute;
-    height: 100%;
     -webkit-font-smoothing: subpixel-antialiased;
     background-color: rgb(0, 0, 0);
     color: #D3D3D3;
