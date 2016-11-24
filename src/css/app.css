@@ -7,6 +7,7 @@
   .panel-heading {
       background-color: #337ab7 !important;
       color: #D3D3D3 !important;
+      text-align: center;
   }
 
   .default-btn {
@@ -15,6 +16,18 @@
       border-color: #3485cc;
       float: right;
       margin-right: 10px;
+  }
+
+  .places {
+      padding-bottom: 10px;
+      text-align: center;
+      font-size: xx-large;
+      background-color: #337ab7;
+      margin-left: 4%;
+      margin-right: 4%;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      padding-top: 10px;
   }
 
   .panel {
@@ -66,13 +79,18 @@
       margin-bottom: 10px;
   }
 
+  .onlineUser {
+      padding-top: 10px;
+  }
+
   .foursquare {
       margin-left: -122px;
   }
 
   .chatText {
       word-wrap: break-word;
-      width: 450px;
+      width: auto;
+      padding-top: 19px;
   }
 
   .foursq {
@@ -80,12 +98,14 @@
   }
 
   .venueBox {
-      /* height: 300px; */
-      /* width: 500px; */
       overflow-y: auto;
-      margin-left: 5%;
-      margin-right: 5%;
+      margin-left: 4%;
+      margin-right: 4%;
       background-color: rgb(35, 35, 35);
+      border: 8px solid;
+      border-color: #337ab7;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
   }
 
   .theInput {
@@ -130,7 +150,7 @@
   }
 
   #app {
-    background-color: rgb(0, 0, 0);
+      background-color: rgb(0, 0, 0);
   }
 
   .formFlex {

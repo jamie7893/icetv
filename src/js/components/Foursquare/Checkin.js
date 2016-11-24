@@ -20,7 +20,7 @@ var Checkin = React.createClass({
     var location = navigator.geolocation.watchPosition(({coords: {latitude, longitude}}) =>
       $.ajax({
         type: 'GET',
-        url: `https://api.foursquare.com/v2/venues/explore/?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=${latitude},${longitude}&radius=100`,
+        url: `https://api.foursquare.com/v2/venues/explore/?client_id=AL4DDIM5HHXXYV1HKMQBGFLFIJRHJVPR4BI4CJ0VQIN4PHGZ&client_secret=VXRH3J0QWAJKGIPHMEIOWWR3YSADCO3S2IJQMS3BNVEDFYUE&v=20130815&ll=${latitude},${longitude}&radius=300`,
       }).then(({response: {groups}}) => {
         console.log(groups);
           const venues = groups[0].items
@@ -50,7 +50,7 @@ componentWillUnmount() {
 
 
 
-        <h2> Places around you:</h2>
+        <h2 class="places">Where are you?</h2>
 
 
 

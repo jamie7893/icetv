@@ -2,7 +2,7 @@ import React from 'react';
 import  _ from 'lodash';
 import Input from './Input.js';
 import {hashHistory, Router} from 'react-router';
-  console.log(this)
+  
 var Form = React.createClass({
   getInitialState: function () {
     console.log(Router, hashHistory)

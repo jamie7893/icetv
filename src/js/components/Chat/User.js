@@ -21,7 +21,7 @@ var User = React.createClass({
 
                 <div class="media-body">
 
-                  <h5> {this.props.user.username} | User </h5>
+                  <h5 class="onlineUser">  {this.props.user.username} | User </h5>
 
 
                   <small class="text-muted online">

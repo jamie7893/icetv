@@ -77,7 +77,7 @@ var Form = React.createClass({
         <br />
 
 
-        <h2 class="formTitle" align="center"> Thesis Project </h2>
+        <h2 class="formTitle" align="center">Prattle</h2>
 
 
         <p class="formTitle">
