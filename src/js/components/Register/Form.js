@@ -1,7 +1,7 @@
 import React from 'react';
 import  _ from 'lodash';
 import Input from './Input.js';
-import cookie from 'react-cookie';
+import cookie from 'react-cookie';  
 import {hashHistory} from 'react-router';
 
 var Form = React.createClass({
