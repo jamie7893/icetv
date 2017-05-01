@@ -7,38 +7,28 @@ var Message = React.createClass({
 
 
     render: function() {
-
+  //     <span class="chat-time">
+  //   {this.props.message.createdAt.split("T")[1].slice(0, this.props.message.createdAt.split("T")[1].indexOf("."))}
+  // </span>
         return (
 
-          <div class="media" >
+          <div class="media message" >
 
 
-            <div class="media-body">
+            <div class="media-body message-body">
 
 
               <div class="media">
 
-                <a class="pull-left" href="#">
+                <span class="chat-username">
 
-                  <img class="media-object img-circle msgImage" src={this.props.message.img}/>
+                  {this.props.message.username}
 
-                </a>
+              </span>
 
-                <div class="media-body">
-
-                  <p class="chatText">
-                    {this.props.message.message}
-                  </p>
-
-                  <br />
-
-                  <small class="text-muted">
-                    Posted by <b class="online">{this.props.message.username}</b>, at {this.props.message.createdAt}
-                  </small>
-
-                  <br />
-
-                </div>
+                <span class="chatText">
+                    : {this.props.message.message}
+                </span>
 
               </div>
 

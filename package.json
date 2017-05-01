@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "istanbul cover node_modules/mocha/bin/_mocha -- test/ -R spec",
-    "start": "node index.js"
+    "start": "node index.js",
+    "webpack": "node_modules\\.bin\\webpack --progress --inline --hot"
   },
   "repository": {
     "type": "git",

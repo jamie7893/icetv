@@ -15,7 +15,7 @@ var Venue = React.createClass({
       hashHistory.push('/login');
     } else {
     var joinChat = {
-      idChat: this.props.venue.id,
+      idChat: "ice_poseidon",
       idUser: cookie.load('id')
     };
 

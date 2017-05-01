@@ -1,6 +1,7 @@
 import React from 'react';
 import  _ from 'lodash';
 import Input from './Input.js';
+import cookie from 'react-cookie';
 import {hashHistory} from 'react-router';
 
 var Form = React.createClass({
@@ -62,8 +63,18 @@ var Form = React.createClass({
         url: '/signup',
         data: newUser,
         success: function(info) {
-          console.log(info);
-          hashHistory.push('/profile');
+          var joinChat = {
+            idChat: "ice_poseidon",
+            idUser: cookie.load('id')
+          };
+
+          $.ajax({
+            type: 'POST',
+            url: '/joinchat',
+              data: joinChat,
+          }).then((data) => {
+            hashHistory.push('/chatroom');
+          });
         }
       });
       console.log('invalid');
@@ -123,13 +134,12 @@ var Form = React.createClass({
         <br />
 
 
-        <h2 class="formTitle" align="center">Prattle</h2>
+        <h2 class="formTitle" align="center">Ice Poseidon</h2>
 
 
         <p class="formTitle">
-          Sign up to check-in and chat with others.
+          Register to watch the stream or chat with others.
         </p>
-
 
         <form
           className="create_account_form"
