@@ -58,9 +58,9 @@ module.exports = function(sequelize) {
                     Creds.create(newPass).then(function() {
 
                         var date = new Date();
-                        var minutes = 30;
+                        var minutes = 60 * 24;
                         date.setTime(date.getTime() + (minutes * 60 * 1000));
-                        res.cookie("name", aNewUser.nameFirst, {
+                        res.cookie("username", aNewUser.username, {
                             expires: date
                         });
                         res.cookie("id", aNewUser.id, {
@@ -145,9 +145,9 @@ module.exports = function(sequelize) {
                                 }
                             }).then(function(user) {
                                 var date = new Date();
-                                var minutes = 30;
+                                var minutes = 60 * 24;
                                 date.setTime(date.getTime() + (minutes * 60 * 1000));
-                                res.cookie("name", user.dataValues.nameFirst, {
+                                res.cookie("username", user.dataValues.username, {
                                     expires: date
                                 });
                                 res.cookie("id", user.dataValues.id, {

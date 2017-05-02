@@ -44,9 +44,7 @@ if (app.get('env') === 'production') {
 }
 
 app.use(morgan('dev')). // logs request to the console
-use(express.static(path.join(__dirname, 'src'))).set('view engine', 'jsx').engine('jsx', require('express-react-views').createEngine()).use(session(sess)).use(cookieParser()).use(bodyParser.json()).use(bodyParser.urlencoded({
-    extended: true
-}));
+use(express.static(path.join(__dirname, 'src'))).set('view engine', 'jsx').engine('jsx', require('express-react-views').createEngine()).use(session(sess)).use(cookieParser()).use(bodyParser.json()).use(bodyParser.urlencoded({extended: true}));
 
 // Uploading Images
 var uploading = multer({
@@ -63,11 +61,10 @@ module.exports.close = function() {
 };
 // sequelize initialization //
 // for heroku
-const sequelize = new Sequelize('postgres://uzjeoebhaoxwuk:IVuScu6q96OjaUvc_fJBb8GVJl@ec2-54-163-254-231.compute-1.amazonaws.com:5432/denten10cruhtj');
+// const sequelize = new Sequelize('postgres://uzjeoebhaoxwuk:IVuScu6q96OjaUvc_fJBb8GVJl@ec2-54-163-254-231.compute-1.amazonaws.com:5432/denten10cruhtj');
 // for local
 
-// const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
-
+const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
 
 // require userService files
 // example
@@ -75,10 +72,10 @@ const sequelize = new Sequelize('postgres://uzjeoebhaoxwuk:IVuScu6q96OjaUvc_fJBb
 const userService = require("./service/user.js")(sequelize),
     chatService = require("./service/chat.js")(sequelize);
 
-var Chat = sequelize.import('./model/chatroom.js'),
-    User = sequelize.import('./model/user.js'),
-    UserChat = sequelize.import('./model/userchatroomjct.js'),
-    Creds = sequelize.import('./model/credentials.js');
+var Chat = sequelize.import ('./model/chatroom.js'),
+    User = sequelize.import ('./model/user.js'),
+    UserChat = sequelize.import ('./model/userchatroomjct.js'),
+    Creds = sequelize.import ('./model/credentials.js');
 
 io.on('connection', function(socket) {
     console.log('a user connected');
@@ -86,106 +83,30 @@ io.on('connection', function(socket) {
         console.log('a user disconnected');
 
     });
-    var venue = {};
-    socket.on('venue', function(data) {
-        venue = data.venue;
+    socket.on('message', function(msg) {
+        io.emit('message', msg);
     });
     socket.on('joinedChat', function(data) {
-          var chatroomSocket = setInterval(function() {
-        UserChat.findOne({
-            where: {
-                idUser: data.idUser
-            }
-        }).then(function(foundUser) {
-
-                // get  messages
-                Chat.findAll({
-                    where: {
-                        idChatroom: foundUser.idChatroom
-                    }
-                }).then(function(messages) {
-                    var gettingMSG = _.map(messages, function(message) {
-                        return User.findOne({
-                            where: {
-                                id: message.idSender
-                            }
-                        }).then(function(foundUser) {
-                            message.dataValues.username = foundUser.dataValues.username;
-                            message.dataValues.img = foundUser.dataValues.img;
-                            return message.dataValues;
-                        });
-                    });
-                    // get users
-
-                    UserChat.findAll({
-                        where: {
-                            idChatroom: foundUser.idChatroom
-                        }
-                    }).then(function(chatroomUsers) {
-                        var gettingUsers = _.map(chatroomUsers, function(chatroomUser) {
-                            return User.findOne({
-                                where: {
-                                    id: chatroomUser.idUser
-                                },
-                                attributes: ['username', 'img']
-                            }).then(function(chatUsername) {
-                                chatroomUser.dataValues.username = chatUsername.dataValues.username;
-                                chatroomUser.dataValues.img = chatUsername.dataValues.img;
-                                return chatroomUser.dataValues;
-                            });
-                        }); // end map
-                        Promise.all(gettingMSG).then(function(msgs) {
-                            Promise.all(gettingUsers).then(function(users) {
-                                socket.emit('messages', {
-                                    'messages': msgs,
-                                    'idChat': foundUser.idChatroom,
-                                    'users': users,
-                                    'venue': {name:"ice_poseidon"}
-                                });
-                            });
-                        });
-                    });
-                });
-              });
-            }, 1000);
-
-            var callback = (stream) => {
-  console.log('someone disconnected!');
-};
-
-            socket.on('leaveChat', function(data) {
-                  console.log(data);
-                clearInterval(chatroomSocket);
-
-                UserChat.destroy({
-                    where: {
-                        idUser: data.idUser
-                    }
-                });
-            });
-
-            socket.on('destroyChat', function(data) {
-
-                clearInterval(chatroomSocket);
-                Chat.destroy({
-                    where: {
-                        idChatroom: data.idChat
-                    }
-                }).then(function(deletedChat) {
-                    UserChat.destroy({
-                        where: {
-                            idUser: data.idUser
-                        }
-                    });
-
-                });
-            });
-
-
-
+        UserChat.findAll({
+          where: {
+            idChatroom:"ice_poseidon"
+          }
+        }).then((viewers) => {
+          io.emit("users", {
+            users: viewers.map(function(viewer) {
+            return {
+              username:viewer.username,
+              idUser:viewer.idUser
+                }
+          }),
+          venue: {
+            name: "ice_poseidon"
+          },
+          idChat: "ice_poseidon"
+        });
+        });
     });
 });
-
 sequelize.sync().then(function(res) {
     Chat.sync();
     User.sync();

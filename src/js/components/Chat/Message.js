@@ -12,7 +12,7 @@ var Message = React.createClass({
   // </span>
         return (
 
-          <div class="media message" >
+          <div class="media message">
 
 
             <div class="media-body message-body">

@@ -28,15 +28,13 @@ var Chat = React.createClass({
   _sendMsg(e) {
     if (cookie.load('id')) {
       e.preventDefault();
-      $.ajax({
-        type: 'POST',
-        url: '/createMSG',
-        data: {
-          message: this.state.message.slice(0, 300),
-          chatId: this.state.idChat,
-          userId: cookie.load('id')
-        }
+      socket.emit('message', {
+        message: this.state.message.slice(0, 300),
+        chatId: this.state.idChat,
+        userId: cookie.load('id'),
+        username: cookie.load('username'),
       });
+
       this.setState({
         message: ""
       });
@@ -58,34 +56,37 @@ var Chat = React.createClass({
   },
   componentDidMount() {
     var component = this;
-    socket.on('messages', function(data) {
-      if (!data.venue.name) {
-        hashHistory.push('/checkin');
-      }
+
+    $.ajax({
+     type: 'POST',
+     url: '/joinchat',
+     data: {
+       idChat: "ice_poseidon",
+       idUser: cookie.load('id')
+     }
+   });
+
+   socket.emit("joinedChat", {
+     username: cookie.load('username')
+   });
+
+    socket.on('users', function(data) {
+      console.log("This is users:", data)
       var doc = document.getElementById('chat');
       if (component.isMounted()) {
-
-        if (data.messages.length !== component.state.messages.length && doc.scrollTop === (doc.scrollHeight - doc.offsetHeight)) {
           component.setState({
-            newMSG: 1
-          });
-        } else if (component.state.newMSG === 1) {
-          component.setState({
-            newMSG: 0
-          });
-        }
-
-        if (data.messages.length !== component.state.messages.length || data.users.length !== component.state.users.length) {
-          component.setState({
-            messages: data.messages,
-            idChat: data.idChat,
+            idChat: "ice_poseidon",
             users: data.users,
             venue: data.venue
           });
-        }
       }
     });
 
+    socket.on("message", function(data){
+      component.setState({
+        messages: component.state.messages.concat([data]),
+      });
+    });
   },
   componentWillMount() {
     if (!cookie.load('id')) {
@@ -113,15 +114,6 @@ var Chat = React.createClass({
 
   componentWillUnmount() {
     var component = this;
-    if (this.state.users.length === 1) {
-      socket.emit('destroyChat', {
-        idChat: this.state.idChat
-      });
-    } else {
-      socket.emit('leaveChat', {
-        idUser: cookie.load('id')
-      });
-    }
     component.forceUpdate();
     socket.removeListener();
   },
