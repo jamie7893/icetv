@@ -22,12 +22,13 @@ var Message = React.createClass({
 
                 <span class="chat-username">
 
-                  {this.props.message.username}
+                 {this.props.message.user.isChatSponsor ? <img src="https://yt3.ggpht.com/egUeEEJTpKOlv3Rl3hTPdO52cK46oPhWKkl4G503EAhAswwDiwrt0UeFebUvaFYQttyvTSo2CQ=s16-nd" class="style-scope yt-live-chat-author-badge-renderer"></img> : null}
+                 {this.props.message.user.displayName}
 
               </span>
 
                 <span class="chatText">
-                    : {this.props.message.message}
+                    : {this.props.message.message.displayMessage}
                 </span>
 
               </div>

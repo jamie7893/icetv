@@ -1,17 +1,17 @@
 'use strict'
-var _ = require('lodash');
-module.exports = function(sequelize) {
-    var User = sequelize.import("../model/user");
-    var Chat = sequelize.import("../model/chatroom");
-    var userChatJct = sequelize.import("../model/userchatroomjct");
-    var Creds = sequelize.import("../model/credentials");
+const _ = require('lodash'),
+  botConfig = require('../config/config.js'),
+   refresh = require('passport-oauth2-refresh'),
+  request = require('request');
 
-    Creds.hasOne(User, {
-      "foreignKey": "id"
-    });
-    User.hasOne(Creds, {
-      "foreignKey": "idUser"
-    });
+  module.exports = function(sequelize) {
+    var User = sequelize.import ("../model/user");
+    var Chat = sequelize.import ("../model/chatroom");
+    var userChatJct = sequelize.import ("../model/userchatroomjct");
+    var Creds = sequelize.import ("../model/credentials");
+
+    Creds.hasOne(User, {"foreignKey": "id"});
+    User.hasOne(Creds, {"foreignKey": "idUser"});
     User.belongsToMany(Chat, {
       "foreignKey": "idUser",
       "through": {
@@ -53,33 +53,57 @@ module.exports = function(sequelize) {
       },
 
       createMSG: function(req, res) {
-        var newMSG = {
-          idChatroom: req.body.chatId,
-          message: req.body.message,
-          idSender: parseInt(req.body.userId)
+        console.log(req)
+        var headers = {
+            'User-Agent': 'Super Agent/0.0.1',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + req.session.accessToken
+          }
+
+          // Configure the request
+          var options = {
+              url: "https://www.googleapis.com/youtube/v3/liveChat/messages",
+              method: 'POST',
+              headers: headers,
+              json: {
+                "snippet": {
+                  "liveChatId": botConfig.stream.liveChatId,
+                  "type": "textMessageEvent",
+                  textMessageDetails: {
+                    messageText: req.body.message
+                  }
+                }
+              }
+            }
+              // Start the request
+              request(options, function(error, response, body) {
+
+                if (!error && response.statusCode == 200) {
+                  // Print out the response body
+                  console.log("sent the message!")
+                } else {
+                  // console.log(response)
+                }
+              });
+            },
+            getMSG : function(req, res) {
+              Chat.findAll().then(function(chatroomMsgs) {
+                var gettingMsgs = _.map(chatroomMsgs, function(chatroomMsg) {
+                  return User.findOne({
+                    where: {
+                      id: chatroomMsg.idSender
+                    },
+                    attributes: ['username', 'img']
+                  }).then(function(chatUsername) {
+                    chatroomMsg.dataValues.username = chatUsername.dataValues.username;
+                    chatroomMsg.dataValues.img = chatUsername.dataValues.img;
+                    return chatroomMsg.dataValues;
+                  });
+                }); // end map
+                Promise.all(gettingMsgs).then(function(data) {
+                  res.json(data);
+                });
+              });
+            }
         };
-        Chat.create(newMSG).then(function(theMSG) {
-          res.send(200);
-        });
-      },
-      getMSG: function(req, res) {
-        Chat.findAll().then(function(chatroomMsgs) {
-          var gettingMsgs = _.map(chatroomMsgs, function(chatroomMsg) {
-            return User.findOne({
-              where: {
-                id: chatroomMsg.idSender
-              },
-              attributes: ['username', 'img']
-            }).then(function(chatUsername) {
-              chatroomMsg.dataValues.username = chatUsername.dataValues.username;
-              chatroomMsg.dataValues.img = chatUsername.dataValues.img;
-              return chatroomMsg.dataValues;
-            });
-          }); // end map
-          Promise.all(gettingMsgs).then(function(data) {
-            res.json(data);
-          });
-        });
-      }
-    };
-    };
+      };

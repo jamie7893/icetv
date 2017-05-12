@@ -26,21 +26,18 @@ var Chat = React.createClass({
     }
   },
   _sendMsg(e) {
-    if (cookie.load('id')) {
       e.preventDefault();
-      socket.emit('message', {
-        message: this.state.message.slice(0, 300),
-        chatId: this.state.idChat,
-        userId: cookie.load('id'),
-        username: cookie.load('username'),
-      });
+      $.ajax({
+       type: 'POST',
+       url: '/message',
+       data: {
+         message: this.state.message.slice(0, 300),
+       }
+     });
 
       this.setState({
         message: ""
       });
-    } else {
-      hashHistory.push('/login');
-    }
   },
   _handleKeyPress(target) {
       if(target.charCode==13){
@@ -83,20 +80,17 @@ var Chat = React.createClass({
     });
 
     socket.on("message", function(data){
+      console.log(data)
       component.setState({
         messages: component.state.messages.concat([data]),
       });
     });
   },
   componentWillMount() {
-    if (!cookie.load('id')) {
-      hashHistory.push('/login');
-    } else {
       var component = this;
       socket.emit('joinedChat', {
         idUser: cookie.load('id')
       });
-    }
   },
 
   _handleScroll() {
@@ -147,7 +141,7 @@ var Chat = React.createClass({
               message
             }
             key = {
-              message.id
+              message.message.publishedAt
             }
             />
         );
