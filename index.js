@@ -30,7 +30,7 @@ const express = require('express'),
   bodyParser = require('body-parser'),
   morgan = require('morgan'),
   http = require('http').Server(app),
-  io = require('socket.io')(http),
+  // io = require('socket.io')(http),
   Sequelize = require('sequelize'),
   passport = require('passport'),
   uuid = require('uuid'),
@@ -124,11 +124,11 @@ let strategy = new YoutubeV3Strategy({
     return done(err)
   });
 });
-passport.use(strategy);
-app.use(morgan('dev')). // logs request to the console
-use(express.static(path.join(__dirname, 'src'))).set('view engine', 'jsx').engine('jsx', require('express-react-views').createEngine()).use(session(sess)).use(cookieParser()).use(bodyParser.json()).use(bodyParser.urlencoded({extended: true}));
-app.use(passport.initialize());
-app.use(passport.session());
+// passport.use(strategy);
+// app.use(morgan('dev')). // logs request to the console
+// use(express.static(path.join(__dirname, 'src'))).set('view engine', 'jsx').engine('jsx', require('express-react-views').createEngine()).use(session(sess)).use(cookieParser()).use(bodyParser.json()).use(bodyParser.urlencoded({extended: true}));
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 module.exports.close = function() {
   console.log('shutting down the server...');
@@ -147,9 +147,9 @@ const config = {
 
 // const client = new ymi.client(config);
 
-setInterval(() => {
-  client.refresh()
-}, botConfig.stream.refreshTokenTime);
+// setInterval(() => {
+//   client.refresh()
+// }, botConfig.stream.refreshTokenTime);
 // client.on('chat', (user, message) => {
 //   fetcher.fetchTwitchEmotes().then(() => {
 //   message.displayMessage = parser.parse(message.displayMessage)
@@ -172,10 +172,8 @@ setInterval(() => {
 
 // client.connect();
 sequelize.sync().then(function(res) {
-  Chat.sync();
-  User.sync();
-  UserChat.sync();
-  Creds.sync();
+  // User.sync();
+
   app.route('/').get(function(req, res) {
     res.render('./src/client.min.js');
   });
