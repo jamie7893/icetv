@@ -53,16 +53,16 @@ const _ = require('lodash'),
       },
 
       createMSG: function(req, res) {
-        console.log(req)
+      let sess = req.user
         var headers = {
             'User-Agent': 'Super Agent/0.0.1',
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + req.session.accessToken
+            'Authorization': 'Bearer ' + sess.accessToken
           }
 
           // Configure the request
           var options = {
-              url: "https://www.googleapis.com/youtube/v3/liveChat/messages",
+              url: "https://www.googleapis.com/youtube/v3/liveChat/messages?part=snippet",
               method: 'POST',
               headers: headers,
               json: {
@@ -80,9 +80,9 @@ const _ = require('lodash'),
 
                 if (!error && response.statusCode == 200) {
                   // Print out the response body
-                  console.log("sent the message!")
+                res.json({messageSent: true})
                 } else {
-                  // console.log(response)
+                res.json({messageSent: false})
                 }
               });
             },

@@ -17,12 +17,23 @@ const express = require('express'),
   uuid = require('uuid'),
   refresh = require('passport-oauth2-refresh'),
   botConfig = require('./config/config.js'),
+  Promise = require("bluebird"),
+  cors = require('cors'),
   ymi = require('ymi.js'),
+  twitchEmoji = require('twitch-emoji'),
   cookieParser = require('cookie-parser'),
   sessionFileStore = require('session-file-store'),
   _ = require('lodash'),
   YoutubeV3Strategy = require('passport-youtube-v3').Strategy,
   session = require('express-session');
+
+  const { EmoteFetcher, EmoteParser } = require('twitch-emoticons');
+
+  const fetcher = new EmoteFetcher();
+  const parser = new EmoteParser(fetcher, {
+      type: 'html',
+      match: /\b(.+?)\b/gi
+  });
 
 let FileStore = sessionFileStore(session);
 
@@ -32,13 +43,14 @@ var sess = {
   genId: function(req) {
     return uuid.v4();
   },
-  name: 'thesis-sessions',
+  name: 'purplearmy-session',
   secret: uuid.v4(),
   saveUnitialized: true,
   resave: true,
   store: new FileStore(),
   cookie: {
-    secure: false
+    secure: false,
+    maxAge: 10 * 365 * 24 * 60 * 60
   },
   saveUninitialized: true
 };
@@ -65,25 +77,21 @@ var Chat = sequelize.import ('./model/chatroom.js'),
   Creds = sequelize.import ('./model/credentials.js');
 
 passport.serializeUser(function(user, done) {
-  done(null, user.userId)
+  done(null, user)
 });
 
-passport.deserializeUser(function(id, done) {
-  console.log("deserilize")
-  User.findById(id, function(err, user) {
-    done(err, user);
-  })
+passport.deserializeUser(function(user, done) {
+  User.findById(user.userId).then(function(data) {
+        done(null, data.dataValues);
+  });
 });
 
 let strategy = new YoutubeV3Strategy({
   clientID: "250381024969-dt3rtrinho44e5idof02lg09jhp26no8.apps.googleusercontent.com",
   clientSecret: "1uVhvUpHkL8CTPZp4pU8n-Wl",
   callbackURL: "/auth/youtube/callback",
-  scope: ['https://www.googleapis.com/auth/youtube.readonly']
+  scope: ['https://www.googleapis.com/auth/youtube']
 }, function(accessToken, refreshToken, profile, done) {
-  // User.findOrCreate({ userId: profile.id }, function (err, user) {
-  //   return done(err, user);
-  // });
   User.findOrCreate({
     where: {
       userId: profile.id
@@ -95,22 +103,12 @@ let strategy = new YoutubeV3Strategy({
       color: "purple"
     }
   }).spread(function(user, created) {
-    if (user) {
-      return User.update({
-          userId: profile.id,
-        displayName: profile.displayName,
-        accessToken: accessToken,
-        refreshToken: refreshToken,
-        color: "purple"
-      }, {
-  where: { userId: profile.id }
-}).then(function(data) {
-    return done(null, data.dataValues);
-})
-}
+    if (user.dataValues) {
+      return done(null, user.dataValues);
+    }
   }).catch(function(err) {
-    return done(err, null)
     console.log(err)
+    return done(err)
   });
 });
 passport.use(strategy);
@@ -149,15 +147,29 @@ let currentMessages = {},
 
 client.on('connected', () => {
   console.log("connected")
-})
-
+});
 setInterval(() => {
   client.refresh()
-}, botConfig.stream.refreshTokenTime)
-
+}, botConfig.stream.refreshTokenTime);
+let i = 0;
 client.on('chat', (user, message) => {
-  console.log({user:user, message:message});
-  io.emit('message', {user:user, message:message});
+  fetcher.fetchTwitchEmotes().then(() => {
+  message.displayMessage = parser.parse(message.displayMessage)
+  fetcher.fetchBTTVEmotes().then(() => {
+  message.displayMessage = parser.parse(message.displayMessage)
+  io.emit('message', {
+    user: user,
+    message: message
+  });
+  }).catch(function(err) {
+
+  });
+}).catch(function(err) {
+
+});
+
+  // message.displayMessage = twitchEmoji.parse(message.displayMessage)
+
 });
 
 io.on('connection', function(socket) {
@@ -167,35 +179,41 @@ io.on('connection', function(socket) {
 
   });
 
-  socket.on('joinedChat', function(data) {
-    UserChat.findAll({
-      where: {
-        idChatroom: "ice_poseidon"
-      }
-    }).then((viewers) => {
-      io.emit("users", {
-        users: viewers.map(function(viewer) {
-          return {username: viewer.username, idUser: viewer.idUser}
-        }),
-        venue: {
-          name: "ice_poseidon"
-        },
-        idChat: "ice_poseidon"
-      });
-    });
-  });
+  // socket.on('joinedChat', function(data) {
+  //   UserChat.findAll({
+  //     where: {
+  //       idChatroom: "ice_poseidon"
+  //     }
+  //   }).then((viewers) => {
+  //     io.emit("users", {
+  //       users: viewers.map(function(viewer) {
+  //         return {username: viewer.username, idUser: viewer.idUser}
+  //       }),
+  //       venue: {
+  //         name: "ice_poseidon"
+  //       },
+  //       idChat: "ice_poseidon"
+  //     });
+  //   });
+  // });
 });
-client.connect()
+client.connect();
 sequelize.sync().then(function(res) {
   Chat.sync();
   User.sync();
   UserChat.sync();
   Creds.sync();
-
+  var corsOptions = {
+  origin: 'localhost:1738',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors(corsOptions))
   app.route('/').get(function(req, res) {
     res.render('./src/client.min.js');
   });
+  app.route('/isLoggedIn').get(userService.isLoggedIn);
   app.route('/logout').get(userService.logout);
+  app.route('/refreshToken').get(isAuthenticated, userService.refresh);
   app.route('/updateprofile').post(uploading.single('file'), userService.updateprofile);
   app.route('/signup').post(userService.create);
   app.route('/login').post(userService.login);
@@ -208,6 +226,15 @@ sequelize.sync().then(function(res) {
     // Successful authentication, redirect home.
     res.redirect('/#/chatroom');
   });
+  function isAuthenticated(req, res, next) {
+    // do any checks you want to in here
+    // CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
+    // you can do this however you want with whatever variables you set up
+    if (req.user)
+        return next();
+    // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
+      res.json({"redirect": true})
+}
 
   // server = app.listen(process.env.PORT || 1738, process.env.IP || "0.0.0.0", function() {
   //     var addr = server.address();

@@ -3,10 +3,15 @@ import cookie from 'react-cookie';
 import Message from './Message';
 import User from './User';
 import ReactDOM from 'react-dom';
-import {
-  hashHistory
-} from 'react-router';
+import {hashHistory} from 'react-router';
 
+const { EmoteFetcher, EmoteParser } = require('twitch-emoticons');
+
+const fetcher = new EmoteFetcher();
+const parser = new EmoteParser(fetcher, {
+    type: 'markdown',
+    match: /(.+?)/g
+});
 var socket;
 if (window.location.hostname.search('localhost') !== -1) {
   socket = io('localhost:1738');
@@ -21,76 +26,87 @@ var Chat = React.createClass({
       messages: [],
       message: "",
       venue: {},
-      newMSG: 1,
+      newMSG: 1 ,
       sinceScroll: 0
     }
   },
   _sendMsg(e) {
-      e.preventDefault();
-      $.ajax({
-       type: 'POST',
-       url: '/message',
-       data: {
-         message: this.state.message.slice(0, 300),
-       }
-     });
+    e.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: '/message',
+      data: {
+        message: this.state.message.slice(0, 300)
+      }
+    });
 
-      this.setState({
-        message: ""
-      });
+    this.setState({message: ""});
   },
   _handleKeyPress(target) {
-      if(target.charCode==13){
-          target.preventDefault();
-          this.sendBtn.click()
-      }
+    if (target.charCode == 13) {
+      target.preventDefault();
+      this.sendBtn.click()
+    }
 
   },
   _handleMsgInput(e) {
-    this.setState({
-      message: e.target.value
-    })
+    this.setState({message: e.target.value})
+  },
+
+  _handleBottomCheckbox(e) {
+    let component = this;
+    if (e.target.checked) {
+      component.setState({
+        newMSG: 0
+      });
+    } else {
+      component.setState({
+        newMSG: 1
+      });
+    }
   },
   componentDidMount() {
     var component = this;
 
-    $.ajax({
-     type: 'POST',
-     url: '/joinchat',
-     data: {
-       idChat: "ice_poseidon",
-       idUser: cookie.load('id')
-     }
-   });
+      if(component.isMounted()) {
+      $.ajax({
+       type: 'GET',
+       url: '/refreshToken'
+     }).then(function(data) {
+       if (data.redirect) {
+         window.location.href = "/auth/youtube";
+       }
+     })
 
-   socket.emit("joinedChat", {
-     username: cookie.load('username')
-   });
+
+
+    //  socket.emit("joinedChat", {
+    //    username: cookie.load('username')
+    //  });
 
     socket.on('users', function(data) {
       console.log("This is users:", data)
       var doc = document.getElementById('chat');
       if (component.isMounted()) {
-          component.setState({
-            idChat: "ice_poseidon",
-            users: data.users,
-            venue: data.venue
-          });
+        component.setState({idChat: "ice_poseidon", users: data.users, venue: data.venue});
       }
     });
 
-    socket.on("message", function(data){
-      console.log(data)
-      component.setState({
-        messages: component.state.messages.concat([data]),
-      });
+    setInterval(function() {
+      $.ajax({type: 'GET', url: '/refreshToken'});
+    }, 60000 * 59)
+
+    socket.on("message", function(data) {
+    var doc = document.getElementById('chat');
+    component.setState({
+      messages: component.state.messages.slice(-200).concat([data])
     });
+    });
+  }
   },
   componentWillMount() {
-      var component = this;
-      socket.emit('joinedChat', {
-        idUser: cookie.load('id')
-      });
+    var component = this;
+    socket.emit('joinedChat', {idUser: cookie.load('id')});
   },
 
   _handleScroll() {
@@ -117,214 +133,83 @@ var Chat = React.createClass({
       <div>
 
         <iframe class="stream" width="1500" height="1000" src="https://www.youtube.com/embed/live_stream?channel=UCv9Edl_WbtbPeURPtFDo-uA&autoplay=1" frameBorder="0" allowFullScreen></iframe>
-      <div id="right-colum">
+        <div id="right-colum">
 
+          <div class="chat">
+            <div>
+              <div class="panel panel-info">
 
+                <div id="chat" class="chatBox" onScroll={this._handleScroll}>
 
+                  {this.state.messages.map((message, i) => {
+                    return (< Message message = {
+                      message
+                    }
+                    key = {
+                      i
+                    } />);
+                  })
+}
 
-      <div class = "chat" >
-        <div>
-          <div class = "panel panel-info" >
+                  </div>
 
-      <div id = "chat" class = "chatBox"
-      onScroll = {
-        this._handleScroll
-      } >
+                    <div class="panel-footer">
+                      <input type="checkbox" id="scrollToBottom" onClick={this._handleBottomCheckbox}></input>
+                      <label for="scrollToBottom">Don't scroll to bottom</label>
+                      <form>
+                        <div class="chatFooter">
+                          <textarea type="text" class="msgInput form-control" value={this.state.message} onKeyPress={this._handleKeyPress} onChange={this._handleMsgInput} placeholder="Enter Message"/>
+                          <div class="chatBtnContainer">
+                            <button onClick={this._sendMsg} ref={input => this.sendBtn = input} class="chatBtn" type="submit">Chat</button>
+                          </div>
+                        </div>
 
+                      </form>
 
-      {
-        this.state.messages.map((message) => {
-          return (
-            <
-            Message
-            message = {
-              message
-            }
-            key = {
-              message.message.publishedAt
-            }
-            />
-        );
-      })
-    }
+                    </div>
 
-    <
-    /div>
+                  </div>
 
+                </div>
 
+              <div class="col-md-4 online-users">
 
+                    <div class="panel panel-primary">
 
+                                            <div class="panel-heading">
+                                              ONLINE USERS
+                                            </div>
 
+                                            <div class = "panel-body">
+                                              <ul class = "media-list" > {this.state.users.map((user) => {
+                                                return (< User user = {
+                                                  user
+                                                }
+                                                key = {
+                                                  user.idUser
+                                                } />);
+                                              })
+}
 
+                                              </ul>
 
-    <
-    div class = "panel-footer" >
+                                                </div>
 
+                                                  </div>
 
+                                                    </div>
 
+                                                      </div>
 
-    <form>
-      <div class = "chatFooter" >
-        <textarea type = "text" class = "msgInput form-control"
-            value = {
-              this.state.message
-            }
-            onKeyPress={
-              this._handleKeyPress
-            }
-            onChange = {
-              this._handleMsgInput
-            }
-            placeholder = "Enter Message" / >
+                                                        </div>
 
-            <div class = "chatBtnContainer" >
-              <button
-                onClick = {
-                  this._sendMsg
-                }
-                 ref={input => this.sendBtn = input}
-                class = "chatBtn"
-                type = "submit">Chat</button>
+                                                          <div>
 
+                                                            </div>
 
+                                                              </div>
 
-    <
-    /div>
-
-
-
-
-    <
-    /div>
-
-
-
-
-    <
-    /form>
-
-
-
-
-    <
-    /div>
-
-
-
-
-    <
-    /div>
-
-
-
-
-    <
-    /div>
-
-
-
-
-    <
-    div class = "col-md-4 online-users" >
-
-
-
-
-    <
-    div class = "panel panel-primary" >
-
-
-
-
-    <
-    div class = "panel-heading" >
-    ONLINE USERS <
-    /div>
-
-
-
-
-    <
-    div class = "panel-body" >
-
-
-
-
-    <
-    ul class = "media-list" >
-
-
-
-
-    {
-      this.state.users.map((user) => {
-        return (
-          <
-          User
-          user = {
-            user
-          }
-          key = {
-            user.idUser
-          }
-          />
-      );
-    })
-  }
-
-  <
-  /ul>
-
-
-
-
-  <
-  /div>
-
-
-
-
-  <
-  /div>
-
-
-
-
-
-  <
-  /div>
-
-
-
-
-  <
-  /div>
-
-
-
-
-  <
-  /div>
-
-
-
-
-  <
-  div >
-
-
-
-
-
-  <
-  /div>
-
-
-
-
-  <
-  /div>
-);
+                                                            );
 },
 
 });

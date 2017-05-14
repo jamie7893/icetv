@@ -1,10 +1,29 @@
 import React from "react";
-
-var Navbar = React.createClass({
+let Logout = React.createClass({
+  render: function() {
+    return (
+      <button class="loginBtn loginBtn--google" >
+          <a class="btn-txt" href="/logout">Logout</a>
+      </button>
+    )
+  }
+})
+let Login = React.createClass({
+  render: function() {
+    return (
+      <button class="loginBtn loginBtn--google" >
+            <a class="btn-txt" href="/auth/youtube">Login with Youtube</a>
+      </button>
+    )
+  }
+})
+let Navbar = React.createClass({
   getInitialState: function () {
     return {
       email: "",
-      password: ""
+      password: "",
+      showLogin: true,
+      showLogout: false
     }
   },
   _handlePasswordInput: function (event) {
@@ -42,6 +61,18 @@ var Navbar = React.createClass({
       }
     });
   },
+  componentDidMount() {
+    $.ajax({
+      type: 'GET',
+      url: '/isLoggedIn'
+    }).then((data) => {
+      console.log(data)
+      this.setState({
+        showLogin: data.showLogin,
+        showLogout: data.showLogout
+      })
+    });
+  },
   render: function() {
     return (
   <nav class="navbar navbar-default navbar-inverse" role="navigation">
@@ -49,35 +80,8 @@ var Navbar = React.createClass({
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><p class="navbar-text">Already have an account?</p></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
-  			<ul id="login-dp" class="dropdown-menu">
-  				<li>
-  					 <div class="row">
-  							<div class="col-md-12">
-  								 <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-  										<div class="form-group">
-  											 <label class="sr-only" for="exampleInputEmail2">Email address</label>
-  											 <input type="email" onChange={this._handleEmailInput} class="form-control" id="exampleInputEmail2" placeholder="Email address" required></input>
-  										</div>
-  										<div class="form-group">
-  											 <label class="sr-only" for="exampleInputPassword2">Password</label>
-  											 <input type="password" onChange={this._handlePasswordInput} class="form-control" id="exampleInputPassword2" placeholder="Password" required></input>
-
-  										</div>
-  										<div class="form-group">
-  											 <button type="submit" onClick={this._handleLogin} class="btn btn-primary btn-block">Sign in</button>
-  										</div>
-  								 </form>
-  							</div>
-  							<div class="bottom text-center">
-  								New here ? <a href="/#/register"><b>Join Us</b></a>
-  							</div>
-  					 </div>
-  				</li>
-  			</ul>
-          </li>
+          {this.state.showLogin ? <Login /> : null}
+          {this.state.showLogout ? <Logout /> : null}
         </ul>
       </div>
     </div>

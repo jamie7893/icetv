@@ -11,8 +11,7 @@ import Chatroom from "./components/Chatroom.js"
 const app = document.getElementById('app');
 ReactDOM.render(
   <Router history={hashHistory}>
-    <Route path="/" component={Layout}/>
-    <Route path="/login" component={Login}/>
+    <Route path="/" component={Login}/>
     <Route path="/profile" component={Profile}/>
     <Route path="/checkin" component={Foursquare}/>
     <Route path="/chatroom" component={Chatroom}/>
