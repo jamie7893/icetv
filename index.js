@@ -1,4 +1,26 @@
 'use strict';
+const cluster = require('cluster');
+const numCPUs = require('os').cpus().length;
+if(cluster.isMaster) {
+    var numWorkers = require('os').cpus().length;
+
+    console.log('Master cluster setting up ' + numWorkers + ' workers...');
+
+    for(var i = 0; i < numWorkers; i++) {
+        cluster.fork();
+    }
+
+    cluster.on('online', function(worker) {
+        console.log('Worker ' + worker.process.pid + ' is online');
+    });
+
+    cluster.on('exit', function(worker, code, signal) {
+        console.log('Worker ' + worker.process.pid + ' died with code: ' + code + ', and signal: ' + signal);
+        console.log('Starting a new worker');
+        cluster.fork();
+    });
+  } else {
+
 
 let server;
 
@@ -26,7 +48,6 @@ const express = require('express'),
   _ = require('lodash'),
   YoutubeV3Strategy = require('passport-youtube-v3').Strategy,
   session = require('express-session');
-
   const { EmoteFetcher, EmoteParser } = require('twitch-emoticons');
 
   const fetcher = new EmoteFetcher();
@@ -207,7 +228,6 @@ sequelize.sync().then(function(res) {
   origin: 'localhost:1738',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
-app.use(cors(corsOptions))
   app.route('/').get(function(req, res) {
     res.render('./src/client.min.js');
   });
@@ -243,8 +263,9 @@ app.use(cors(corsOptions))
   server = http.listen(process.env.PORT || 1738, process.env.IP || "0.0.0.0", function() {
     var addr = server.address();
     console.log("Server listening at", addr.address + ":" + addr.port);
-
+    console.log('Process ' + process.pid + ' is listening to all incoming requests');
   });
 }).catch(function(e) {
   console.log('Error in sequelize.sync(): ' + e);
 });
+}
