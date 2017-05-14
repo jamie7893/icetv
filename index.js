@@ -68,7 +68,7 @@ var sess = {
 
 if (app.get('env') === 'production') {
   app.set('trust proxy', 1); // trust first proxy
- // serve secure cookies
+    sess.cookie.secure = true;// serve secure cookies
 }
 // sequelize initialization //
 // for heroku
@@ -93,6 +93,7 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(user, done) {
   User.findById(user.userId).then(function(data) {
+    console.log(data.dataValues)
         done(null, data.dataValues);
   });
 });
@@ -148,6 +149,7 @@ const client = new ymi.client(config);
 setInterval(() => {
   client.refresh()
 }, botConfig.stream.refreshTokenTime);
+
 client.on('chat', (user, message) => {
   // fetcher.fetchTwitchEmotes().then(() => {
   // message.displayMessage = parser.parse(message.displayMessage)
@@ -158,7 +160,7 @@ client.on('chat', (user, message) => {
     message: message
   });
   }).catch(function(err) {
-
+    console.log(err)
   });
 // }).catch(function(err) {
 //
@@ -169,6 +171,8 @@ client.on('chat', (user, message) => {
 });
 
 client.connect();
+
+
 sequelize.sync().then(function(res) {
   User.sync();
 
