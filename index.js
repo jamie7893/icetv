@@ -31,25 +31,17 @@ const express = require('express'),
   morgan = require('morgan'),
   http = require('http').Server(app),
   io = require('socket.io')(http),
-  multer = require('multer'),
   Sequelize = require('sequelize'),
-  bcrypt = require('bcrypt-nodejs'),
-  crypto = require('crypto'),
   passport = require('passport'),
   uuid = require('uuid'),
-  refresh = require('passport-oauth2-refresh'),
   botConfig = require('./config/config.js'),
-  Promise = require("bluebird"),
-  cors = require('cors'),
   ymi = require('ymi.js'),
   twitchEmoji = require('twitch-emoji'),
   cookieParser = require('cookie-parser'),
   sessionFileStore = require('session-file-store'),
-  _ = require('lodash'),
   YoutubeV3Strategy = require('passport-youtube-v3').Strategy,
   session = require('express-session');
   const { EmoteFetcher, EmoteParser } = require('twitch-emoticons');
-
   const fetcher = new EmoteFetcher();
   const parser = new EmoteParser(fetcher, {
       type: 'html',
@@ -138,15 +130,6 @@ use(express.static(path.join(__dirname, 'src'))).set('view engine', 'jsx').engin
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Uploading Images
-var uploading = multer({
-  dest: './public/images/profile/',
-  limits: {
-    fileSize: 1000000,
-    files: 1
-  }
-});
-
 module.exports.close = function() {
   console.log('shutting down the server...');
   server.close();
@@ -162,9 +145,7 @@ const config = {
   page_token: null
 }
 
-const client = new ymi.client(config);
-let currentMessages = {},
-  times;
+// const client = new ymi.client(config);
 
 setInterval(() => {
   client.refresh()
@@ -189,24 +170,19 @@ setInterval(() => {
 //
 // });
 
-client.connect();
+// client.connect();
 sequelize.sync().then(function(res) {
   Chat.sync();
   User.sync();
   UserChat.sync();
   Creds.sync();
-  var corsOptions = {
-  origin: 'localhost:1738',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
   app.route('/').get(function(req, res) {
     res.render('./src/client.min.js');
   });
   app.route('/isLoggedIn').get(userService.isLoggedIn);
   app.route('/logout').get(userService.logout);
   app.route('/refreshToken').get(isAuthenticated, userService.refresh);
-  app.route('/updateprofile').post(uploading.single('file'), userService.updateprofile);
-  app.route('/signup').post(userService.create);
+  app.route('/updateprofile').post(uuserService.updateprofile);
   app.route('/login').post(userService.login);
   app.route('/joinchat').post(chatService.join);
   app.route('/message').post(chatService.createMSG);
