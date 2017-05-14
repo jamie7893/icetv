@@ -166,58 +166,29 @@ const client = new ymi.client(config);
 let currentMessages = {},
   times;
 
-client.on('connected', () => {
-  console.log("connected")
-});
 setInterval(() => {
   client.refresh()
 }, botConfig.stream.refreshTokenTime);
-let i = 0;
-client.on('chat', (user, message) => {
-  fetcher.fetchTwitchEmotes().then(() => {
-  message.displayMessage = parser.parse(message.displayMessage)
-  fetcher.fetchBTTVEmotes().then(() => {
-  message.displayMessage = parser.parse(message.displayMessage)
-  io.emit('message', {
-    user: user,
-    message: message
-  });
-  }).catch(function(err) {
+// client.on('chat', (user, message) => {
+//   fetcher.fetchTwitchEmotes().then(() => {
+//   message.displayMessage = parser.parse(message.displayMessage)
+//   fetcher.fetchBTTVEmotes().then(() => {
+//   message.displayMessage = parser.parse(message.displayMessage)
+//   io.emit('message', {
+//     user: user,
+//     message: message
+//   });
+//   }).catch(function(err) {
+//
+//   });
+// }).catch(function(err) {
+//
+// });
+//
+//   // message.displayMessage = twitchEmoji.parse(message.displayMessage)
+//
+// });
 
-  });
-}).catch(function(err) {
-
-});
-
-  // message.displayMessage = twitchEmoji.parse(message.displayMessage)
-
-});
-
-io.on('connection', function(socket) {
-  console.log('a user connected');
-  socket.on('disconnect', function() {
-    console.log('a user disconnected');
-
-  });
-
-  // socket.on('joinedChat', function(data) {
-  //   UserChat.findAll({
-  //     where: {
-  //       idChatroom: "ice_poseidon"
-  //     }
-  //   }).then((viewers) => {
-  //     io.emit("users", {
-  //       users: viewers.map(function(viewer) {
-  //         return {username: viewer.username, idUser: viewer.idUser}
-  //       }),
-  //       venue: {
-  //         name: "ice_poseidon"
-  //       },
-  //       idChat: "ice_poseidon"
-  //     });
-  //   });
-  // });
-});
 client.connect();
 sequelize.sync().then(function(res) {
   Chat.sync();
