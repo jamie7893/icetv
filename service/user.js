@@ -68,7 +68,6 @@ module.exports = function(sequelize) {
       });
     },
     refresh: function(req, res, callback) {
-      console.log(req.user)
       if (!req.user) {
         res.redirect("/auth/youtube")
       }

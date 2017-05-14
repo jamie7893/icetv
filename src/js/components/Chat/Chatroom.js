@@ -5,13 +5,6 @@ import User from './User';
 import ReactDOM from 'react-dom';
 import {hashHistory} from 'react-router';
 
-const { EmoteFetcher, EmoteParser } = require('twitch-emoticons');
-
-const fetcher = new EmoteFetcher();
-const parser = new EmoteParser(fetcher, {
-    type: 'markdown',
-    match: /(.+?)/g
-});
 var socket;
 if (window.location.hostname.search('localhost') !== -1) {
   socket = io('localhost:1738');

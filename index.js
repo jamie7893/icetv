@@ -30,13 +30,12 @@ const express = require('express'),
   bodyParser = require('body-parser'),
   morgan = require('morgan'),
   http = require('http').Server(app),
-  // io = require('socket.io')(http),
+  io = require('socket.io')(http),
   Sequelize = require('sequelize'),
   passport = require('passport'),
   uuid = require('uuid'),
   botConfig = require('./config/config.js'),
   ymi = require('ymi.js'),
-  twitchEmoji = require('twitch-emoji'),
   cookieParser = require('cookie-parser'),
   sessionFileStore = require('session-file-store'),
   YoutubeV3Strategy = require('passport-youtube-v3').Strategy,
@@ -124,11 +123,11 @@ let strategy = new YoutubeV3Strategy({
     return done(err)
   });
 });
-// passport.use(strategy);
-// app.use(morgan('dev')). // logs request to the console
-// use(express.static(path.join(__dirname, 'src'))).set('view engine', 'jsx').engine('jsx', require('express-react-views').createEngine()).use(session(sess)).use(cookieParser()).use(bodyParser.json()).use(bodyParser.urlencoded({extended: true}));
-// app.use(passport.initialize());
-// app.use(passport.session());
+passport.use(strategy);
+app.use(morgan('dev')). // logs request to the console
+use(express.static(path.join(__dirname, 'src'))).set('view engine', 'jsx').engine('jsx', require('express-react-views').createEngine()).use(session(sess)).use(cookieParser()).use(bodyParser.json()).use(bodyParser.urlencoded({extended: true}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 module.exports.close = function() {
   console.log('shutting down the server...');
@@ -145,34 +144,34 @@ const config = {
   page_token: null
 }
 
-// const client = new ymi.client(config);
+const client = new ymi.client(config);
 
-// setInterval(() => {
-//   client.refresh()
-// }, botConfig.stream.refreshTokenTime);
-// client.on('chat', (user, message) => {
-//   fetcher.fetchTwitchEmotes().then(() => {
-//   message.displayMessage = parser.parse(message.displayMessage)
-//   fetcher.fetchBTTVEmotes().then(() => {
-//   message.displayMessage = parser.parse(message.displayMessage)
-//   io.emit('message', {
-//     user: user,
-//     message: message
-//   });
-//   }).catch(function(err) {
-//
-//   });
-// }).catch(function(err) {
-//
-// });
-//
-//   // message.displayMessage = twitchEmoji.parse(message.displayMessage)
-//
-// });
+setInterval(() => {
+  client.refresh()
+}, botConfig.stream.refreshTokenTime);
+client.on('chat', (user, message) => {
+  fetcher.fetchTwitchEmotes().then(() => {
+  message.displayMessage = parser.parse(message.displayMessage)
+  fetcher.fetchBTTVEmotes().then(() => {
+  message.displayMessage = parser.parse(message.displayMessage)
+  io.emit('message', {
+    user: user,
+    message: message
+  });
+  }).catch(function(err) {
 
-// client.connect();
+  });
+}).catch(function(err) {
+
+});
+
+  // message.displayMessage = twitchEmoji.parse(message.displayMessage)
+
+});
+
+client.connect();
 sequelize.sync().then(function(res) {
-  // User.sync();
+  User.sync();
 
   app.route('/').get(function(req, res) {
     res.render('./src/client.min.js');
@@ -180,7 +179,7 @@ sequelize.sync().then(function(res) {
   app.route('/isLoggedIn').get(userService.isLoggedIn);
   app.route('/logout').get(userService.logout);
   app.route('/refreshToken').get(isAuthenticated, userService.refresh);
-  app.route('/updateprofile').post(uuserService.updateprofile);
+  app.route('/updateprofile').post(userService.updateprofile);
   app.route('/login').post(userService.login);
   app.route('/joinchat').post(chatService.join);
   app.route('/message').post(chatService.createMSG);
@@ -201,10 +200,6 @@ sequelize.sync().then(function(res) {
       res.json({"redirect": true})
 }
 
-  // server = app.listen(process.env.PORT || 1738, process.env.IP || "0.0.0.0", function() {
-  //     var addr = server.address();
-  //     console.log("Server listening at", addr.address + ":" + addr.port);
-  // });
   server = http.listen(process.env.PORT || 1738, process.env.IP || "0.0.0.0", function() {
     var addr = server.address();
     console.log("Server listening at", addr.address + ":" + addr.port);
