@@ -20,8 +20,6 @@ if(cluster.isMaster) {
         cluster.fork();
     });
   } else {
-
-
 let server;
 
 const express = require('express'),
@@ -50,6 +48,7 @@ const express = require('express'),
 let FileStore = sessionFileStore(session);
 
 // Cookies
+
 app.set('trust proxy', 1); // trust first proxy
 var sess = {
   genId: function(req) {
@@ -150,8 +149,8 @@ setInterval(() => {
   client.refresh()
 }, botConfig.stream.refreshTokenTime);
 client.on('chat', (user, message) => {
-  fetcher.fetchTwitchEmotes().then(() => {
-  message.displayMessage = parser.parse(message.displayMessage)
+  // fetcher.fetchTwitchEmotes().then(() => {
+  // message.displayMessage = parser.parse(message.displayMessage)
   fetcher.fetchBTTVEmotes().then(() => {
   message.displayMessage = parser.parse(message.displayMessage)
   io.emit('message', {
@@ -161,9 +160,9 @@ client.on('chat', (user, message) => {
   }).catch(function(err) {
 
   });
-}).catch(function(err) {
-
-});
+// }).catch(function(err) {
+//
+// });
 
   // message.displayMessage = twitchEmoji.parse(message.displayMessage)
 
