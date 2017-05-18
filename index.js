@@ -1,25 +1,4 @@
 'use strict';
-const cluster = require('cluster');
-const numCPUs = require('os').cpus().length;
-if(cluster.isMaster) {
-    var numWorkers = require('os').cpus().length;
-
-    console.log('Master cluster setting up ' + numWorkers + ' workers...');
-
-    for(var i = 0; i < numWorkers; i++) {
-        cluster.fork();
-    }
-
-    cluster.on('online', function(worker) {
-        console.log('Worker ' + worker.process.pid + ' is online');
-    });
-
-    cluster.on('exit', function(worker, code, signal) {
-        console.log('Worker ' + worker.process.pid + ' died with code: ' + code + ', and signal: ' + signal);
-        console.log('Starting a new worker');
-        cluster.fork();
-    });
-  } else {
 let server;
 
 const express = require('express'),
@@ -38,12 +17,7 @@ const express = require('express'),
   sessionFileStore = require('session-file-store'),
   YoutubeV3Strategy = require('passport-youtube-v3').Strategy,
   session = require('express-session');
-  const { EmoteFetcher, EmoteParser } = require('twitch-emoticons');
-  const fetcher = new EmoteFetcher();
-  const parser = new EmoteParser(fetcher, {
-      type: 'html',
-      match: /\b(.+?)\b/gi
-  });
+
 
 let FileStore = sessionFileStore(session);
 
@@ -72,9 +46,9 @@ if (app.get('env') === 'production') {
 }
 // sequelize initialization //
 // for heroku
-const sequelize = new Sequelize('postgres://ygvmxxpruktqks:a2cf84a2c3913d904db39cc306f5a325b92faf725ec6be4e8ed4680fbe0ec198@ec2-54-235-72-121.compute-1.amazonaws.com:5432/danial6j1igreh');
+// const sequelize = new Sequelize('postgres://ygvmxxpruktqks:a2cf84a2c3913d904db39cc306f5a325b92faf725ec6be4e8ed4680fbe0ec198@ec2-54-235-72-121.compute-1.amazonaws.com:5432/danial6j1igreh');
 // for local
-// const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
+const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
 
 // require userService files
 // example
@@ -99,8 +73,8 @@ passport.deserializeUser(function(user, done) {
 });
 
 let strategy = new YoutubeV3Strategy({
-  clientID: "250381024969-dt3rtrinho44e5idof02lg09jhp26no8.apps.googleusercontent.com",
-  clientSecret: "1uVhvUpHkL8CTPZp4pU8n-Wl",
+  clientID: "228570957092-s2q13ded976iftolmqbvvmpeafnltt61.apps.googleusercontent.com",
+  clientSecret: "IKg5ioVbNBUjV8KXpTYBcXyQ",
   callbackURL: "/auth/youtube/callback",
   scope: ['https://www.googleapis.com/auth/youtube']
 }, function(accessToken, refreshToken, profile, done) {
@@ -151,23 +125,11 @@ setInterval(() => {
 }, botConfig.stream.refreshTokenTime);
 
 client.on('chat', (user, message) => {
-  // fetcher.fetchTwitchEmotes().then(() => {
-  // message.displayMessage = parser.parse(message.displayMessage)
-  fetcher.fetchBTTVEmotes().then(() => {
-  message.displayMessage = parser.parse(message.displayMessage)
   io.emit('message', {
     user: user,
     message: message
   });
-  }).catch(function(err) {
-    console.log(err)
-  });
-// }).catch(function(err) {
-//
-// });
-
   // message.displayMessage = twitchEmoji.parse(message.displayMessage)
-
 });
 
 client.connect();
@@ -211,4 +173,3 @@ sequelize.sync().then(function(res) {
 }).catch(function(e) {
   console.log('Error in sequelize.sync(): ' + e);
 });
-}
