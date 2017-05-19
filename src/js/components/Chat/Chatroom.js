@@ -94,22 +94,22 @@ var Chat = React.createClass({
       $.ajax({type: 'GET', url: '/refreshToken'});
     }, 60000 * 59)
 
-    socket.on("message", function(data) {
-    var doc = document.getElementById('chat');
     fetcher.fetchTwitchEmotes().then(() => {
-             let message = parser.parse(data.message.displayMessage)
-             fetcher.fetchBTTVEmotes().then(() => {
-             data.message.displayMessage = parser.parse(message)
+           fetcher.fetchBTTVEmotes().then(() => {
+      socket.on("message", function(data) {
+      var doc = document.getElementById('chat');
+            data.message.displayMessage  = parser.parse(data.message.displayMessage)
              component.setState({
                messages: component.state.messages.slice(-200).concat([data])
              });
+           });
              }).catch(function(err) {
                console.log(err)
              });
            }).catch(function(err) {
 
            })
-    });
+
   }
   },
   componentWillMount() {
