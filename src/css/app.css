@@ -10,6 +10,17 @@
     color: #D3D3D3 !important;
     text-align: center;
   }
+  .mod {
+    height: 31px;
+  }
+
+  .streamer {
+    height: 26px;
+  }
+
+  .sub {
+    height: 17px;
+  }
 
   .twitch-emoji {
     height: 33px;
