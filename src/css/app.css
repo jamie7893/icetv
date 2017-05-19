@@ -10,6 +10,7 @@
     color: #D3D3D3 !important;
     text-align: center;
   }
+
   .mod {
     height: 31px;
   }
@@ -46,6 +47,26 @@
     font-size: 16px;
     color: #FFF;
     margin-top: 9px;
+  }
+
+  .loginBtn-chat {
+    box-sizing: border-box;
+    position: relative;
+    /* width: 13em;  - apply for fixed size */
+    margin: 0.2em;
+    padding: 0 15px 0 46px;
+    border: none;
+    text-align: left;
+    line-height: 34px;
+    white-space: nowrap;
+    border-radius: 0.2em;
+    font-size: 16px;
+    color: #FFF;
+    margin-top: 31px;
+    margin-left: 27px;
+  }
+  .toChat {
+    margin-top: 35px;
   }
 
   .loginBtn:before {
@@ -199,6 +220,7 @@
   .panel-footer {
     background-color: rgb(35, 35, 35);
     border: none;
+    height: 13VH;
   }
 
   .msgInput {
@@ -239,7 +261,7 @@
 
   .chatFooter {
     position: relative;
-    display: grid;
+    display: flex;
     margin-right: 15px;
   }
 
@@ -313,6 +335,7 @@
     text-align: center;
     border: none;
     border-radius: 5px;
+    margin-left: 10px;
   }
 
   .message {

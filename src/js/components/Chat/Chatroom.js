@@ -82,14 +82,6 @@ var Chat = React.createClass({
     //    username: cookie.load('username')
     //  });
 
-    socket.on('users', function(data) {
-      console.log("This is users:", data)
-      var doc = document.getElementById('chat');
-      if (component.isMounted()) {
-        component.setState({idChat: "ice_poseidon", users: data.users, venue: data.venue});
-      }
-    });
-
     setInterval(function() {
       $.ajax({type: 'GET', url: '/refreshToken'});
     }, 60000 * 59)
@@ -114,22 +106,12 @@ var Chat = React.createClass({
   },
   componentWillMount() {
     var component = this;
-    socket.emit('joinedChat', {idUser: cookie.load('id')});
-  },
-
-  _handleScroll() {
-    // set current time of last scrollTop
-    var time = new Date().getTime();
-    this.setState({
-      sinceScroll: new Date().getTime() / 1000 * 60
-    });
   },
   componentDidUpdate() {
     if (this.state.newMSG === 1) {
       document.getElementById('chat').scrollTop = document.getElementById('chat').scrollHeight;
     }
   },
-
   componentWillUnmount() {
     var component = this;
     component.forceUpdate();

@@ -3,6 +3,12 @@ import Form from "./Login/Form";
 import Navbar from "./Navbar/Navbar.js";
 import Message from './Chat/Message';
 var socket;
+const { EmoteFetcher, EmoteParser } = require('twitch-emoticons');
+const fetcher = new EmoteFetcher();
+const parser = new EmoteParser(fetcher, {
+    type: 'html',
+    match: /\b(.+?)\b/gi
+});
 if (window.location.hostname.search('localhost') !== -1) {
   socket = io('localhost:1738');
 } else {
@@ -22,11 +28,43 @@ var Login = React.createClass({
   },
   componentDidMount() {
     let component = this;
-    socket.on("message", function(data) {
+    fetcher.fetchTwitchEmotes().then(() => {
+           fetcher.fetchBTTVEmotes().then(() => {
+      socket.on("message", function(data) {
+      var doc = document.getElementById('chat');
+            data.message.displayMessage  = parser.parse(data.message.displayMessage)
+             component.setState({
+               messages: component.state.messages.slice(-200).concat([data])
+             });
+           });
+             }).catch(function(err) {
+               console.log(err)
+             });
+           }).catch(function(err) {
+
+           })
+  },
+  componentDidUpdate() {
+    if (this.state.newMSG === 1) {
+      document.getElementById('chat').scrollTop = document.getElementById('chat').scrollHeight;
+    }
+  },
+  componentWillUnmount() {
+    var component = this;
+    component.forceUpdate();
+    socket.removeListener();
+  },
+  _handleBottomCheckbox(e) {
+    let component = this;
+    if (e.target.checked) {
       component.setState({
-        messages: component.state.messages.slice(-200).concat([data])
+        newMSG: 0
       });
-    });
+    } else {
+      component.setState({
+        newMSG: 1
+      });
+    }
   },
   render: function() {
     return (
@@ -56,11 +94,12 @@ var Login = React.createClass({
                   </div>
 
                     <div class="panel-footer">
-
+                      <input type="checkbox" id="scrollToBottom" onClick={this._handleBottomCheckbox}></input>
+                      <label for="scrollToBottom">Don't scroll to bottom</label>
                       <form>
                         <div class="chatFooter">
-                          Want to chat?
-                           <button class="loginBtn loginBtn--google" >
+                          <span class="toChat">Want to chat?</span>
+                           <button class="loginBtn-chat loginBtn--google" >
                                 <a class="btn-txt" href="/auth/youtube">Login with Youtube</a>
                             </button>
 

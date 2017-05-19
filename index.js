@@ -46,9 +46,9 @@ if (app.get('env') === 'production') {
 }
 // sequelize initialization //
 // for heroku
-const sequelize = new Sequelize('postgres://ygvmxxpruktqks:a2cf84a2c3913d904db39cc306f5a325b92faf725ec6be4e8ed4680fbe0ec198@ec2-54-235-72-121.compute-1.amazonaws.com:5432/danial6j1igreh');
+// const sequelize = new Sequelize('postgres://ygvmxxpruktqks:a2cf84a2c3913d904db39cc306f5a325b92faf725ec6be4e8ed4680fbe0ec198@ec2-54-235-72-121.compute-1.amazonaws.com:5432/danial6j1igreh');
 // for local
-// const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
+const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
 
 // require userService files
 const userService = require("./service/user.js")(sequelize),
