@@ -51,8 +51,6 @@ const sequelize = new Sequelize('postgres://ygvmxxpruktqks:a2cf84a2c3913d904db39
 // const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
 
 // require userService files
-// example
-// const colorsService = require("./service/colors")(sequelize);
 const userService = require("./service/user.js")(sequelize),
   chatService = require("./service/chat.js")(sequelize);
 
@@ -67,7 +65,6 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(user, done) {
   User.findById(user.userId).then(function(data) {
-    console.log(data.dataValues)
         done(null, data.dataValues);
   });
 });
@@ -76,7 +73,7 @@ let strategy = new YoutubeV3Strategy({
   clientID: "228570957092-s2q13ded976iftolmqbvvmpeafnltt61.apps.googleusercontent.com",
   clientSecret: "IKg5ioVbNBUjV8KXpTYBcXyQ",
   callbackURL: "/auth/youtube/callback",
-  scope: ['https://www.googleapis.com/auth/youtube']
+  scope: ["https://www.googleapis.com/auth/youtube", "https://www.googleapis.com/auth/youtube.force-ssl", "https://www.googleapis.com/auth/youtube.readonly", "https://www.googleapis.com/auth/youtube.upload", "https://www.googleapis.com/auth/youtubepartner", "https://www.googleapis.com/auth/youtubepartner-channel-audit"]
 }, function(accessToken, refreshToken, profile, done) {
   User.findOrCreate({
     where: {
@@ -129,12 +126,25 @@ client.on('chat', (user, message) => {
     user: user,
     message: message
   });
-  // message.displayMessage = twitchEmoji.parse(message.displayMessage)
 });
 
 client.connect();
 
+const cluster = require('cluster');
+const numCPUs = require('os').cpus().length;
 
+if (cluster.isMaster) {
+  console.log(`Master ${process.pid} is running`);
+
+  // Fork workers.
+  for (let i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  }
+
+  cluster.on('exit', (worker, code, signal) => {
+    console.log(`worker ${worker.process.pid} died`);
+  });
+} else {
 sequelize.sync().then(function(res) {
   User.sync();
 
@@ -173,3 +183,4 @@ sequelize.sync().then(function(res) {
 }).catch(function(e) {
   console.log('Error in sequelize.sync(): ' + e);
 });
+}

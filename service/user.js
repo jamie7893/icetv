@@ -79,7 +79,7 @@ module.exports = function(sequelize) {
 
       // Configure the request
       var options = {
-        url: `https://www.googleapis.com/oauth2/v4/token?client_secret=${botConfig.oauth.client_secret}&grant_type=refresh_token&refresh_token=${sess.refreshToken}&client_id=${botConfig.oauth.client_id}`,
+        url: `https://www.googleapis.com/oauth2/v4/token?client_secret=IKg5ioVbNBUjV8KXpTYBcXyQ&grant_type=refresh_token&refresh_token=${sess.refreshToken}&client_id=228570957092-s2q13ded976iftolmqbvvmpeafnltt61.apps.googleusercontent.com`,
         method: 'POST',
         headers: headers
       }
