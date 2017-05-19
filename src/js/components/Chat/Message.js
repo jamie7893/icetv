@@ -1,23 +1,8 @@
 import React from 'react';
-const { EmoteFetcher, EmoteParser } = require('twitch-emoticons');
-const fetcher = new EmoteFetcher();
-const parser = new EmoteParser(fetcher, {
-    type: 'html',
-    match: /\b(.+?)\b/gi
-});
+
 var Message = React.createClass({
     componentWillMount() {
-      fetcher.fetchTwitchEmotes().then(() => {
-               let message = parser.parse(this.props.message.message.displayMessage)
-               fetcher.fetchBTTVEmotes().then(() => {
-               message = parser.parse(message)
-               this.props.message.message.displayMessage = message
-               }).catch(function(err) {
-                 console.log(err)
-               });
-             }).catch(function(err) {
 
-             })
     },
     render: function() {
       function createEmote(message) {
