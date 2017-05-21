@@ -51,7 +51,7 @@ if (cluster.isMaster) {
     secret: uuid.v4(),
     saveUnitialized: true,
     resave: true,
-    store: new RedisStore,
+    store: new RedisStore(url:"redis-13561.c11.us-east-1-3.ec2.cloud.redislabs.com:13561"),
     cookie: {
       secure: false,
       maxAge: 10 * 365 * 24 * 60 * 60
