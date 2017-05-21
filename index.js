@@ -1,26 +1,10 @@
 'use strict';
-const cluster = require('cluster');
-const numCPUs = require('os').cpus().length;
-const express = require('express'),
-  app = express(),
-  http = require('http').Server(app);
-
-if (cluster.isMaster) {
-  console.log(`Master ${process.pid} is running`);
-
-  // Fork workers.
-  for (let i = 0; i < numCPUs; i++) {
-    cluster.fork();
-  }
-
-  cluster.on('exit', (worker, code, signal) => {
-    console.log(`worker ${worker.process.pid} died`);
-  });
-} else {
-
   let server;
 
-  const path = require('path'),
+  const express = require('express'),
+    app = express(),
+    http = require('http').Server(app),
+    path = require('path'),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
     io = require('socket.io')(http),
@@ -32,16 +16,12 @@ if (cluster.isMaster) {
     cookieParser = require('cookie-parser'),
     sessionFileStore = require('session-file-store'),
     YoutubeV3Strategy = require('passport-youtube-v3').Strategy,
-    session = require('express-session'),
-    RedisStore = require('connect-redis')(session);
+    session = require('express-session');
 
   let FileStore = sessionFileStore(session);
 
   // Cookies
-  let options = {
-    host: process.env.IP || "0.0.0.0",
-    port: process.env.PORT || 1738
-  }
+
   app.set('trust proxy', 1); // trust first proxy
   var sess = {
     genId: function(req) {
@@ -51,7 +31,7 @@ if (cluster.isMaster) {
     secret: uuid.v4(),
     saveUnitialized: true,
     resave: true,
-    store: new RedisStore(url:"redis-13561.c11.us-east-1-3.ec2.cloud.redislabs.com:13561"),
+    store: new FileStore(),
     cookie: {
       secure: false,
       maxAge: 10 * 365 * 24 * 60 * 60
@@ -65,9 +45,9 @@ if (cluster.isMaster) {
   }
   // sequelize initialization //
   // for heroku
-  const sequelize = new Sequelize('postgres://ygvmxxpruktqks:a2cf84a2c3913d904db39cc306f5a325b92faf725ec6be4e8ed4680fbe0ec198@ec2-54-235-72-121.compute-1.amazonaws.com:5432/danial6j1igreh');
+  // const sequelize = new Sequelize('postgres://ygvmxxpruktqks:a2cf84a2c3913d904db39cc306f5a325b92faf725ec6be4e8ed4680fbe0ec198@ec2-54-235-72-121.compute-1.amazonaws.com:5432/danial6j1igreh');
   // for local
-  // const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
+  const sequelize = new Sequelize('postgres://postgres:admin@localhost:3000/postgres');
 
   // require userService files
   const userService = require("./service/user.js")(sequelize),
@@ -195,4 +175,3 @@ if (cluster.isMaster) {
   }).catch(function(e) {
     console.log('Error in sequelize.sync(): ' + e);
   });
-}
