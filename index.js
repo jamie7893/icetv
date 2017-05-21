@@ -113,8 +113,8 @@ let strategy = new YoutubeV3Strategy({
   });
 });
 passport.use(strategy);
-console.log(process.env.PORT + 1)
-app.set('port', process.env.PORT + 1 || 443);
+console.log(Number(process.env.PORT) + 1)
+app.set('port', Number(process.env.PORT) + 1 || 443);
 app.use(morgan('dev')). // logs request to the console
 use(express.static(path.join(__dirname, 'src'))).set('view engine', 'jsx').engine('jsx', require('express-react-views').createEngine()).use(session(sess)).use(cookieParser()).use(bodyParser.json()).use(bodyParser.urlencoded({extended: true}));
 app.use(passport.initialize());
