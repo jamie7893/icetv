@@ -7,8 +7,8 @@ const httpsOptions = {
   passphrase: 'purplecx'
 };
 const express = require('express'),
- app = express.createServer(),
- appSecure = express.createServer(httpsOptions),
+  appSecure = express.createServer(),
+ app = express.createServer(httpsOptions),
   https = require('https'),
   http = require('http'),
   path = require('path'),
@@ -176,8 +176,8 @@ sequelize.sync().then(function(res) {
     // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
     res.json({"redirect": true})
   }
-  app.listen(80);
-  appSecure.listen(app.get('port'), function() {
+  appSecure.listen(80);
+  app.listen(app.get('port'), function() {
       console.log('Express HTTPS server listening on port ' + app.get('port'));
   });
 }).catch(function(e) {
