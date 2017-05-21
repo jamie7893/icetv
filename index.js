@@ -22,11 +22,7 @@ const express = require('express'),
   session = require('express-session');
 let FileStore = sessionFileStore(session);
 
-httpApp.set('port', process.env.PORT || 80);
-httpApp.get("*", function (req, res, next) {
-  console.log("https://" + req.headers.host + "/" + req.path)
-    res.redirect("https://" + req.headers.host + "/" + req.path);
-});
+
 const httpsOptions = {
   key: fs.readFileSync('key.pem'),
   cert: fs.readFileSync('cert.pem'),
@@ -115,7 +111,7 @@ let strategy = new YoutubeV3Strategy({
 });
 passport.use(strategy);
 console.log(Number(process.env.PORT) + 1)
-app.set('port', Number(process.env.PORT) + 1 || 443);
+app.set('port', process.env.PORT || 443);
 app.use(morgan('dev')). // logs request to the console
 use(express.static(path.join(__dirname, 'src'))).set('view engine', 'jsx').engine('jsx', require('express-react-views').createEngine()).use(session(sess)).use(cookieParser()).use(bodyParser.json()).use(bodyParser.urlencoded({extended: true}));
 app.use(passport.initialize());
@@ -182,9 +178,6 @@ sequelize.sync().then(function(res) {
     // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
     res.json({"redirect": true})
   }
-  http.createServer(httpApp).listen(httpApp.get('port'), function() {
-      console.log('Express HTTP server listening on port ' + httpApp.get('port'));
-  });
 
   https.createServer(httpsOptions, app).listen(app.get('port'), function() {
       console.log('Express HTTPS server listening on port ' + app.get('port'));
