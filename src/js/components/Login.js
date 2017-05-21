@@ -37,7 +37,7 @@ var Login = React.createClass({
        window.location.href = "/#/chatroom";
      }
    })
-   
+
     fetcher.fetchTwitchEmotes().then(() => {
            fetcher.fetchBTTVEmotes().then(() => {
               fetcher.fetchTwitchEmotes().then(() => {
@@ -101,9 +101,7 @@ var Login = React.createClass({
             <label for="scrollToBottom">Don't scroll to bottom</label>
             <div class="toLoginWrap">
             <span class="toChat">Want to chat?</span>
-            <button class="loginBtn-chat loginBtn--google" >
-              <a class="btn-txt" href="/auth/youtube">Login with Youtube</a>
-            </button>
+              <a class="btn-txt loginBtn-chat loginBtn--google" href="/auth/youtube">Login with Youtube</a>
             </div>
           </div>
         </div>

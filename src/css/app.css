@@ -200,7 +200,7 @@ nav {
   box-sizing: border-box;
   position: relative;
   margin: 0.2em;
-  padding: 0 15px 0 46px;
+  padding: 5px 15px 10px 46px;
   border: none;
   text-align: left;
   line-height: 34px;
@@ -208,8 +208,8 @@ nav {
   border-radius: 0.2em;
   font-size: 16px;
   color: #FFF;
-  margin-top: 9px;
   background: rgb(170, 100, 234);
+  top: 5px;
 }
 
 .btn-txt {
@@ -247,7 +247,7 @@ nav {
   box-sizing: border-box;
   position: relative;
   margin: 0.2em;
-  padding: 0 15px 0 15px;
+  padding: 7px 15px 9px 15px;
   border: none;
   text-align: left;
   line-height: 34px;
@@ -255,8 +255,8 @@ nav {
   border-radius: 0.2em;
   font-size: 16px;
   color: #FFF;
-  margin-top: 9px;
   background: rgb(170, 100, 234);
+  top: 6px;
 }
 
 .donateBtn:before   {
@@ -277,23 +277,6 @@ nav {
   left: 0;
   width: 34px;
   height: 100%;
-}
-
-
-.donateBtn {
-  box-sizing: border-box;
-  position: relative;
-  margin: 0.2em;
-  padding: 0 15px 0 15px;
-  border: none;
-  text-align: left;
-  line-height: 34px;
-  white-space: nowrap;
-  border-radius: 0.2em;
-  font-size: 16px;
-  color: #FFF;
-  margin-top: 9px;
-  background: rgb(170, 100, 234);
 }
 
 .donateBtn:before   {

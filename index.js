@@ -17,7 +17,6 @@ const express = require('express'),
   cookieParser = require('cookie-parser'),
   sessionFileStore = require('session-file-store'),
   YoutubeV3Strategy = require('passport-youtube-v3').Strategy,
-  httpApp = express(),
   session = require('express-session');
 let FileStore = sessionFileStore(session);
 
