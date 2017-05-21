@@ -28,6 +28,16 @@ var Login = React.createClass({
   },
   componentDidMount() {
     let component = this;
+
+    $.ajax({
+     type: 'GET',
+     url: '/isLoggedIn'
+   }).then(function(data) {
+     if (data.showLogout) {
+       window.location.href = "/#/chatroom";
+     }
+   })
+   
     fetcher.fetchTwitchEmotes().then(() => {
            fetcher.fetchBTTVEmotes().then(() => {
               fetcher.fetchTwitchEmotes().then(() => {
