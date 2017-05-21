@@ -2,7 +2,7 @@ import React from "react";
 let Logout = React.createClass({
   render: function() {
     return (
-      <button class="loginBtn loginBtn--google" >
+      <button class="donateBtn" >
           <a class="btn-txt" href="/logout">Logout</a>
       </button>
     )
@@ -78,8 +78,27 @@ let Navbar = React.createClass({
   <header>
   <nav class="navbar navbar-default navbar-inverse" role="navigation">
     <div class="container-fluid">
-
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left">
+          <button class="donateBtn">
+            <a class="btn-txt" target="_blank" href="https://discordapp.com/invite/cx">Discord</a>
+          </button>
+          <button class="donateBtn">
+            <a class="btn-txt" target="_blank" href="https://twitter.com/REALIcePoseidon">Twitter</a>
+          </button>
+          <button class="donateBtn">
+            <a class="btn-txt" target="_blank" href="https://shop.crowdmade.com/collections/iceposeidon/style_tshirt">Buy a shirt!</a>
+          </button>
+          <button class="donateBtn">
+            <a class="btn-txt" target="_blank" href="https://www.reddit.com/r/Ice_Poseidon/">Reddit</a>
+          </button>
+          <button class="donateBtn">
+            <a class="btn-txt" target="_blank" href="https://oddshot.tv/">Oddshot</a>
+          </button>
+          <button class="donateBtn">
+            <a class="btn-txt" target="_blank" href="https://youtube.streamlabs.com/iceposeidon#/">Donate</a>
+          </button>
+        </ul>
         <ul class="nav navbar-nav navbar-right">
           {this.state.showLogin ? <Login /> : null}
           {this.state.showLogout ? <Logout /> : null}
