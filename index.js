@@ -1,8 +1,14 @@
 'use strict';
 let server;
-
+const fs = require('fs');
+const httpsOptions = {
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem'),
+  passphrase: 'purplecx'
+};
 const express = require('express'),
-  app = express(),
+ app = express.createServer(),
+ appSecure = express.createServer(httpsOptions),
   https = require('https'),
   http = require('http'),
   path = require('path'),
@@ -12,7 +18,6 @@ const express = require('express'),
   Sequelize = require('sequelize'),
   passport = require('passport'),
   uuid = require('uuid'),
-  fs = require('fs'),
   botConfig = require('./config/config.js'),
   ymi = require('ymi.js'),
   cookieParser = require('cookie-parser'),
@@ -21,13 +26,6 @@ const express = require('express'),
   httpApp = express(),
   session = require('express-session');
 let FileStore = sessionFileStore(session);
-
-
-const httpsOptions = {
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem'),
-  passphrase: 'purplecx'
-};
 
 // Cookies
 
@@ -178,8 +176,8 @@ sequelize.sync().then(function(res) {
     // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
     res.json({"redirect": true})
   }
-
-  https.createServer(httpsOptions, app).listen(app.get('port'), function() {
+  app.listen(80);
+  appSecure.listen(app.get('port'), function() {
       console.log('Express HTTPS server listening on port ' + app.get('port'));
   });
 }).catch(function(e) {
