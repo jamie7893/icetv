@@ -24,6 +24,7 @@ let FileStore = sessionFileStore(session);
 
 httpApp.set('port', process.env.PORT || 80);
 httpApp.get("*", function (req, res, next) {
+  console.log("https://" + req.headers.host + "/" + req.path)
     res.redirect("https://" + req.headers.host + "/" + req.path);
 });
 const httpsOptions = {
