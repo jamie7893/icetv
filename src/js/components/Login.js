@@ -30,6 +30,7 @@ var Login = React.createClass({
     let component = this;
     fetcher.fetchTwitchEmotes().then(() => {
            fetcher.fetchBTTVEmotes().then(() => {
+              fetcher.fetchTwitchEmotes().then(() => {
       socket.on("message", function(data) {
       var doc = document.getElementById('chat');
             data.message.displayMessage  = parser.parse(data.message.displayMessage)
@@ -42,7 +43,10 @@ var Login = React.createClass({
              });
            }).catch(function(err) {
 
-           })
+           }).catch(function(err) {
+                           console.log(err)
+            });
+          })
   },
   componentDidUpdate() {
     if (this.state.newMSG === 1) {
@@ -68,56 +72,32 @@ var Login = React.createClass({
   },
   render: function() {
     return (
-      <div id="login">
-            <Navbar />
-        <div id="stream">
-        <iframe class="stream" class="login-stream" width="1500" height="1000" src="https://www.youtube.com/embed/live_stream?channel=UCv9Edl_WbtbPeURPtFDo-uA&autoplay=1" frameBorder="0" allowFullScreen></iframe>
+    <div>
+        <Navbar />
+      <div id="loginPage">
+        <div id="leftColumn">
+          <div class="streamWrapper">
+            <iframe class="stream" class="login-stream" src="https://www.youtube.com/embed/live_stream?channel=UCv9Edl_WbtbPeURPtFDo-uA&autoplay=1" allowFullScreen></iframe>
+          </div>
         </div>
-        <div id="right-colum">
-
-          <div class="chat">
-            <div>
-              <div class="panel panel-info">
-
-                <div id="chat" class="chatBox" onScroll={this._handleScroll}>
-
-                  {this.state.messages.map((message, i) => {
-                    return (< Message message = {
-                      message
-                    }
-                    key = {
-                      i
-                    } />);
-                  })
-}
-
-                  </div>
-
-                    <div class="panel-footer">
-                      <input type="checkbox" id="scrollToBottom" onClick={this._handleBottomCheckbox}></input>
-                      <label for="scrollToBottom">Don't scroll to bottom</label>
-                      <form>
-                        <div class="chatFooter">
-                          <span class="toChat">Want to chat?</span>
-                           <button class="loginBtn-chat loginBtn--google" >
-                                <a class="btn-txt" href="/auth/youtube">Login with Youtube</a>
-                            </button>
-
-                              </div>
-
-                                </form>
-
-                                  </div>
-
-                                    </div>
-
-                                      </div>
-
-                                                      </div>
-
-                                                        </div>
-
-
+        <div id="rightColumn">
+          <div id="chat" class="chatBox" onScroll={this._handleScroll}>
+            {this.state.messages.map((message, i) => {
+              return (<Message message={message} key={i} />);
+            })}
+          </div>
+          <div class="chatFooter">
+            <input type="checkbox" id="scrollToBottom" onClick={this._handleBottomCheckbox}></input>
+            <label for="scrollToBottom">Don't scroll to bottom</label>
+            <div class="toLoginWrap">
+            <span class="toChat">Want to chat?</span>
+            <button class="loginBtn-chat loginBtn--google" >
+              <a class="btn-txt" href="/auth/youtube">Login with Youtube</a>
+            </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     );
   }

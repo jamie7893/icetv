@@ -75,6 +75,7 @@ let Navbar = React.createClass({
   },
   render: function() {
     return (
+  <header>
   <nav class="navbar navbar-default navbar-inverse" role="navigation">
     <div class="container-fluid">
 
@@ -86,6 +87,7 @@ let Navbar = React.createClass({
       </div>
     </div>
   </nav>
+  </header>
     );
   }
 });

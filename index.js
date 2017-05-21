@@ -164,7 +164,6 @@ sequelize.sync().then(function(res) {
   server = http.listen(process.env.PORT || 1738, process.env.IP || "0.0.0.0", function() {
     var addr = server.address();
     console.log("Server listening at", addr.address + ":" + addr.port);
-    console.log('Process ' + process.pid + ' is listening to all incoming requests');
   });
 }).catch(function(e) {
   console.log('Error in sequelize.sync(): ' + e);

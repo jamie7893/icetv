@@ -1,5 +1,5 @@
 import React from 'react';
-
+const emojione = require('emojione');
 var Message = React.createClass({
     componentWillMount() {
 

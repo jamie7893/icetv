@@ -120,86 +120,31 @@ var Chat = React.createClass({
 
   render() {
     return (
-      <div>
-
-        <iframe class="stream" width="1500" height="1000" src="https://www.youtube.com/embed/live_stream?channel=UCv9Edl_WbtbPeURPtFDo-uA&autoplay=1" frameBorder="0" allowFullScreen></iframe>
-        <div id="right-colum">
-
-          <div class="chat">
-            <div>
-              <div class="panel panel-info">
-
-                <div id="chat" class="chatBox" onScroll={this._handleScroll}>
-
-                  {this.state.messages.map((message, i) => {
-                    return (< Message message = {
-                      message
-                    }
-                    key = {
-                      i
-                    } />);
-                  })
-}
-
-                  </div>
-
-                    <div class="panel-footer">
-                      <input type="checkbox" id="scrollToBottom" onClick={this._handleBottomCheckbox}></input>
-                      <label for="scrollToBottom">Don't scroll to bottom</label>
-                      <form>
-                        <div class="chatFooter">
-                          <textarea type="text" class="msgInput form-control" value={this.state.message} onKeyPress={this._handleKeyPress} onChange={this._handleMsgInput} placeholder="Enter Message"/>
-                          <div class="chatBtnContainer">
-                            <button onClick={this._sendMsg} ref={input => this.sendBtn = input} class="chatBtn" type="submit">Chat</button>
-                          </div>
-                        </div>
-
-                      </form>
-
+      <div id="loginPage">
+        <div id="leftColumn">
+          <div class="streamWrapper">
+            <iframe class="stream" class="login-stream" src="https://www.youtube.com/embed/live_stream?channel=UCv9Edl_WbtbPeURPtFDo-uA&autoplay=1" allowFullScreen></iframe>
+          </div>
+        </div>
+        <div id="rightColumn">
+          <div id="chat" class="chatBox" onScroll={this._handleScroll}>
+            {this.state.messages.map((message, i) => {
+              return (<Message message={message} key={i} />);
+            })}
+          </div>
+          <div class="chatFooter">
+            <input type="checkbox" id="scrollToBottom" onClick={this._handleBottomCheckbox}></input>
+            <label for="scrollToBottom">Don't scroll to bottom</label>
+                        <div class="toLoginWrap">
+                    <textarea type="text" class="msgInput form-control" value={this.state.message} onKeyPress={this._handleKeyPress} onChange={this._handleMsgInput} placeholder="Enter Message"/>
+                    <div class="chatBtnContainer">
+                      <button onClick={this._sendMsg} ref={input => this.sendBtn = input} class="chatBtn" type="submit">Chat</button>
                     </div>
-
                   </div>
-
                 </div>
-
-              <div class="col-md-4 online-users">
-
-                    <div class="panel panel-primary">
-
-                                            <div class="panel-heading">
-                                              ONLINE USERS
-                                            </div>
-
-                                            <div class = "panel-body">
-                                              <ul class = "media-list" > {this.state.users.map((user) => {
-                                                return (< User user = {
-                                                  user
-                                                }
-                                                key = {
-                                                  user.idUser
-                                                } />);
-                                              })
-}
-
-                                              </ul>
-
-                                                </div>
-
-                                                  </div>
-
-                                                    </div>
-
-                                                      </div>
-
-                                                        </div>
-
-                                                          <div>
-
-                                                            </div>
-
-                                                              </div>
-
-                                                            );
+              </div>
+            </div>
+    );
 },
 
 });
