@@ -191,7 +191,6 @@ module.exports = function(sequelize) {
       });
     },
     isLoggedIn: function(req, res) {
-      console.log(req.user, req.session)
       if (req.user) {
         res.json({
           showLogin: false,
