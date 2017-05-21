@@ -3,12 +3,11 @@ let server;
 
 const express = require('express'),
   app = express(),
-  https = require('https'),
-  http = require('http'),
+  http = require('http').Server(app),
   path = require('path'),
   bodyParser = require('body-parser'),
   morgan = require('morgan'),
-  io = require('socket.io')(https),
+  io = require('socket.io')(http),
   Sequelize = require('sequelize'),
   passport = require('passport'),
   uuid = require('uuid'),
@@ -22,15 +21,7 @@ const express = require('express'),
   session = require('express-session');
 let FileStore = sessionFileStore(session);
 
-
-const httpsOptions = {
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem'),
-  passphrase: 'purplecx'
-};
-
 // Cookies
-
 app.set('trust proxy', 1); // trust first proxy
 var sess = {
   genId: function(req) {
@@ -177,8 +168,9 @@ sequelize.sync().then(function(res) {
     res.json({"redirect": true})
   }
 
-  https.createServer(httpsOptions, app).listen(process.env.PORT || 1738, process.env.IP || "0.0.0.0", function() {
-      console.log('Express HTTPS server listening on port ' + app.get('port'));
+  server = http.listen(process.env.PORT || 1738, process.env.IP || "0.0.0.0", function() {
+    let addr = server.address();
+    console.log("Server listening at", addr.address + ":" + addr.port);
   });
 }).catch(function(e) {
   console.log('Error in sequelize.sync(): ' + e);
