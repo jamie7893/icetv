@@ -1,14 +1,8 @@
 'use strict';
 let server;
-const fs = require('fs');
-const httpsOptions = {
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem'),
-  passphrase: 'purplecx'
-};
+
 const express = require('express'),
-  appSecure = express.createServer(),
- app = express.createServer(httpsOptions),
+  app = express(),
   https = require('https'),
   http = require('http'),
   path = require('path'),
@@ -18,6 +12,7 @@ const express = require('express'),
   Sequelize = require('sequelize'),
   passport = require('passport'),
   uuid = require('uuid'),
+  fs = require('fs'),
   botConfig = require('./config/config.js'),
   ymi = require('ymi.js'),
   cookieParser = require('cookie-parser'),
@@ -26,6 +21,13 @@ const express = require('express'),
   httpApp = express(),
   session = require('express-session');
 let FileStore = sessionFileStore(session);
+
+
+const httpsOptions = {
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem'),
+  passphrase: 'purplecx'
+};
 
 // Cookies
 
@@ -108,8 +110,6 @@ let strategy = new YoutubeV3Strategy({
   });
 });
 passport.use(strategy);
-console.log(Number(process.env.PORT) + 1)
-app.set('port', process.env.PORT || 443);
 app.use(morgan('dev')). // logs request to the console
 use(express.static(path.join(__dirname, 'src'))).set('view engine', 'jsx').engine('jsx', require('express-react-views').createEngine()).use(session(sess)).use(cookieParser()).use(bodyParser.json()).use(bodyParser.urlencoded({extended: true}));
 app.use(passport.initialize());
@@ -176,8 +176,8 @@ sequelize.sync().then(function(res) {
     // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
     res.json({"redirect": true})
   }
-  appSecure.listen(80);
-  app.listen(app.get('port'), function() {
+
+  https.createServer(httpsOptions, app).listen(process.env.PORT || 1738, process.env.IP || "0.0.0.0", function() {
       console.log('Express HTTPS server listening on port ' + app.get('port'));
   });
 }).catch(function(e) {
