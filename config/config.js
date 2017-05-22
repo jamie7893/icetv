@@ -1,8 +1,8 @@
 module.exports = {
   oauth: {
     client_id: "228570957092-s2q13ded976iftolmqbvvmpeafnltt61.apps.googleusercontent.com",
-    client_secret: "IKg5ioVbNBUjV8KXpTYBcXyQ",
-    access_token: "ya29.GltSBClYVr5XOJAKqes1t1_Iq2PiuHKERFSFwgi7nqJoVZMRc41FM80UQ_mtmUqFqvtdmuN4J0ncGUUaNIo0aa5iwyTR9IZNGb-4U-8r5VeUp2JqHYM_k-bMIMhO",
+      client_secret: "IKg5ioVbNBUjV8KXpTYBcXyQ",
+    access_token: "ya29.GltSBKcUUEr_0f6xApVREvL_fBnlQGtM9YPAXwTNDnXN1dUtHNBekhdU0B6dj1ZsutiOVR8ZTq2r6QLPAc4LGwKb2Hv_DOyl9VYO6m5BHTWyyanSeEzpQvJeDuvn",
     refresh_token: "1/t_6uuyfGLTh1nwH8oQfQjKGXaPuVSVHIR_wTHz1qXvw"
   },
   stream: {
