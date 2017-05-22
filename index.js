@@ -140,7 +140,7 @@ client.on('page_token', (page_token) => {
 
 client.on('refresh_token', (refresh_token) => {
   config.oauth.access_token = refresh_token.access_token;
-})l
+});
 
 client.connect();
 
