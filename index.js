@@ -134,6 +134,14 @@ client.on('chat', (user, message) => {
   // message.displayMessage = twitchEmoji.parse(message.displayMessage)
 });
 
+client.on('page_token', (page_token) => {
+  config.oauth.page_token = page_token;
+});
+
+client.on('refresh_token', (refresh_token) => {
+  config.oauth.access_token = refresh_token.access_token;
+})l
+
 client.connect();
 
 sequelize.sync().then(function(res) {
