@@ -1,9 +1,9 @@
 module.exports = {
   oauth: {
-    client_id: "130735531663-qi8mjhphdinm8t1fumtjobemi5s1rotf.apps.googleusercontent.com",
-    client_secret: "B_xWrJRjtasXOy_40UIsotmR",
-    access_token: "ya29.GltFBHk3d-PQmHXD5zhUavCoyQB95G-xiUuAeD53zN8f3oGORyT-BNzhWEhDOm1j5zH68pYQ_h89V8ie1qkBh8AfOTGC48fw6kJ-BUApMbQkdWgsrfXehvDboC-1",
-    refresh_token: "1/CYMMjqnYZjYUNmR3TB81gQ5bCtSlliXxNlZf_5aX_2c"
+    client_id: "228570957092-s2q13ded976iftolmqbvvmpeafnltt61.apps.googleusercontent.com",
+    client_secret: "IKg5ioVbNBUjV8KXpTYBcXyQ",
+    access_token: "ya29.GltSBClYVr5XOJAKqes1t1_Iq2PiuHKERFSFwgi7nqJoVZMRc41FM80UQ_mtmUqFqvtdmuN4J0ncGUUaNIo0aa5iwyTR9IZNGb-4U-8r5VeUp2JqHYM_k-bMIMhO",
+    refresh_token: "1/t_6uuyfGLTh1nwH8oQfQjKGXaPuVSVHIR_wTHz1qXvw"
   },
   stream: {
     liveChatId: "EiEKGFVDdjlFZGxfV2J0YlBlVVJQdEZEby11QRIFL2xpdmU",
