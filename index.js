@@ -9,6 +9,7 @@ const express = require('express'),
   morgan = require('morgan'),
   io = require('socket.io')(http),
   Sequelize = require('sequelize'),
+  jsonfile = require('jsonfile'),
   passport = require('passport'),
   uuid = require('uuid'),
   fs = require('fs'),
@@ -139,7 +140,9 @@ client.on('page_token', (page_token) => {
 });
 
 client.on('refresh_token', (refresh_token) => {
-  config.oauth.access_token = refresh_token.access_token;
+  console.log("new access token",refresh_token.access_token)
+  botConfig.oauth.access_token = refresh_token.access_token;
+
 });
 
 client.connect();
