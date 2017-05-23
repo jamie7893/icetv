@@ -7,7 +7,7 @@ module.exports = function(sequelize) {
 
   return {
     create: function(req, res, callback) {
-console.log("create")
+      console.log("create")
     },
     refresh: function(req, res, callback) {
       console.log(req.user)
@@ -56,15 +56,9 @@ console.log("create")
     isLoggedIn: function(req, res) {
       console.log(req.user)
       if (req.user) {
-        res.json({
-          showLogin: false,
-          showLogout: true
-        })
+        res.json({showLogin: false, showLogout: true})
       } else {
-        res.json({
-          showLogin: true,
-          showLogout: false
-        })
+        res.json({showLogin: true, showLogout: false})
       }
     },
     logout: function(req, res) {
