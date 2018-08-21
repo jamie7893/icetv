@@ -92,10 +92,6 @@ io.on('connection', function(socket) {
         console.log('a user disconnected');
 
     });
-    var venue = {};
-    socket.on('venue', function(data) {
-        venue = data.venue;
-    });
     socket.on('joinedChat', function(data) {
         var chatroomSocket = setInterval(function() {
             User.findOne({
