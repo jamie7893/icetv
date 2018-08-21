@@ -8,6 +8,7 @@ import Profile from "./components/Profile.js";
 import Foursquare from "./components/Foursquare.js"
 import Chatroom from "./components/Chatroom.js"
 
+
 const app = document.getElementById('app');
 ReactDOM.render(
   <Router history={hashHistory}>

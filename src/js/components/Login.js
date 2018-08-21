@@ -87,7 +87,7 @@ var Login = React.createClass({
       <div id="loginPage">
         <div id="leftColumn">
           <div class="streamWrapper">
-            <iframe class="stream" class="login-stream" src="https://www.youtube.com/embed/live_stream?channel=UCv9Edl_WbtbPeURPtFDo-uA&autoplay=1" allowFullScreen></iframe>
+            <iframe class="stream" class="login-stream" src="https://www.youtube.com/embed/live_stream?channel=UC4abN4ZiybnsAXTkTBX7now&autoplay=1" allowFullScreen></iframe>
           </div>
         </div>
         <div id="rightColumn">

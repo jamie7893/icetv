@@ -118,12 +118,14 @@ var Chat = React.createClass({
     socket.removeListener();
   },
 
+
+
   render() {
     return (
       <div id="loginPage">
         <div id="leftColumn">
           <div class="streamWrapper">
-            <iframe class="stream" class="login-stream" src="https://www.youtube.com/embed/live_stream?channel=UCv9Edl_WbtbPeURPtFDo-uA&autoplay=1" allowFullScreen></iframe>
+            <iframe class="stream" class="login-stream" src="https://www.youtube.com/embed/live_stream?channel=UC4abN4ZiybnsAXTkTBX7now&autoplay=1" allowFullScreen></iframe>
           </div>
         </div>
         <div id="rightColumn">
@@ -134,7 +136,7 @@ var Chat = React.createClass({
           </div>
           <div class="chatFooter">
             <input type="checkbox" id="scrollToBottom" onClick={this._handleBottomCheckbox}></input>
-            <label for="scrollToBottom">Don't scroll to bottom</label>
+            <label for="scrollToBottom">Dont scroll to bottom</label>
                         <div class="toLoginWrap">
                     <textarea type="text" class="msgInput form-control" value={this.state.message} onKeyPress={this._handleKeyPress} onChange={this._handleMsgInput} placeholder="Enter Message"/>
                     <div class="chatBtnContainer">
