@@ -11,6 +11,7 @@ const parser = new EmoteParser(fetcher, {
 });
 if (window.location.hostname.search('localhost') !== -1) {
   socket = io('localhost:1738');
+  console.log('localhost io')
 } else {
   socket = io("/");
 }
@@ -42,6 +43,7 @@ var Login = React.createClass({
            fetcher.fetchBTTVEmotes().then(() => {
               fetcher.fetchTwitchEmotes().then(() => {
       socket.on("message", function(data) {
+        console.log(data)
       var doc = document.getElementById('chat');
             data.message.displayMessage  = parser.parse(data.message.displayMessage)
              component.setState({

@@ -4,6 +4,7 @@ let server;
 const express = require('express'),
   app = express(),
   http = require('http').Server(app),
+   https = require('https'),
   path = require('path'),
   bodyParser = require('body-parser'),
   morgan = require('morgan'),
@@ -118,27 +119,87 @@ const config = {
   liveChatID: botConfig.stream.liveChatId,
   page_token: null
 }
-// Import the lib
-const { LiveChat } = require("yt-livechat");
-// Or with TypeScript:
-// import LiveChat from "yt-livechat"
 
-const chat = new LiveChat(config); // Init chat object
+let names = {};
 
-// Register some events
-chat.on("connected", () => console.log("Connected to the YouTube API."));
-chat.on("error", (error) => console.log(error));
+const YouTube = require('youtube-stream');
+YouTube.connect({
+  "client_id" : botConfig.oauth.client_id,
+  "client_secret" : botConfig.oauth.client_secret,
+  "redirect_uris" :
+  [
+    "/auth"
+  ]
+}, {    access_token: botConfig.oauth.access_token,
+    refresh_token: botConfig.oauth.refresh_token}, botConfig.stream.liveChatId, function(err, data) {
+      if (data) {
+      data = data.items.map(function(message) {
+        return {
+          name: message.snippet.authorChannelId,
+          message: message.snippet.displayMessage
+        }
+      })
 
-chat.on("chat", (message) => {
-   console.log(`New message ${message}.`);
-//    io.emit('message', {
-//   user: user,
-//   message: message
-// });
+      sendMessages(data);
+}
+})
+function sendMessages(messages) {
+  messages.forEach(function(message) {
+    getUsername(message.name).then(function() {
+         io.emit('message', {
+        user: names[message.name],
+        message: message.message
+      });
+    })
+  })
+}
+
+function getUsername(channelId) {
+  return new Promise(function(resolve, reject) {
+  if (!names[channelId]) {
+   https.get(`https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}&key=AIzaSyBOIDdy387IaPM6HtJuLex3YBgK5MEE-Ww`, (resp) => {
+  let data = '';
+
+  // A chunk of data has been recieved.
+  resp.on('data', (chunk) => {
+    data += chunk;
+  });
+
+  // The whole response has been received. Print out the result.
+  resp.on('end', () => {
+    names[channelId] = JSON.parse(data).items[0].snippet.title
+    resolve();
+  });
+
+}).on("error", (err) => {
+  reject(err)
+  console.log("Error: " + err.message);
 });
+}
+})
+}
 
-// Start polling messages
-chat.connect();
+// // Import the lib
+// const { LiveChat } = require("yt-livechat");
+// // Or with TypeScript:
+// // import LiveChat from "yt-livechat"
+//
+// const chat = new LiveChat(config); // Init chat object
+//
+// // Register some events
+// chat.on("connected", () => console.log("Connected to the YouTube API."));
+// chat.on("error", (error) => console.log(error));
+//
+// chat.on("chat", (message) => {
+//    console.log(`New message ${message}.`);
+// //    io.emit('message', {
+// //   user: user,
+// //   message: message
+// // });
+// });
+//
+// // Start polling messages
+// chat.connect();
 
 sequelize.sync().then(function(res) {
   User.sync();
