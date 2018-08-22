@@ -1,12 +1,12 @@
 module.exports = {
   oauth: {
-    client_id: "228570957092-s2q13ded976iftolmqbvvmpeafnltt61.apps.googleusercontent.com",
-      client_secret: "IKg5ioVbNBUjV8KXpTYBcXyQ",
-    access_token: "ya29.GltSBKcUUEr_0f6xApVREvL_fBnlQGtM9YPAXwTNDnXN1dUtHNBekhdU0B6dj1ZsutiOVR8ZTq2r6QLPAc4LGwKb2Hv_DOyl9VYO6m5BHTWyyanSeEzpQvJeDuvn",
-    refresh_token: "1/E_YaVgtTd22ZWN6aHJFM8ffxXwlQsufc0_w3nw2Ge7w"
+    client_id: "253380397322-2831v51bulpehh9lrl82unslj147lmrm.apps.googleusercontent.com",
+      client_secret: "iotoW7T5vrnJleasrHKFgcJM",
+    access_token: "ya29.GlsBBvy2b_5cIUZ_5YwCQsrqunoX2c6FuE74zPKz9IzH5OEuu72_ghc-vhujgrFuQiGhRUeLUk2kTx9bo0CbOGuDQ0ZlpoGyt8t2zlNAOuHD7leUu9ODwsBO0ap6",
+    refresh_token: "1/11IsS5Fn5D1KyAhfJkMLezgyXSOwlYnbfMt4xfRxyQA"
   },
   stream: {
-    liveChatId: "EiEKGFVDdjlFZGxfV2J0YlBlVVJQdEZEby11QRIFL2xpdmU",
+    liveChatId: "EiEKGFVDNGFiTjRaaXlibnNBWFRrVEJYN25vdxIFL2xpdmU",
     timeBetweenMessages: 20000,
     refreshTokenTime: 45 * 60000
   },

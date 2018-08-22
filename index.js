@@ -19,7 +19,6 @@ const express = require('express'),
   YoutubeV3Strategy = require('passport-youtube-v3').Strategy,
   session = require('express-session');
 let FileStore = sessionFileStore(session);
-
 // Cookies
 app.set('trust proxy', 1); // trust first proxy
 var sess = {
@@ -116,35 +115,30 @@ const config = {
     access_token: botConfig.oauth.access_token,
     refresh_token: botConfig.oauth.refresh_token
   },
-  live_chat_id: botConfig.stream.liveChatId,
+  liveChatID: botConfig.stream.liveChatId,
   page_token: null
 }
+// Import the lib
+const { LiveChat } = require("yt-livechat");
+// Or with TypeScript:
+// import LiveChat from "yt-livechat"
 
-const client = new ymi.client(config);
+const chat = new LiveChat(config); // Init chat object
 
-setInterval(() => {
-  client.refresh()
-}, botConfig.stream.refreshTokenTime);
+// Register some events
+chat.on("connected", () => console.log("Connected to the YouTube API."));
+chat.on("error", (error) => console.log(error));
 
-client.on('chat', (user, message) => {
-  io.emit('message', {
-    user: user,
-    message: message
-  });
-  // message.displayMessage = twitchEmoji.parse(message.displayMessage)
+chat.on("chat", (message) => {
+   console.log(`New message ${message}.`);
+//    io.emit('message', {
+//   user: user,
+//   message: message
+// });
 });
 
-client.on('page_token', (page_token) => {
-  config.oauth.page_token = page_token;
-});
-
-client.on('refresh_token', (refresh_token) => {
-  console.log("new access token",refresh_token.access_token)
-  botConfig.oauth.access_token = refresh_token.access_token;
-
-});
-
-client.connect();
+// Start polling messages
+chat.connect();
 
 sequelize.sync().then(function(res) {
   User.sync();
